@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { describe, it } from 'vitest'
-import Home from './Home'
+import Home from '../../pages/Home'
 
 describe('home page component', () => {
   it('renders', () => {

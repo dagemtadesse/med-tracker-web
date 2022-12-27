@@ -1,12 +1,12 @@
 import { render, screen } from '@testing-library/react'
 import { describe, it } from 'vitest'
-import ResetPassword from './ResetPassword'
+import Start from '../../pages/Start'
 
 
 describe('home page component', () => {
   it('renders', () => {
-    render(<ResetPassword />)
+    render(<Start />)
 
-    expect(screen.getByText(/reset password/i)).toBeInTheDocument()
+    expect(screen.getByText(/start/i)).toBeInTheDocument()
   })
 })

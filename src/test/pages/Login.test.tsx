@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { describe, it } from 'vitest'
-import Login from './login'
+import Login from '../../pages/login'
 
 describe('login page component', () => {
   it('renders', () => {
