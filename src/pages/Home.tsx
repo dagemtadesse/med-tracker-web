@@ -13,7 +13,9 @@ import {
 import Accordion from '../components/Accordion'
 import DocumentWrapper from '../components/DocumentWrapper'
 import ListItem from '../components/ListItem'
+import AddPopup from '../components/popup/AddPopup'
 import SidePopup from '../components/popup/SidePopup'
+import TranslationPopup from '../components/popup/TranslationPopup'
 import RoundedButton from '../components/RoundedButton'
 
 const items = [{ label: 'Vaccine' }, { label: 'Flu Shot' }]
@@ -34,8 +36,15 @@ const document = [
   },
 ]
 
+type Action = {
+  action: 'translate' | 'add' | 'share'
+  data: any[]
+}
+
 const Home = () => {
-  const [isPopupShown, setISPopupShown] = useState(true);
+  const [isPopupShown, setISPopupShown] = useState(true)
+
+  const [action, setAction] = useState<Action | null>(null)
 
   return (
     <>
@@ -55,39 +64,53 @@ const Home = () => {
           Icon={Capsule}
           items={items}
           Wrapper={ListItem}
-        >
-          <>
-            <RoundedButton label="Add" Icon={PlusLg} />
-            <RoundedButton label="Translation" Icon={Globe} />
-            <RoundedButton label="Share" Icon={ShareFill} />
-          </>
-        </Accordion>
+          addHandler={() => setAction({action: 'add', data: []})}
+          translationHandler={() => {}}
+          shareHandler={() => {}}
+        />
+
         <Accordion
           title="Medicine"
           Icon={HeartPulseFill}
           items={items}
           Wrapper={ListItem}
+          addHandler={() => {}}
+          translationHandler={() => {}}
+          shareHandler={() => {}}
         />
         <Accordion
           title="Diagnoses"
           Icon={Clipboard2PlusFill}
           items={items}
           Wrapper={ListItem}
+          addHandler={() => {}}
+          translationHandler={() => {}}
+          shareHandler={() => {}}
         />
         <Accordion
           title="Vaccines"
           Icon={BandaidFill}
           items={items}
           Wrapper={ListItem}
+          addHandler={() => {}}
+          translationHandler={() => {}}
+          shareHandler={() => {}}
         />
         <Accordion
           title="Documents"
           Icon={FolderFill}
           items={document}
           Wrapper={DocumentWrapper}
+          addHandler={() => {}}
         />
 
-        {isPopupShown && <SidePopup handleClose={() => setISPopupShown(false)}/>}
+        {action && action.action == 'translate' && (
+          <TranslationPopup handleClose={() => setAction(null)} />
+        )}
+
+        {action && action.action == 'add' && (
+          <AddPopup handleClose={() => setAction(null)} />
+        )}
       </main>
     </>
   )

@@ -1,16 +1,33 @@
 import classnames from 'classnames'
 import { useState } from 'react'
-import { ChevronDown, Capsule } from 'react-bootstrap-icons'
+import {
+  ChevronDown,
+  Capsule,
+  Globe,
+  PlusLg,
+  ShareFill,
+} from 'react-bootstrap-icons'
+import RoundedButton from './RoundedButton'
 
 type props = {
   title: string
   Icon: any
   items: any[]
   Wrapper: any
-  children?: JSX.Element
+  addHandler?: () => void
+  translationHandler?: () => void
+  shareHandler?: () => void
 }
 
-const Accordion = ({ title, Icon, items, Wrapper, children }: props) => {
+const Accordion = ({
+  title,
+  Icon,
+  items,
+  Wrapper,
+  addHandler,
+  translationHandler,
+  shareHandler,
+}: props) => {
   const [isExpanded, setIsExpanded] = useState(false)
 
   const chevronStyle = classnames('fill-textGrey transition-all duration-300', {
@@ -46,7 +63,15 @@ const Accordion = ({ title, Icon, items, Wrapper, children }: props) => {
             ))}
           </div>
 
-          <div className="flex gap-4">{children}</div>
+          <div className="flex gap-4">
+            {addHandler && <RoundedButton label="Add" Icon={PlusLg} onClick={addHandler}/>}
+            {items.length > 0 && translationHandler && (
+              <RoundedButton label="Translation" Icon={Globe} onClick={translationHandler}/>
+            )}
+            {items.length > 0 && shareHandler && (
+              <RoundedButton label="Share" Icon={ShareFill} onClick={shareHandler}/>
+            )}
+          </div>
         </>
       )}
     </div>
