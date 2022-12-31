@@ -70,8 +70,8 @@ const Accordion = ({
           className="p-5 pt-0 transition-all duration-300 ease-acclerate max-h-0 overflow-hidden"
           style={{
             maxHeight: isClosing ? 0 : childHeight,
-            padding: isClosing ? 0 : '1.25em',
-            paddingTop: 0
+            padding: isClosing ? '0 1.25em' : '1.25em',
+            
           }}
           ref={it}
           onTransitionEnd={() => {
