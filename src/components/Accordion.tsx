@@ -1,8 +1,7 @@
 import classnames from 'classnames'
-import { useState } from 'react'
+import { useLayoutEffect, useRef, useState } from 'react'
 import {
   ChevronDown,
-  Capsule,
   Globe,
   PlusLg,
   ShareFill,
@@ -28,18 +27,29 @@ const Accordion = ({
   translationHandler,
   shareHandler,
 }: props) => {
+
   const [isExpanded, setIsExpanded] = useState(false)
+  const [isClosing, setIsClosing] = useState(false)
+  const [childHeight, setChildHeight] = useState(0)
+  const it = useRef<HTMLDivElement>(null)
 
   const chevronStyle = classnames('fill-textGrey transition-all duration-300', {
     'rotate-180': isExpanded,
   })
 
-  const toggleAccordion = ({}) => setIsExpanded((value) => !value)
+  useLayoutEffect(() => {
+    setTimeout(() => setChildHeight(it.current?.scrollHeight ?? 0))
+  })
+
+  const toggleAccordion = () => {
+    if (isExpanded) setIsClosing(true)
+    else setIsExpanded(true)
+  }
 
   return (
-    <div className="bg-white p-5 max-w-3xl mx-auto rounded-2xl drop-shadow-md mb-6">
+    <div className="bg-white max-w-3xl mx-auto rounded-2xl drop-shadow-md mb-6">
       <div
-        className="flex justify-between items-center"
+        className="flex justify-between items-center hover:cursor-pointer p-5 rounded-2xl"
         onClick={toggleAccordion}
       >
         <div className="flex gap-6 items-center">
@@ -56,23 +66,47 @@ const Accordion = ({
       </div>
 
       {isExpanded && (
-        <>
-          <div className=" border-t border-gray-200 mt-5 overflow-hidden py-4">
+        <div
+          className="p-5 pt-0 transition-all duration-300 ease-acclerate max-h-0 overflow-hidden"
+          style={{
+            maxHeight: isClosing ? 0 : childHeight,
+            padding: isClosing ? 0 : '1.25em',
+            paddingTop: 0
+          }}
+          ref={it}
+          onTransitionEnd={() => {
+            if (isClosing) {
+              setIsClosing(false)
+              setIsExpanded(false)
+            }
+          }}
+        >
+          <div className="border-t border-gray-200 py-4">
             {items.map((item) => (
               <Wrapper {...item} />
             ))}
           </div>
 
           <div className="flex gap-4">
-            {addHandler && <RoundedButton label="Add" Icon={PlusLg} onClick={addHandler}/>}
+            {addHandler && (
+              <RoundedButton label="Add" Icon={PlusLg} onClick={addHandler} />
+            )}
             {items.length > 0 && translationHandler && (
-              <RoundedButton label="Translation" Icon={Globe} onClick={translationHandler}/>
+              <RoundedButton
+                label="Translation"
+                Icon={Globe}
+                onClick={translationHandler}
+              />
             )}
             {items.length > 0 && shareHandler && (
-              <RoundedButton label="Share" Icon={ShareFill} onClick={shareHandler}/>
+              <RoundedButton
+                label="Share"
+                Icon={ShareFill}
+                onClick={shareHandler}
+              />
             )}
           </div>
-        </>
+        </div>
       )}
     </div>
   )
