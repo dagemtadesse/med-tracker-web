@@ -33,6 +33,9 @@ module.exports = {
         slideIn: 'slideIn .3s cubic-bezier(0, 0, 0.2, 1)',
         slideOut: 'slideIn 0.5s cubic-bezier(0, 0, 0.2, 1) reverse',
       },
+      transitionTimingFunction: {
+        'acclerate': 'cubic-bezier(0, 0, 0.2, 1)'
+      }
     },
   },
   plugins: [],
