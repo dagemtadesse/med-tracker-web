@@ -11,7 +11,7 @@ const ListItem = ({ label }: { label: string }) => {
 
   return (
     <div
-      className="flex justify-between items-center hover:bg-black hover:bg-opacity-10 transition-colors duration-300 py-3 px-4 rounded-lg"
+      className="flex justify-between items-center hover:bg-black hover:bg-opacity-10 hover:cursor-pointer transition-colors duration-300 py-3 px-4 rounded-lg"
       onMouseOver={() => setIsVisible(true)}
       onMouseLeave={() => setIsVisible(false)}
     >

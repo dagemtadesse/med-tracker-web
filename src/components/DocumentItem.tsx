@@ -9,7 +9,7 @@ import IconButton from './IconButton'
 
 const DocumentItem = ({title, description}: {title: string, description: string}) => {
   return (
-    <div className="flex justify-between items-center hover:bg-black hover:bg-opacity-5 rounded-md p-3">
+    <div className="flex justify-between items-center hover:bg-black hover:bg-opacity-5 hover:cursor-pointer rounded-md p-3">
       <div className="flex items-center gap-4">
         <div className="">
           <FileEarmarkPostFill size={32} className="fill-iconGrey" />

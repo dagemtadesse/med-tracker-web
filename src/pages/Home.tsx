@@ -65,7 +65,7 @@ const Home = () => {
           items={items}
           Wrapper={ListItem}
           addHandler={() => setAction({action: 'add', data: []})}
-          translationHandler={() => {}}
+          translationHandler={() => setAction({action: 'translate', data: []})}
           shareHandler={() => {}}
         />
 

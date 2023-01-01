@@ -19,6 +19,7 @@ const SearchInput = () => {
           <Search />
         </div>
         <input
+          placeholder='Search'
           className="py-2 w-full rounded-md outline-0 focus:outline-0 focus:border-0"
           ref={inputRef}
           onFocus={() => setIsActive(true)}
