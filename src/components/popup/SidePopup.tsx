@@ -1,25 +1,29 @@
-import { useEffect, useState } from 'react'
-import { ArrowLeft } from 'react-bootstrap-icons'
+import { useEffect, useState } from "react";
+import { ArrowLeft } from "react-bootstrap-icons";
 
 const SidePopup = ({
   handleClose,
   title,
   children,
 }: {
-  handleClose: () => void
-  title: string
-  children: React.ReactNode
+  handleClose: () => void;
+  title: string;
+  children: React.ReactNode;
 }) => {
-  const [isExiting, setIsExiting] = useState<boolean | null>(null)
+  const [isExiting, setIsExiting] = useState<boolean | null>(null);
 
   useEffect(() => {
-    setIsExiting(false)
-  }, [])
+    setIsExiting(false);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
 
   const closeSidePopup = (event: any) => {
-    event.stopPropagation()
-    setIsExiting(true)
-  }
+    event.stopPropagation();
+    setIsExiting(true);
+  };
 
   return (
     <div
@@ -30,11 +34,11 @@ const SidePopup = ({
       <div
         onClick={(e) => e.stopPropagation()}
         onTransitionEnd={() => {
-          if (isExiting) handleClose()
+          if (isExiting) handleClose();
         }}
-        className="bg-white h-full w-[33.333%] px-6 py-4 transition-transform duration-300"
+        className="bg-white h-full w-[33.333%] px-6 py-4 transition-transform duration-300 overflow-auto flex flex-col"
         style={{
-          transform: isExiting !== false ? 'translateX(100%)' : 'translateX(0)',
+          transform: isExiting !== false ? "translateX(100%)" : "translateX(0)",
         }}
       >
         <div className="flex items-center gap-4 pb-4">
@@ -44,10 +48,10 @@ const SidePopup = ({
           <span className="font-medium text-xl">{title}</span>
         </div>
 
-        <div className="">{children}</div>
+        <div className="grow">{children}</div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SidePopup
+export default SidePopup;

@@ -1,4 +1,4 @@
-import Select from './Select'
+import Select from '../form/Select'
 import SidePopup from './SidePopup'
 
 const TranslationPopup = ({ handleClose }: { handleClose: () => void }) => {
@@ -10,7 +10,7 @@ const TranslationPopup = ({ handleClose }: { handleClose: () => void }) => {
   return (
     <SidePopup handleClose={handleClose} title="Translation">
       <div className="mb-5">
-        <Select />
+        <Select options={["Norwegian", "English", "Polish", "Russians"]} placeholder="Search"/>
       </div>
 
       <div className="flex flex-col mt-3">

@@ -1,4 +1,4 @@
-import SearchInput from './SearchInput'
+import SearchInput from '../form/SearchInput'
 import SidePopup from './SidePopup'
 
 const AddPopup = ({ handleClose }: { handleClose: () => void }) => {

@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import { useRef, useState } from 'react'
 import { Search } from 'react-bootstrap-icons'
-import Option from './Option'
+import Option from '../list/Option'
 
 const SearchInput = () => {
   const inputRef = useRef<HTMLInputElement>(null)

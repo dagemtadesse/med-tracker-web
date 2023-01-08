@@ -5,7 +5,7 @@ import {
   Pencil,
   Trash,
 } from 'react-bootstrap-icons'
-import IconButton from './IconButton'
+import IconButton from '../widgets/IconButton'
 
 const DocumentItem = ({title, description}: {title: string, description: string}) => {
   return (

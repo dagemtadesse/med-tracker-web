@@ -4,7 +4,7 @@ const Option = ({ label, code }: { label: string; code?: string }) => {
       <div>{label}</div>
       {code && <div className="text-sm mt-1">{code}</div>}
     </div>
-  )
-}
+  );
+};
 
-export default Option
+export default Option;
