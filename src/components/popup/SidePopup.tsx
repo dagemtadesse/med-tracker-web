@@ -36,7 +36,7 @@ const SidePopup = ({
         onTransitionEnd={() => {
           if (isExiting) handleClose();
         }}
-        className="bg-white h-full w-[33.333%] px-6 py-4 transition-transform duration-300 overflow-auto flex flex-col"
+        className="bg-white h-full w-[516px] px-6 py-4 transition-transform duration-300 overflow-auto flex flex-col"
         style={{
           transform: isExiting !== false ? "translateX(100%)" : "translateX(0)",
         }}

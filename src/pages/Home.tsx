@@ -16,6 +16,7 @@ import TranslationPopup from "../components/popup/TranslationPopup";
 import OrderCard from "../assets/order-card.png";
 import ViewProfile from "../components/profile/ViewProfile";
 import NewDocumentPopup from "../components/popup/NewDocumentPopup";
+import ViewPopup from "../components/popup/ViewPopup";
 
 const items = [{ label: "Vaccine" }, { label: "Flu Shot" }];
 const document = [
@@ -41,8 +42,9 @@ type Action = {
 };
 
 const Home = () => {
-  const [isPopupShown, setISPopupShown] = useState(true);
+  const [isPopupShown, setISPopupShown] = useState(false);
   const [isProfileShown, setIsProfileShown] = useState(false);
+  const [view, setView] = useState(true)
   const [addNewDoc, setAddNewDoc] = useState(false);
 
   const [action, setAction] = useState<Action | null>(null);
@@ -153,6 +155,8 @@ const Home = () => {
         )}
 
         {addNewDoc && <NewDocumentPopup close={() => setAddNewDoc(false)}/>}
+
+        {view && <ViewPopup title="View Document(s)" close={() => setView(false)}/>}
       </main>
     </>
   );
