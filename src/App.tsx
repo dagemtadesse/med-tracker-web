@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import EditProfile from './pages/EditProfile'
 
 import Home from './pages/Home'
 import Login from './pages/login'
@@ -10,6 +11,7 @@ export const routes = [
   { path: '/home', element: <Home /> },
   { path: '/reset-password', element: <ResetPassword /> },
   { path: '/login', element: <Login /> },
+  { path: '/edit-profile', element: <EditProfile />}
 ]
 
 function App() {

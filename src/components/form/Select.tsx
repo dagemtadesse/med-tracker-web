@@ -27,13 +27,13 @@ const Select = ({options, placeholder}: {options: string[], placeholder: string}
   return (
     <>
       <div
-        className="border border-gray-400 py-3 px-4 rounded-lg flex justify-between items-center bg-white"
+        className="border border-gray-400 py-4 px-4 rounded-lg flex justify-between items-center bg-white"
         onClick={() => setIsActive(true)}
         data-testid="Select-wrapper"
         ref={divRef}
       >
         <p className="text-lightGrey" data-testid="Select-label">{value || placeholder}</p>
-        <CaretDownFill size={14} />
+        <CaretDownFill size={12} />
       </div>
 
       {isActive && (

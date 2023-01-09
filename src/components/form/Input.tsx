@@ -10,7 +10,7 @@ const Input = ({ lg, label, onChange }: { lg: boolean; label: string; onChange?:
     "absolute top-0 left-0 right-0 bottom-0 px-3 inline-flex transition-all duration-[255ms] ease-acclerate text-lightGrey",
     {
       "items-center": !isActive && !inputRef.current?.value,
-      "items-start -mt`-[10px] text-sm": isActive || inputRef.current?.value,
+      "items-start -mt-[10px] text-sm": isActive || inputRef.current?.value,
     }
   );
 
