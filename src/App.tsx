@@ -1,19 +1,21 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import Home from './pages/Home'
-import Login from './pages/login'
-import ResetPassword from './pages/ResetPassword'
-import Start from './pages/Start'
+import Home from "./pages/Home";
+import Login from "./pages/login";
+import ResetPassword from "./pages/ResetPassword";
+import Start from "./pages/Start";
+import TermsAndConditions from "./pages/TermsAndConditions";
 
 export const routes = [
-  { path: '/', element: <Start /> },
-  { path: '/home', element: <Home /> },
-  { path: '/reset-password', element: <ResetPassword /> },
-  { path: '/login', element: <Login /> },
-]
+  { path: "/", element: <Start /> },
+  { path: "/home", element: <Home /> },
+  { path: "/reset-password", element: <ResetPassword /> },
+  { path: "/login", element: <Login /> },
+  { path: "/terms-and-conditions", element: <TermsAndConditions /> },
+];
 
 function App() {
-  return <RouterProvider router={createBrowserRouter(routes)} />
+  return <RouterProvider router={createBrowserRouter(routes)} />;
 }
 
-export default App
+export default App;
