@@ -1,5 +1,6 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import { ArrowLeft, ChevronDoubleDown } from "react-bootstrap-icons";
+import { Link } from "react-router-dom";
 import Logo from "../assets/logo.png";
 
 const TermsAndConditions = () => {
@@ -30,9 +31,9 @@ const TermsAndConditions = () => {
       </header>
       <main className="text-textGrey">
         <div className="bg-white p-6 rounded-3xl mx-auto max-w-2xl max-h-[90vh] flex flex-col h-[calc(100vh-132px)] mb-8">
-          <button className="flex justify-start items-center gap-4">
+          <Link className="flex justify-start items-center gap-4" to="/">
             <ArrowLeft size="24" /> <span>Back</span>
-          </button>
+          </Link>
 
           <div className="px-10 py-6 text-textDark">
             <h1 className="font-bold text-4xl capitalize leading-normal">
@@ -48,7 +49,7 @@ const TermsAndConditions = () => {
               ref={contianerRef}
               onScroll={handleScroll}
             >
-              <div className="px-10 pb-12 text-textGrey">
+              <div className="px-10 text-textGrey">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime
                 suscipit rerum nam eveniet quia eum obcaecati? Aperiam expedita
                 eaque et dolores nisi dolore minima ducimus, ut ab adipisci quod
@@ -345,12 +346,21 @@ const TermsAndConditions = () => {
           </div>
 
           <div className="flex justify-between pt-4 px-10">
-            <button className="rounded-full shadow-md hover:shadow-lg uppercase px-10 py-3 text-white bg-gray-500 w-[200px]">
+            <Link
+              to="/"
+              className="rounded-full text-center shadow-md hover:shadow-lg uppercase px-10 py-3 text-white bg-gray-500 w-[200px]"
+            >
               decline
-            </button>
-            <button className="rounded-full shadow-md hover:shadow-lg uppercase px-10 py-3 text-white bg-solidBlue w-[200px]">
+            </Link>
+
+            <Link
+              to={bottomReached ? "/login" : ""}
+              className={`rounded-full text-center shadow-md hover:shadow-lg uppercase px-10 py-3 text-white bg-solidBlue w-[200px] ${
+                bottomReached ? "opacity-100" : "opacity-40"
+              }`}
+            >
               accept
-            </button>
+            </Link>
           </div>
         </div>
       </main>
