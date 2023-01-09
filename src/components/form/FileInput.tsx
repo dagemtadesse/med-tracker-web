@@ -16,6 +16,7 @@ const FileInput = ({
           className="hidden"
           ref={inputRef}
           onChange={handleChange}
+          data-testid="FileInput-input"
         />
         <ArrowUpCircle size={100} />
         <p className="text-solidBlue font-bold text-center my-4">

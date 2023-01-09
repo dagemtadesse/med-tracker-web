@@ -29,9 +29,10 @@ const Select = ({options, placeholder}: {options: string[], placeholder: string}
       <div
         className="border border-gray-400 py-3 px-4 rounded-lg flex justify-between items-center bg-white"
         onClick={() => setIsActive(true)}
+        data-testid="Select-wrapper"
         ref={divRef}
       >
-        <p className="text-lightGrey">{value || placeholder}</p>
+        <p className="text-lightGrey" data-testid="Select-label">{value || placeholder}</p>
         <CaretDownFill size={14} />
       </div>
 
@@ -39,6 +40,7 @@ const Select = ({options, placeholder}: {options: string[], placeholder: string}
         <div
           className="fixed top-0 w-screen right-0 bottom-0 rounded-sm overflow-hidden z-50"
           onClick={() => setIsActive(false)}
+          data-testid="Select-overlay"
         >
           <div
             className="bg-white rounded-md overflow-hidden absolute shadow-xl border border-gray-200 "

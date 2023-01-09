@@ -22,6 +22,7 @@ const SearchInput = () => {
           placeholder='Search'
           className="py-2 w-full rounded-md outline-0 focus:outline-0 focus:border-0"
           ref={inputRef}
+          data-testid="Search-input"
           onFocus={() => setIsActive(true)}
           onBlur={() => setIsActive(false)}
         />

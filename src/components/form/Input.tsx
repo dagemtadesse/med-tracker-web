@@ -1,19 +1,16 @@
 import classNames from "classnames";
 import { ChangeEventHandler, useEffect, useRef, useState } from "react";
 
-const Input = ({ lg, label }: { lg: boolean; label: string }) => {
+const Input = ({ lg, label, onChange }: { lg: boolean; label: string; onChange?: ChangeEventHandler }) => {
   const inputRef = useRef<HTMLInputElement & HTMLTextAreaElement>(null);
 
   const [isActive, setIsActive] = useState(false);
-  const [value, setValue] = useState<string | null>(null);
 
-  const active = isActive;
   const labelStyle = classNames(
     "absolute top-0 left-0 right-0 bottom-0 px-3 inline-flex transition-all duration-[255ms] ease-acclerate text-lightGrey",
     {
       "items-center": !isActive && !inputRef.current?.value,
-      "items-start -mt-[10px] text-sm":
-        isActive || inputRef.current?.value,
+      "items-start -mt`-[10px] text-sm": isActive || inputRef.current?.value,
     }
   );
 
@@ -34,6 +31,8 @@ const Input = ({ lg, label }: { lg: boolean; label: string }) => {
         <input
           className="w-full h-full absolute top-0 left-0 right-0 bottom-0 rounded-lg bg-transparent px-3 py-4"
           ref={inputRef}
+          data-testid="Input-input"
+          onChange={onChange}
           onBlur={() => setIsActive(false)}
         />
       )}
@@ -42,11 +41,13 @@ const Input = ({ lg, label }: { lg: boolean; label: string }) => {
         <textarea
           className="w-full h-full absolute top-0 left-0 right-0 bottom-0 rounded-lg bg-transparent px-3 py-4"
           ref={inputRef}
+          data-testid="Input-textarea"
           onBlur={() => setIsActive(false)}
+          onChange={onChange}
         />
       )}
       <div className={labelStyle}>
-        <p className="bg-white px-1">{label}</p>
+        <p className="bg-white px-1" role="label">{label}</p>
       </div>
     </div>
   );
