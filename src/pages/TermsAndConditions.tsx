@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { ArrowLeft, ChevronDoubleDown } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import Logo from "../assets/logo.png";
@@ -30,7 +30,7 @@ const TermsAndConditions = () => {
         <img src={Logo} className="w-[100px]" />
       </header>
       <main className="text-textGrey">
-        <div className="bg-white p-6 rounded-3xl mx-auto max-w-2xl max-h-[90vh] flex flex-col h-[calc(100vh-132px)] mb-8">
+        <div className="bg-white p-6 rounded-3xl mx-auto max-w-[624px] max-h-[90vh] flex flex-col h-[calc(100vh-132px)] mb-8">
           <Link className="flex justify-start items-center gap-4" to="/">
             <ArrowLeft size="24" /> <span>Back</span>
           </Link>
