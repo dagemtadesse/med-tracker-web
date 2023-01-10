@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { ConfirmationProvider } from "./contexts/ConfirmationContext";
 import EditProfile from "./pages/EditProfile";
 
 import Home from "./pages/Home";
@@ -17,7 +18,11 @@ export const routes = [
 ];
 
 function App() {
-  return <RouterProvider router={createBrowserRouter(routes)} />;
+  return (
+    <ConfirmationProvider>
+      <RouterProvider router={createBrowserRouter(routes)} />Í
+    </ConfirmationProvider>
+  );
 }
 
 export default App;

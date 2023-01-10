@@ -7,13 +7,17 @@ import {
 } from "react-bootstrap-icons";
 import IconButton from "../widgets/IconButton";
 
+type DocumentItemProps = {
+  title: string;
+  description: string;
+  deleteHandler: () => {};
+};
+
 const DocumentItem = ({
   title,
   description,
-}: {
-  title: string;
-  description: string;
-}) => {
+  deleteHandler,
+}: DocumentItemProps) => {
   const viewHandler = () => {};
   return (
     <div className="flex justify-between items-center hover:bg-black hover:bg-opacity-5 hover:cursor-pointer rounded-md p-3">
@@ -30,7 +34,7 @@ const DocumentItem = ({
         <IconButton Icon={EyeFill} onClick={viewHandler} />
         <IconButton Icon={Pencil} />
         <IconButton Icon={CloudDownloadFill} />
-        <IconButton Icon={Trash} />
+        <IconButton Icon={Trash} onClick={deleteHandler} />
       </div>
     </div>
   );

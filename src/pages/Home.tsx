@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
   BandaidFill,
   Capsule,
@@ -17,6 +17,7 @@ import OrderCard from "../assets/order-card.png";
 import ViewProfile from "../components/profile/ViewProfile";
 import NewDocumentPopup from "../components/popup/NewDocumentPopup";
 import ViewPopup from "../components/popup/ViewPopup";
+import ConfirmationContext from "../contexts/ConfirmationContext";
 
 const items = [{ label: "Vaccine" }, { label: "Flu Shot" }];
 const document = [
@@ -44,10 +45,12 @@ type Action = {
 const Home = () => {
   const [isPopupShown, setISPopupShown] = useState(false);
   const [isProfileShown, setIsProfileShown] = useState(false);
-  const [view, setView] = useState(true)
+  const [view, setView] = useState(true);
   const [addNewDoc, setAddNewDoc] = useState(false);
 
   const [action, setAction] = useState<Action | null>(null);
+
+  const confirmCtx = useContext(ConfirmationContext);
 
   return (
     <>
@@ -120,7 +123,9 @@ const Home = () => {
           Icon={FolderFill}
           items={document}
           Wrapper={DocumentWrapper}
-          addHandler={() => {setAddNewDoc(true)}}
+          addHandler={() => {
+            setAddNewDoc(true);
+          }}
         />
 
         <div className="bg-white max-w-3xl mx-auto rounded-2xl drop-shadow-md mb-6 mt-16">
@@ -149,14 +154,17 @@ const Home = () => {
           <AddPopup handleClose={() => setAction(null)} />
         )}
 
-        {isPopupShown && <ModalPopup close={() => setISPopupShown(false)} />}
         {isProfileShown && (
           <ViewProfile close={() => setIsProfileShown(false)} />
         )}
 
-        {addNewDoc && <NewDocumentPopup close={() => setAddNewDoc(false)}/>}
+        {addNewDoc && <NewDocumentPopup close={() => setAddNewDoc(false)} />}
 
-        {view && <ViewPopup title="View Document(s)" close={() => setView(false)}/>}
+        {view && (
+          <ViewPopup title="View Document(s)" close={() => setView(false)} />
+        )}
+
+        {!!confirmCtx.confirm && <ModalPopup />}
       </main>
     </>
   );
