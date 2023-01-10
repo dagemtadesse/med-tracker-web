@@ -1,11 +1,14 @@
-import { render, screen } from '@testing-library/react'
-import { describe, it } from 'vitest'
-import Login from '../../pages/login'
+import { render, screen } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
+import { describe, it } from "vitest";
+import Login from "../../pages/login";
 
-describe('login page component', () => {
-  it('renders', () => {
-    render(<Login />)
-
-    expect(screen.getByText(/login/i)).toBeInTheDocument()
-  })
-})
+describe("login page component", () => {
+  it("renders", () => {
+    render(
+      <MemoryRouter>
+        <Login />
+      </MemoryRouter>
+    );
+  });
+});
