@@ -32,11 +32,11 @@ const NewDocumentPopup = () => {
 
   return (
     <SidePopup title="Add New document" handleClose={close}>
-      {(!currentDocument.fileURL && !file) && (
+      {(!currentDocument?.fileURL && !file) && (
         <FileInput handleChange={handleChange} />
       )}
 
-      {(file || currentDocument.fileURL) && (
+      {(file || currentDocument?.fileURL) && (
         <div className="my-4 flex gap-6 flex-col relative bottom-0 h-full pb-6">
           <div className="border border-gray-600 rounded-md w-full py-3 px-3 flex gap-2 items-center text-lightGrey">
             <FileEarmarkText size={18} /> portrait.png

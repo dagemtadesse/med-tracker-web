@@ -8,7 +8,6 @@ const ListItem = ({
   info,
 }: {
   info: Info;
-  category: "allergies" | "medicines" | "diagnoses" | "vaccines",
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const actionsStyle = classNames("transition-all duration-500", {
