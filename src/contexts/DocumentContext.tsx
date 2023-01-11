@@ -1,5 +1,4 @@
 import { createContext, ReactNode, useState } from "react";
-import { o } from "vitest/dist/index-40ebba2b";
 import { dummyDocuments } from "./dummy-data";
 
 export type Document = {

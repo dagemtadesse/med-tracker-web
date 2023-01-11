@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import { ArrowClockwise } from "react-bootstrap-icons";
 import { Loader } from "react-feather";
 import { Info, InformationContext } from "../../contexts/InformationContext";
 import Select from "../form/Select";

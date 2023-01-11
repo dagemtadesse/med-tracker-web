@@ -67,6 +67,7 @@ const Select = ({
               {options.map((num) => (
                 <li
                   className={selectItemStyle(num)}
+                  key={num}
                   onClick={() => {
                     setValue(num);
                     setIsActive(false);

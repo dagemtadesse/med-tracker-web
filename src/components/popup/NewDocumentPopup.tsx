@@ -1,5 +1,5 @@
 import { ChangeEvent, useContext, useState } from "react";
-import { FileEarmark, FileEarmarkText } from "react-bootstrap-icons";
+import { FileEarmarkText } from "react-bootstrap-icons";
 import DocumentContext from "../../contexts/DocumentContext";
 import FileInput from "../form/FileInput";
 import Input from "../form/Input";

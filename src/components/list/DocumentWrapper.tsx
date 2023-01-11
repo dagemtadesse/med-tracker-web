@@ -1,5 +1,4 @@
 import { Fragment, useContext } from "react";
-import { DoorClosed } from "react-bootstrap-icons";
 import ConfirmationContext from "../../contexts/ConfirmationContext";
 import DocumentItem from "./DocumentItem";
 import DocumentContext, { Document } from "../../contexts/DocumentContext";
