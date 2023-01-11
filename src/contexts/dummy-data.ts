@@ -1,3 +1,5 @@
+import { Info } from "./InformationContext";
+
 export const dummyDocuments = [
   {
     id: '12',
@@ -25,3 +27,22 @@ export const dummyDocuments = [
     type: "Journal",
   },
 ];
+
+export const dummyInfo: Info[] = [
+  {
+    title: 'Vannmelon',
+    type: 'allergies',
+    id: '001'
+  },
+  {
+    title: 'Kammel',
+    type: 'allergies',
+    id: '002'
+  },
+  {
+    title: 'Dextrose',
+    type: 'allergies',
+    id: '003'
+  },
+  
+]

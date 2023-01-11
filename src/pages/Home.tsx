@@ -19,31 +19,31 @@ import NewDocumentPopup from "../components/popup/NewDocumentPopup";
 import ViewPopup from "../components/popup/ViewPopup";
 import ConfirmationContext from "../contexts/ConfirmationContext";
 import DocumentContext from "../contexts/DocumentContext";
-
-const items = [{ label: "Vaccine" }, { label: "Flu Shot" }];
+import { InformationContext } from "../contexts/InformationContext";
+import { Link } from "react-router-dom";
 
 type Action = {
   action: "translate" | "add" | "share";
-  data: any[];
+  type: "allergies" | "medicines" | "diagnoses" | "vaccines";
 };
 
 const Home = () => {
   const [isProfileShown, setIsProfileShown] = useState(false);
-  const [addNewDoc, setAddNewDoc] = useState(false);
 
   const [action, setAction] = useState<Action | null>(null);
 
   const confirmCtx = useContext(ConfirmationContext);
+  const infoCtx = useContext(InformationContext);
   const documentCtx = useContext(DocumentContext);
 
   return (
     <>
       <header className="bg-white">
-        <nav className="flex flex-row-reverse pt-[80px] px-[64px]">
+        <nav className="flex flex-row-reverse px-[64px]">
           <ul className="flex gap-8">
-            <NavItem label={"Home"} active />
-            <NavItem label={"Terms & service"} />
-            <NavItem label={"Logout"} />
+            <NavItem label={"Home"} to={"/home"} active />
+            <NavItem label={"Terms & conditions"} to="/terms-and-conditions" />
+            <NavItem label={"Logout"} to="/"/>
           </ul>
         </nav>
       </header>
@@ -66,48 +66,67 @@ const Home = () => {
         <Accordion
           title="Allergies"
           Icon={Capsule}
-          items={items}
+          items={infoCtx.informations.filter(
+            (item) => item.type == "allergies"
+          )}
           Wrapper={ListItem}
-          addHandler={() => setAction({ action: "add", data: [] })}
+          addHandler={() => setAction({ action: "add", type: "allergies" })}
           translationHandler={() =>
-            setAction({ action: "translate", data: [] })
+            setAction({ action: "translate", type: "allergies" })
           }
-          shareHandler={() => {}}
+          shareHandler={() => infoCtx.shareInformation("allergies")}
         />
 
         <Accordion
-          title="Medicine"
+          title="Medicines"
           Icon={HeartPulseFill}
-          items={items}
+          items={infoCtx.informations.filter(
+            (item) => item.type == "medicines"
+          )}
           Wrapper={ListItem}
-          addHandler={() => {}}
-          translationHandler={() => {}}
-          shareHandler={() => {}}
+          addHandler={() => setAction({ action: "add", type: "medicines" })}
+          translationHandler={() =>
+            setAction({ action: "translate", type: "medicines" })
+          }
+          shareHandler={() => infoCtx.shareInformation("medicines")}
         />
+
         <Accordion
           title="Diagnoses"
           Icon={Clipboard2PlusFill}
-          items={items}
+          items={infoCtx.informations.filter(
+            (item) => item.type == "diagnoses"
+          )}
           Wrapper={ListItem}
-          addHandler={() => {}}
-          translationHandler={() => {}}
-          shareHandler={() => {}}
+          addHandler={() => setAction({ action: "add", type: "diagnoses" })}
+          translationHandler={() =>
+            setAction({ action: "translate", type: "diagnoses" })
+          }
+          shareHandler={() => infoCtx.shareInformation("diagnoses")}
         />
+
         <Accordion
           title="Vaccines"
           Icon={BandaidFill}
-          items={items}
+          items={infoCtx.informations.filter((item) => item.type == "vaccines")}
           Wrapper={ListItem}
-          addHandler={() => {}}
-          translationHandler={() => {}}
-          shareHandler={() => {}}
+          addHandler={() => setAction({ action: "add", type: "vaccines" })}
+          translationHandler={() =>
+            setAction({ action: "translate", type: "vaccines" })
+          }
+          shareHandler={() => infoCtx.shareInformation("vaccines")}
         />
+
         <Accordion
           title="Documents"
           Icon={FolderFill}
           items={documentCtx.documents}
           addHandler={() => {
-            documentCtx.setCurrentDocument({title: "", description: "", type: ""})
+            documentCtx.setCurrentDocument({
+              title: "",
+              description: "",
+              type: "",
+            });
           }}
         >
           <DocumentWrapper />
@@ -163,16 +182,17 @@ export default Home;
 type NavItemProps = {
   active?: boolean;
   label: string;
+  to: string;
 };
 
-const NavItem = ({ active, label }: NavItemProps) => {
-  const style = classnames("py-3 relative", {
+const NavItem = ({ active, label, to }: NavItemProps) => {
+  const style = classnames("py-3 relative text-sm capitalize", {
     "text-solidBlue": !!active,
   });
 
   return (
     <li className={style}>
-      <a href="">{label}</a>
+      <Link to={to} >{label}</Link>
       {active && (
         <span className="w-full h-[2px] bg-solidBlue block absolute bottom-0"></span>
       )}

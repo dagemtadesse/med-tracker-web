@@ -78,7 +78,8 @@ const Accordion = ({
         >
           <div className="border-t border-gray-200 py-4">
             {!!children && children}
-            {!children && items.map((item) => <Wrapper {...item} />)}
+            {!children &&
+              items.map((item) => <Wrapper info={item} key={item.id} />)}
           </div>
 
           <div className="flex gap-4">
