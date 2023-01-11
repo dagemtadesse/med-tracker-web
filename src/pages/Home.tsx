@@ -18,24 +18,9 @@ import ViewProfile from "../components/profile/ViewProfile";
 import NewDocumentPopup from "../components/popup/NewDocumentPopup";
 import ViewPopup from "../components/popup/ViewPopup";
 import ConfirmationContext from "../contexts/ConfirmationContext";
+import DocumentContext from "../contexts/DocumentContext";
 
 const items = [{ label: "Vaccine" }, { label: "Flu Shot" }];
-const document = [
-  {
-    category: "Travel Document",
-    items: [
-      { title: "Vaccine", description: "I have taken vaccine" },
-      { title: "Vaccine", description: "I have taken vaccine" },
-    ],
-  },
-  {
-    category: "Journal",
-    items: [
-      { title: "Vaccine", description: "I have taken vaccine" },
-      { title: "Vaccine", description: "I have taken vaccine" },
-    ],
-  },
-];
 
 type Action = {
   action: "translate" | "add" | "share";
@@ -43,14 +28,13 @@ type Action = {
 };
 
 const Home = () => {
-  const [isPopupShown, setISPopupShown] = useState(false);
   const [isProfileShown, setIsProfileShown] = useState(false);
-  const [view, setView] = useState(true);
   const [addNewDoc, setAddNewDoc] = useState(false);
 
   const [action, setAction] = useState<Action | null>(null);
 
   const confirmCtx = useContext(ConfirmationContext);
+  const documentCtx = useContext(DocumentContext);
 
   return (
     <>
@@ -121,12 +105,13 @@ const Home = () => {
         <Accordion
           title="Documents"
           Icon={FolderFill}
-          items={document}
-          Wrapper={DocumentWrapper}
+          items={documentCtx.documents}
           addHandler={() => {
-            setAddNewDoc(true);
+            documentCtx.setCurrentDocument({title: "", description: "", type: ""})
           }}
-        />
+        >
+          <DocumentWrapper />
+        </Accordion>
 
         <div className="bg-white max-w-3xl mx-auto rounded-2xl drop-shadow-md mb-6 mt-16">
           <div className="p-5 flex gap-4">
@@ -158,10 +143,13 @@ const Home = () => {
           <ViewProfile close={() => setIsProfileShown(false)} />
         )}
 
-        {addNewDoc && <NewDocumentPopup close={() => setAddNewDoc(false)} />}
+        {documentCtx.currentDocument && <NewDocumentPopup />}
 
-        {view && (
-          <ViewPopup title="View Document(s)" close={() => setView(false)} />
+        {documentCtx.viewDocument && (
+          <ViewPopup
+            title="View Document(s)"
+            close={() => documentCtx.setViewDocument(undefined)}
+          />
         )}
 
         {!!confirmCtx.confirm && <ModalPopup />}

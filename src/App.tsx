@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ConfirmationProvider } from "./contexts/ConfirmationContext";
+import { DocumentContextProvider } from "./contexts/DocumentContext";
 import EditProfile from "./pages/EditProfile";
 
 import Home from "./pages/Home";
@@ -19,9 +20,11 @@ export const routes = [
 
 function App() {
   return (
-    <ConfirmationProvider>
-      <RouterProvider router={createBrowserRouter(routes)} />Í
-    </ConfirmationProvider>
+    <DocumentContextProvider>
+      <ConfirmationProvider>
+        <RouterProvider router={createBrowserRouter(routes)} />Í
+      </ConfirmationProvider>
+    </DocumentContextProvider>
   );
 }
 

@@ -10,15 +10,20 @@ import IconButton from "../widgets/IconButton";
 type DocumentItemProps = {
   title: string;
   description: string;
-  deleteHandler: () => {};
+  deleteHandler: () => void;
+  viewHandler: () => void;
+  downloadHandler: () => void;
+  editHandler: () => void;
 };
 
 const DocumentItem = ({
   title,
   description,
   deleteHandler,
+  viewHandler,
+  downloadHandler,
+  editHandler
 }: DocumentItemProps) => {
-  const viewHandler = () => {};
   return (
     <div className="flex justify-between items-center hover:bg-black hover:bg-opacity-5 hover:cursor-pointer rounded-md p-3">
       <div className="flex items-center gap-4">
@@ -32,8 +37,8 @@ const DocumentItem = ({
       </div>
       <div className="justify-self-end flex gap-2">
         <IconButton Icon={EyeFill} onClick={viewHandler} />
-        <IconButton Icon={Pencil} />
-        <IconButton Icon={CloudDownloadFill} />
+        <IconButton Icon={Pencil} onClick={editHandler}/>
+        <IconButton Icon={CloudDownloadFill} onClick={downloadHandler}/>
         <IconButton Icon={Trash} onClick={deleteHandler} />
       </div>
     </div>

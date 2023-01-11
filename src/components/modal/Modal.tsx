@@ -25,7 +25,7 @@ const ModalPopup = () => {
     if (confirmCtx.confirm) {
       await confirmCtx.confirm();
     }
-    handleClose();
+    setIsExiting(true);
   };
 
   return (

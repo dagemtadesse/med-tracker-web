@@ -1,5 +1,6 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useContext, useState } from "react";
 import { FileEarmark, FileEarmarkText } from "react-bootstrap-icons";
+import DocumentContext from "../../contexts/DocumentContext";
 import FileInput from "../form/FileInput";
 import Input from "../form/Input";
 import Select from "../form/Select";
@@ -17,7 +18,12 @@ const options = [
   "Other",
 ];
 
-const NewDocumentPopup = ({ close }: { close: () => void }) => {
+const NewDocumentPopup = () => {
+  const documentCtx = useContext(DocumentContext);
+  const currentDocument = documentCtx.currentDocument!;
+
+  const close = () => documentCtx.setCurrentDocument(undefined);
+
   const [file, setFile] = useState<File | null>();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -26,16 +32,18 @@ const NewDocumentPopup = ({ close }: { close: () => void }) => {
 
   return (
     <SidePopup title="Add New document" handleClose={close}>
-      {!file && <FileInput handleChange={handleChange} />}
+      {(!currentDocument.fileURL && !file) && (
+        <FileInput handleChange={handleChange} />
+      )}
 
-      {file && (
+      {(file || currentDocument.fileURL) && (
         <div className="my-4 flex gap-6 flex-col relative bottom-0 h-full pb-6">
           <div className="border border-gray-600 rounded-md w-full py-3 px-3 flex gap-2 items-center text-lightGrey">
             <FileEarmarkText size={18} /> portrait.png
           </div>
           <Input label="Document Title" lg={false} />
 
-          <Select options={options} placeholder="Document Type"/>
+          <Select options={options} placeholder="Document Type" />
 
           <Input label="Document description (optional)" lg />
 

@@ -1,22 +1,18 @@
-import classnames from 'classnames'
-import { useLayoutEffect, useRef, useState } from 'react'
-import {
-  ChevronDown,
-  Globe,
-  PlusLg,
-  ShareFill,
-} from 'react-bootstrap-icons'
-import RoundedButton from './RoundedButton'
+import classnames from "classnames";
+import { ReactNode, useLayoutEffect, useRef, useState } from "react";
+import { ChevronDown, Globe, PlusLg, ShareFill } from "react-bootstrap-icons";
+import RoundedButton from "./RoundedButton";
 
 type props = {
-  title: string
-  Icon: any
-  items: any[]
-  Wrapper: any
-  addHandler?: () => void
-  translationHandler?: () => void
-  shareHandler?: () => void
-}
+  title: string;
+  Icon: any;
+  items: any[];
+  Wrapper?: any;
+  addHandler?: () => void;
+  translationHandler?: () => void;
+  shareHandler?: () => void;
+  children?: ReactNode;
+};
 
 const Accordion = ({
   title,
@@ -26,25 +22,25 @@ const Accordion = ({
   addHandler,
   translationHandler,
   shareHandler,
+  children,
 }: props) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
+  const [childHeight, setChildHeight] = useState(0);
+  const it = useRef<HTMLDivElement>(null);
 
-  const [isExpanded, setIsExpanded] = useState(false)
-  const [isClosing, setIsClosing] = useState(false)
-  const [childHeight, setChildHeight] = useState(0)
-  const it = useRef<HTMLDivElement>(null)
-
-  const chevronStyle = classnames('fill-textGrey transition-all duration-300', {
-    'rotate-180': isExpanded,
-  })
+  const chevronStyle = classnames("fill-textGrey transition-all duration-300", {
+    "rotate-180": isExpanded,
+  });
 
   useLayoutEffect(() => {
-    setTimeout(() => setChildHeight(it.current?.scrollHeight ?? 0))
-  })
+    setTimeout(() => setChildHeight(it.current?.scrollHeight ?? 0));
+  });
 
   const toggleAccordion = () => {
-    if (isExpanded) setIsClosing(true)
-    else setIsExpanded(true)
-  }
+    if (isExpanded) setIsClosing(true);
+    else setIsExpanded(true);
+  };
 
   return (
     <div className="bg-white max-w-3xl mx-auto rounded-2xl drop-shadow-md mb-6">
@@ -70,21 +66,19 @@ const Accordion = ({
           className="p-5 pt-0 transition-all duration-300 ease-acclerate max-h-0 overflow-hidden"
           style={{
             maxHeight: isClosing ? 0 : childHeight,
-            padding: isClosing ? '0 1.25em' : '1.25em',
-            
+            padding: isClosing ? "0 1.25em" : "1.25em",
           }}
           ref={it}
           onTransitionEnd={() => {
             if (isClosing) {
-              setIsClosing(false)
-              setIsExpanded(false)
+              setIsClosing(false);
+              setIsExpanded(false);
             }
           }}
         >
           <div className="border-t border-gray-200 py-4">
-            {items.map((item) => (
-              <Wrapper {...item} />
-            ))}
+            {!!children && children}
+            {!children && items.map((item) => <Wrapper {...item} />)}
           </div>
 
           <div className="flex gap-4">
@@ -109,7 +103,7 @@ const Accordion = ({
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Accordion
+export default Accordion;
