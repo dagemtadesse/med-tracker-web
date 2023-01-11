@@ -21,6 +21,7 @@ import ConfirmationContext from "../contexts/ConfirmationContext";
 import DocumentContext from "../contexts/DocumentContext";
 import { InformationContext } from "../contexts/InformationContext";
 import { Link } from "react-router-dom";
+import UserContext from "../contexts/UserContext";
 
 type Action = {
   action: "translate" | "add" | "share";
@@ -35,6 +36,7 @@ const Home = () => {
   const confirmCtx = useContext(ConfirmationContext);
   const infoCtx = useContext(InformationContext);
   const documentCtx = useContext(DocumentContext);
+  const userCtx = useContext(UserContext);
 
   return (
     <>
@@ -43,18 +45,19 @@ const Home = () => {
           <ul className="flex gap-8">
             <NavItem label={"Home"} to={"/home"} active />
             <NavItem label={"Terms & conditions"} to="/terms-and-conditions" />
-            <NavItem label={"Logout"} to="/"/>
+            <NavItem label={"Logout"} to="/" />
           </ul>
         </nav>
       </header>
 
       <main className="p-8">
         <div className="max-w-3xl mx-auto my-5 text-2xl font-medium">
-          <span className="mr-4">👋🏻</span>Good morning Dagem Tadesse
+          <span className="mr-4">👋🏻</span>Good morning{" "}
+          {`${userCtx.user?.firstName} ${userCtx.user?.lastName}`}
         </div>
         {/* profile */}
         <div className="bg-white max-w-3xl mx-auto rounded-2xl drop-shadow-md mb-6 p-5">
-          <div className="text-xl font-medium">Dagem Tadesse</div>
+          <div className="text-xl font-medium">{`${userCtx.user?.firstName} ${userCtx.user?.lastName}`}</div>
           <p className="text-sm text-lightGrey mt-0.5">Member since 2002</p>
           <button
             className="text-sm mt-1 font-medium text-textGrey"
@@ -151,15 +154,18 @@ const Home = () => {
         </div>
 
         {action && action.action == "translate" && (
-          <TranslationPopup handleClose={() => setAction(null)} type={action.type}/>
+          <TranslationPopup
+            handleClose={() => setAction(null)}
+            type={action.type}
+          />
         )}
 
         {action && action.action == "add" && (
-          <AddPopup handleClose={() => setAction(null)} type={action.type}/>
+          <AddPopup handleClose={() => setAction(null)} type={action.type} />
         )}
 
         {isProfileShown && (
-          <ViewProfile close={() => setIsProfileShown(false)} />
+          <ViewProfile close={() => setIsProfileShown(false)} user={userCtx.user!} />
         )}
 
         {documentCtx.currentDocument && <NewDocumentPopup />}
@@ -192,7 +198,7 @@ const NavItem = ({ active, label, to }: NavItemProps) => {
 
   return (
     <li className={style}>
-      <Link to={to} >{label}</Link>
+      <Link to={to}>{label}</Link>
       {active && (
         <span className="w-full h-[2px] bg-solidBlue block absolute bottom-0"></span>
       )}

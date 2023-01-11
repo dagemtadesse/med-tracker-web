@@ -9,6 +9,7 @@ import Start from "./pages/Start";
 import TermsAndConditions from "./pages/TermsAndConditions";
 import EditProfile from "./pages/EditProfile";
 import InformationProvider from "./contexts/InformationContext";
+import { UserProvider } from "./contexts/UserContext";
 
 export const routes = [
   { path: "/", element: <Start /> },
@@ -21,13 +22,15 @@ export const routes = [
 
 function App() {
   return (
-    <InformationProvider>
-      <DocumentContextProvider>
-        <ConfirmationProvider>
-          <RouterProvider router={createBrowserRouter(routes)} />Í
-        </ConfirmationProvider>
-      </DocumentContextProvider>
-    </InformationProvider>
+    <UserProvider>
+      <InformationProvider>
+        <DocumentContextProvider>
+          <ConfirmationProvider>
+            <RouterProvider router={createBrowserRouter(routes)} />Í
+          </ConfirmationProvider>
+        </DocumentContextProvider>
+      </InformationProvider>
+    </UserProvider>
   );
 }
 
