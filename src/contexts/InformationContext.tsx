@@ -10,8 +10,8 @@ export type Info = {
 type MedicalInformation = {
   informations: Info[];
   removeItem: (item: Info) => Promise<any>;
-  searchInformation: (type: string, query: string) => Promise<any>;
-  translateInformation: (type: string, langauge: string) => Promise<any>;
+  searchInformation: (type: string, query: string) => Promise<Info[]>;
+  translateInformation: (type: string, langauge: string) => Promise<Info[]>;
   addInformation: (item: Info) => Promise<any>;
   shareInformation: (type: string) => Promise<any>;
 };
@@ -25,9 +25,11 @@ export const InformationContext = createContext<MedicalInformation>({
   },
   searchInformation: async (type: string, query: string) => {
     /** empty func */
+    return [];
   },
   translateInformation: async (type: string, language: string) => {
     /** empty func */
+    return [];
   },
   addInformation: async (item) => {
     /** empty func */
@@ -41,14 +43,35 @@ const InformationProvider = ({ children }: { children: ReactNode }) => {
   const [informations, setInformations] = useState<Info[]>(dummyInfo);
 
   const addInformation = async (info: Info) => {
-    if (informations.find((information) => information == info)) {
+    if (!informations.find((information) => information.id == info.id)) {
       setInformations((oldVal) => [...oldVal, info]);
     }
   };
 
-  const searchInformation = async (type: string, query: string) => {};
+  const searchInformation = async (type: string, query: string) => {
+    let searchTerm = query.trim();
+    if (!searchTerm.length) {
+      return [];
+    }
 
-  const translateInformation = async (type: string, langauge: string) => {};
+    return dummyInfo.filter(
+      (info) =>
+        info.type == type &&
+        info.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  };
+
+  const translateInformation = async (
+    type: string,
+    langauge: string
+  ): Promise<Info[]> => {
+    return new Promise((resolve) => {
+      setTimeout(
+        () => resolve(dummyInfo.filter((info) => info.type === type)),
+        500
+      );
+    });
+  };
 
   const shareInformation = async (type: string) => {
     console.log(`sharing ${type} information`);

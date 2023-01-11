@@ -44,5 +44,20 @@ export const dummyInfo: Info[] = [
     type: 'allergies',
     id: '003'
   },
+  {
+    title: 'Vannmelon',
+    type: 'medicines',
+    id: '001'
+  },
+  {
+    title: 'Kammel',
+    type: 'medicines',
+    id: '002'
+  },
+  {
+    title: 'Dextrose',
+    type: 'medicines',
+    id: '003'
+  },
   
 ]

@@ -151,11 +151,11 @@ const Home = () => {
         </div>
 
         {action && action.action == "translate" && (
-          <TranslationPopup handleClose={() => setAction(null)} />
+          <TranslationPopup handleClose={() => setAction(null)} type={action.type}/>
         )}
 
         {action && action.action == "add" && (
-          <AddPopup handleClose={() => setAction(null)} />
+          <AddPopup handleClose={() => setAction(null)} type={action.type}/>
         )}
 
         {isProfileShown && (
