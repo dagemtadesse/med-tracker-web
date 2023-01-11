@@ -6,6 +6,7 @@ export type User = {
   lastName: string;
   phoneNumber: string;
   dateOfBirth: string;
+  createdAt?: Date;
   gender: string;
   CPRNumber: string;
   nationality: string;

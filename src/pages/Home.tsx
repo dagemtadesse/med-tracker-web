@@ -22,6 +22,7 @@ import DocumentContext from "../contexts/DocumentContext";
 import { InformationContext } from "../contexts/InformationContext";
 import { Link } from "react-router-dom";
 import UserContext from "../contexts/UserContext";
+import { user } from "../contexts/dummy-data";
 
 type Action = {
   action: "translate" | "add" | "share";
@@ -58,7 +59,9 @@ const Home = () => {
         {/* profile */}
         <div className="bg-white max-w-3xl mx-auto rounded-2xl drop-shadow-md mb-6 p-5">
           <div className="text-xl font-medium">{`${userCtx.user?.firstName} ${userCtx.user?.lastName}`}</div>
-          <p className="text-sm text-lightGrey mt-0.5">Member since 2002</p>
+          <p className="text-sm text-lightGrey mt-0.5">
+            <>Member since {user.createdAt || new Date().getFullYear()}</>
+          </p>
           <button
             className="text-sm mt-1 font-medium text-textGrey"
             onClick={() => setIsProfileShown(true)}
@@ -165,7 +168,10 @@ const Home = () => {
         )}
 
         {isProfileShown && (
-          <ViewProfile close={() => setIsProfileShown(false)} user={userCtx.user!} />
+          <ViewProfile
+            close={() => setIsProfileShown(false)}
+            user={userCtx.user!}
+          />
         )}
 
         {documentCtx.currentDocument && <NewDocumentPopup />}

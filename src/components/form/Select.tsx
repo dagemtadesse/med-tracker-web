@@ -10,7 +10,7 @@ const Select = ({
 }: {
   options: string[];
   placeholder: string;
-  onChange: (value?: string) => void;
+  onChange?: (value?: string) => void;
 }) => {
   const divRef = useRef<HTMLDivElement>(null);
 
@@ -28,8 +28,8 @@ const Select = ({
   }, [divRef.current, isActive]);
 
   useEffect(() => {
-    onChange(value);
-  });
+    onChange?.(value);
+  }, [value]);
 
   const selectItemStyle = (num: string) =>
     classNames("px-3 py-2 hover:bg-black hover:bg-opacity-10", {

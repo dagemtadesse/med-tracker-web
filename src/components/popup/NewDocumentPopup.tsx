@@ -43,7 +43,7 @@ const NewDocumentPopup = () => {
           </div>
           <Input label="Document Title" lg={false} />
 
-          <Select options={options} placeholder="Document Type" />
+          <Select options={options} placeholder="Document Type" onChange={() => {}}/>
 
           <Input label="Document description (optional)" lg />
 

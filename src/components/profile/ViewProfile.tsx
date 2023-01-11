@@ -1,5 +1,5 @@
-import { Fragment } from "react";
 import { PenFill } from "react-bootstrap-icons";
+import { Link } from "react-router-dom";
 import { User } from "../../contexts/UserContext";
 import SidePopup from "../popup/SidePopup";
 
@@ -12,12 +12,17 @@ const ViewProfile = ({ close, user }: { close: () => void; user: User }) => {
             <div className="text-xl font-medium">
               {user.firstName} {user.lastName}
             </div>
-            <p className="text-sm text-lightGrey mt-0.5">Member since 2002</p>
+            <p className="text-sm text-lightGrey mt-0.5">
+              <>Member since {user.createdAt || new Date().getFullYear()}</>
+            </p>
           </div>
           <div>
-            <button className="border border-solidBlue rounded-full flex gap-4 px-4 py-2 items-center text-solidBlue hover:bg-solidBlue hover:bg-opacity-10">
+            <Link
+              to="/edit-profile"
+              className="border border-solidBlue rounded-full flex gap-4 px-4 py-2 items-center text-solidBlue hover:bg-solidBlue hover:bg-opacity-10"
+            >
               <PenFill /> Edit
-            </button>
+            </Link>
           </div>
         </div>
         {/* divider */}
@@ -115,8 +120,12 @@ const ViewProfile = ({ close, user }: { close: () => void; user: User }) => {
               <p className="text-sm text-lightGrey capitalize mt-1">
                 {person.name}
               </p>
-              <p className="text-sm text-lightGrey capitalize mt-1">{person.phoneNumber}</p>
-              <p className="text-sm text-lightGrey capitalize mt-1">{person.relationship}</p>
+              <p className="text-sm text-lightGrey capitalize mt-1">
+                {person.phoneNumber}
+              </p>
+              <p className="text-sm text-lightGrey capitalize mt-1">
+                {person.relationship}
+              </p>
             </div>
           ))}
         </div>

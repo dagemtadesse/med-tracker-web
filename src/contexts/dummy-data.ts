@@ -1,7 +1,8 @@
 import { Info } from "./InformationContext";
 import { User } from "./UserContext";
+import { Document } from "./DocumentContext";
 
-export const dummyDocuments = [
+export const dummyDocuments: Document[] = [
   {
     id: "12",
     title: "Vaccine",
@@ -14,18 +15,12 @@ export const dummyDocuments = [
     description: "I have taken vaccine",
     type: "Travel Document",
   },
-
-  {
-    id: "32",
-    title: "Vaccine",
-    description: "I have taken vaccine",
-    type: "Journal",
-  },
   {
     id: "85",
     title: "Vaccine",
     description: "I have taken vaccine",
     type: "Journal",
+    fileURL: "something"
   },
 ];
 
