@@ -1,8 +1,27 @@
+import { object, string } from "yup";
+import { useFormik } from "formik";
 import { Apple, Google } from "react-bootstrap-icons";
+import classnames from "classnames";
 import { Link } from "react-router-dom";
+
 import Logo from "../assets/logo.png";
+import ErrorMessage from "../components/form/ErrorMessage";
+
+const loginSchema = object({
+  email: string().email().required(),
+  password: string().required().min(8),
+});
 
 const Login = () => {
+  const formik = useFormik({
+    initialValues: { email: "", password: "" },
+    validationSchema: loginSchema,
+    onSubmit: () => {
+      // API call here
+      console.log("value");
+    },
+  });
+
   return (
     <>
       <header className="w-[956px] mx-auto py-12 px-8 text-textDark">
@@ -15,27 +34,56 @@ const Login = () => {
             <p className="text-2xl mt-5">
               To start please log in using the options below.
             </p>
-            <div className="flex flex-col gap-5 text-sm my-6">
-              <input
-                className="w-full border border-gray-500 rounded-md px-4 py-4"
-                type="email"
-                placeholder="Email"
-              />
-              <input
-                className="w-full border border-gray-500 rounded-md px-4 py-4"
-                type="password"
-                placeholder="Password"
-              />
-              <button
-                className="bg-solidBlue text-white rounded-xl px-4 shadow-md hover:shadow-lg py-4 w-full"
-                type="submit"
-              >
-                Continue
-              </button>
-              <Link to="" className="underline w-full text-center text-normal">
-                Forgot password?
-              </Link>
-            </div>
+            <form onSubmit={formik.handleSubmit}>
+              <div className="flex flex-col gap-5 text-sm my-6">
+                <div>
+                  <input
+                    className={classnames(
+                      "w-full border rounded-md px-4 py-4 ",
+                      {
+                        "border-gray-500": !formik.errors.email,
+                        "border-red-500": !!formik.errors.email,
+                      }
+                    )}
+                    type="email"
+                    placeholder="Email"
+                    name="email"
+                    onChange={formik.handleChange}
+                    value={formik.values.email}
+                  />
+                  <ErrorMessage msg={formik.errors.email} />
+                </div>
+                <div>
+                  <input
+                    className={classnames(
+                      "w-full border rounded-md px-4 py-4 ",
+                      {
+                        "border-gray-500": !formik.errors.password,
+                        "border-red-500": !!formik.errors.password,
+                      }
+                    )}
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    onChange={formik.handleChange}
+                    value={formik.values.password}
+                  />
+                  <ErrorMessage msg={formik.errors.password} />
+                </div>
+                <button
+                  className="bg-solidBlue text-white rounded-xl px-4 shadow-md hover:shadow-lg py-4 w-full"
+                  type="submit"
+                >
+                  Continue
+                </button>
+                <Link
+                  to="/reset-password"
+                  className="underline w-full text-center text-normal"
+                >
+                  Forgot password?
+                </Link>
+              </div>
+            </form>
 
             <div className="flex items-center gap-4 my-3">
               <div className="border-t h-[1px] border-gray-300 grow"></div>
