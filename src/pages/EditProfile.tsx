@@ -3,6 +3,7 @@ import Select from "../components/form/Select";
 import { Link } from "react-router-dom";
 import { object, string } from "yup";
 import { useFormik } from "formik";
+import nationality from "../nationality";
 
 const userSchema = object({
   firstName: string().label("First name").required().min(2),
@@ -144,7 +145,7 @@ const EditProfile = () => {
                   error={formik.touched.CPRNumber ? formik.errors.CPRNumber : undefined}
                 />
                 <Select
-                  options={[]}
+                  options={nationality.map(n => n.nationality)}
                   placeholder="select nationality"
                   onBlur={() => formik.setFieldTouched("nationality")}
                   onChange={(value) =>
