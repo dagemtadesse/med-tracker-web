@@ -2,26 +2,15 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import Input from "../../../../components/form/Input";
 import { vi } from "vitest";
 
-const setup = (lg: boolean = false, changehandler: any = undefined) =>
-  render(
-    <Input
-      lg={lg}
-      label={"test input"}
-      name={""}
-      error={undefined}
-      onChange={changehandler}
-    />
-  );
-
 it("should render using textarea for large input", () => {
-  setup(true, () => {/** empty func */});
+  render(<Input lg label={"test input"} />);
 
   expect(screen.getByText(/test input/i)).toBeInTheDocument();
   expect(screen.getByTestId("Input-textarea")).toBeInTheDocument();
 });
 
 it("should show label while there is input", () => {
-  setup();
+  render(<Input lg={false} label={"Test input"} />);
   const input: HTMLInputElement = screen.getByTestId("Input-input");
   expect(screen.getByTestId("Input-input")).toBeInTheDocument();
   fireEvent.change(input, { target: { value: "test value" } });
@@ -30,13 +19,13 @@ it("should show label while there is input", () => {
 });
 
 it("should render using input element", () => {
-  setup();
+  render(<Input label="test input" lg={false} />);
 
   expect(screen.getByTestId("Input-input")).toBeInTheDocument();
 });
 
 it("should respond to click", () => {
-  setup();
+  render(<Input lg={false} label="test input" />);
   const wrapper = screen.getByRole("label").parentNode;
   expect(wrapper).toHaveClass("items-center");
   fireEvent.click(screen.getByText(/test input/));
@@ -44,17 +33,17 @@ it("should respond to click", () => {
 });
 
 it("should focus when clicked", () => {
-  const { container } = setup();
+  const { container } = render(<Input lg={false} label="test input" />);
   fireEvent.click(container.firstChild!);
-  // expect(screen.getByTestId("Input-input")).toBe(document.activeElement);
+  expect(screen.getByTestId("Input-input")).toBe(document.activeElement);
 });
 
 it("should respond to input change", () => {
   const funcs = { changehandler: () => {} };
   const handler = vi.spyOn(funcs, "changehandler");
-
-  setup(false, funcs.changehandler);
-
+  render(
+    <Input lg={false} label="test input" onChange={funcs.changehandler} />
+  );
   expect(handler).not.toHaveBeenCalled();
   fireEvent.change(screen.getByTestId("Input-input"), {
     target: { value: "val" },
