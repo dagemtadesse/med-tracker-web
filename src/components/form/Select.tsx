@@ -2,14 +2,17 @@ import classNames from "classnames";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { CaretDownFill } from "react-bootstrap-icons";
 import { Info } from "../../contexts/InformationContext";
+import ErrorMessage from "./ErrorMessage";
 
 const Select = ({
   options,
   placeholder,
+  error,
   onChange,
 }: {
   options: string[];
   placeholder: string;
+  error?: string;
   onChange?: (value?: string) => void;
 }) => {
   const divRef = useRef<HTMLDivElement>(null);
@@ -40,7 +43,9 @@ const Select = ({
   return (
     <>
       <div
-        className="border border-gray-400 py-4 px-4 rounded-lg flex justify-between items-center bg-white"
+        className={`border ${
+          !error ? "border-gray-400" : "border-red-500"
+        } py-4 px-4 rounded-lg flex justify-between items-center bg-white`}
         onClick={() => setIsActive(true)}
         data-testid="Select-wrapper"
         ref={divRef}
@@ -50,6 +55,7 @@ const Select = ({
         </p>
         <CaretDownFill size={12} />
       </div>
+      <ErrorMessage msg={error} />
 
       {isActive && (
         <div
