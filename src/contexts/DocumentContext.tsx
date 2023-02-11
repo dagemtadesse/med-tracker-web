@@ -17,7 +17,7 @@ type DocumentContextState = {
   removeDocument: (doc: Document) => void;
   editDocument: (doc: Document) => void;
   downloadDocument: (doc: Document) => void;
-  setViewDocument: (doc: Document | undefined) => void;
+  setAViewDocument: (doc: Document | undefined) => void;
   setCurrentDocument: (doc: Document | undefined) => void;
 };
 
@@ -36,7 +36,7 @@ const DocumentContext = createContext<DocumentContextState>({
   downloadDocument: () => {
     // empty func
   },
-  setViewDocument(doc) {
+  setAViewDocument(doc) {
     // empty func
   },
   setCurrentDocument(doc) {
@@ -79,7 +79,7 @@ export const DocumentContextProvider = ({
         downloadDocument: (doc: Document) => {
           console.log(`Downloading document ${doc.title}`);
         },
-        setViewDocument: (doc: Document | undefined) => setViewDocument(doc),
+        setAViewDocument: (doc: Document | undefined) => setViewDocument(doc),
         setCurrentDocument: (doc: Document | undefined) =>
           setCurrentDocument(doc),
       }}

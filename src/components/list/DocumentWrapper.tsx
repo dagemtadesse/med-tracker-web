@@ -29,7 +29,7 @@ const DocumentWrapper = () => {
   };
 
   const show = (doc: Document) => {
-    documentCtx.setViewDocument(doc);
+    documentCtx.setAViewDocument(doc);
   };
 
   const download = (doc: Document) => {

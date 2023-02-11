@@ -179,7 +179,7 @@ const Home = () => {
         {documentCtx.viewDocument && (
           <ViewPopup
             title="View Document(s)"
-            close={() => documentCtx.setViewDocument(undefined)}
+            close={() => documentCtx.setAViewDocument(undefined)}
           />
         )}
 
