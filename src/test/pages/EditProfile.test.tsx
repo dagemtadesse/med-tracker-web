@@ -1,6 +1,11 @@
 import { render } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
 import EditProfile from "../../pages/EditProfile";
 
 it("should render successfully", () => {
-	render(<EditProfile />);
+  render(
+    <MemoryRouter>
+      <EditProfile />
+    </MemoryRouter>
+  );
 });
