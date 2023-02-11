@@ -53,290 +53,430 @@ const TermsAndConditions = () => {
               data-testid="conditions-text-wrapper"
             >
               <div className="px-10 text-textGrey">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime
-                suscipit rerum nam eveniet quia eum obcaecati? Aperiam expedita
-                eaque et dolores nisi dolore minima ducimus, ut ab adipisci quod
-                totam. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Quam, labore esse explicabo dolor eveniet iusto fugiat quis vel
-                ipsa, enim minima asperiores facilis tenetur aut dolorem
-                eligendi qui deleniti mollitia. Sapiente deleniti maxime omnis
-                ea, nam delectus eum corrupti expedita unde vitae! Velit sequi
-                sit necessitatibus delectus ut distinctio. Soluta et laudantium
-                culpa suscipit modi inventore dolorem harum eius obcaecati.
-                Repellat molestias non, soluta ipsam velit earum odit. Nisi enim
-                eos, id dolorum ut dicta porro facere pariatur temporibus eius
-                nobis esse magni dignissimos quia exercitationem harum culpa.
-                Recusandae, dolores? Iste quae nesciunt praesentium nulla. Ipsa,
-                molestiae nemo debitis nam sit aliquam magni consequuntur
-                molestias dolores architecto modi ratione tenetur qui veniam
-                recusandae, a facere tempore, culpa doloribus possimus quidem!
-                Sit et odit est, veritatis mollitia eaque quibusdam pariatur
-                veniam dignissimos fugiat, nobis cumque earum dolorem, quaerat
-                dicta maiores quia porro incidunt cum at doloremque aut? Atque
-                sit hic officiis? Quis sequi nihil iusto. Repudiandae, a.
-                Corporis, totam quisquam aliquid aperiam in optio velit,
-                recusandae eius assumenda ducimus iure commodi voluptas
-                aspernatur aliquam id doloribus qui repellat quaerat ad eum! In
-                nesciunt libero dolore. Excepturi corporis ut aspernatur esse,
-                libero nihil eum, veniam, et animi consequuntur assumenda sit
-                dolore est? Pariatur, facere! Quaerat reiciendis nam harum
-                voluptatibus accusantium corrupti exercitationem. Quibusdam
-                deserunt laudantium libero perspiciatis voluptatibus, rerum nam
-                voluptatum ducimus ullam blanditiis, vel magnam, veritatis
-                dolore sunt inventore? Sit consectetur doloribus saepe
-                perspiciatis consequatur possimus optio quibusdam fugiat quia
-                voluptas? Dolores sed officia incidunt commodi dolore, magnam
-                sit quaerat omnis assumenda ducimus repellat illum? Itaque
-                nihil, explicabo debitis minus voluptas inventore possimus
-                excepturi eius quis voluptatibus accusantium tenetur omnis quos.
-                A recusandae nostrum doloremque quas animi cupiditate eum.
-                Deserunt fuga esse cum ex ad iste architecto iure sapiente rerum
-                praesentium sequi rem quam beatae et dignissimos nulla, quae
-                impedit sed. Delectus doloribus facere quos labore repellat
-                commodi molestias natus, repudiandae fugiat obcaecati. Ab saepe,
-                dolorum esse laboriosam culpa labore delectus recusandae odit.
-                Architecto consequuntur temporibus maiores magnam nesciunt, ab
-                quae. Quisquam iure minus sed voluptatem sapiente ipsam
-                consequuntur consequatur modi porro ducimus omnis libero, enim
-                eaque beatae nostrum error dolores ab. Ipsa aut earum sapiente
-                modi commodi est, tempora voluptatum! Qui dolor quis
-                perspiciatis aliquam adipisci sint. Commodi repudiandae,
-                obcaecati nihil odit dicta labore corrupti porro. Obcaecati
-                minus labore fugit, numquam vel nihil pariatur velit
-                voluptatibus quod error molestias vitae. Ipsam corrupti animi
-                adipisci possimus consequuntur illo, quod facilis totam nobis
-                unde at tempore? Esse suscipit quasi nihil. Aut atque
-                perferendis expedita, eaque doloremque praesentium nisi totam
-                alias! Nihil, totam! Dolores vitae beatae eius repellat cumque
-                cupiditate numquam necessitatibus. Natus expedita aut itaque,
-                aperiam laborum in vitae, sint dolor numquam quos necessitatibus
-                provident? Sint, corrupti? Tenetur eveniet nobis molestias ex.
-                Adipisci hic corrupti, sapiente explicabo aliquam nobis culpa
-                aspernatur voluptatibus doloremque quas modi ipsum deserunt quam
-                vel ex laborum est quae esse laboriosam? Voluptatum inventore
-                pariatur aspernatur itaque! Non, tempore! Esse cum, nulla
-                beatae, cupiditate vero debitis voluptas fuga minima, sapiente
-                velit ipsum ullam repellat consequuntur. Dolorum sequi veritatis
-                culpa obcaecati beatae enim perspiciatis libero deleniti
-                corporis voluptatem, temporibus ut. Repellat obcaecati vitae
-                voluptate accusamus voluptatibus qui corrupti totam saepe neque
-                mollitia distinctio, recusandae impedit a maiores unde odit
-                omnis reprehenderit placeat! Iusto suscipit quisquam maiores eos
-                iste accusantium voluptatibus! Minima voluptate, dicta eveniet
-                itaque exercitationem tempore. Illo fugit atque iste facilis
-                placeat et, blanditiis aut ex dolorum suscipit laboriosam eaque,
-                non, voluptas voluptates aliquid! Tempora placeat harum quis a.
-                Adipisci repellendus quisquam neque molestias, et repellat
-                pariatur molestiae temporibus excepturi dignissimos consectetur
-                quos, maiores sapiente asperiores eveniet! Optio nemo, corporis
-                ut dolorum praesentium quidem voluptatum voluptatibus et rem
-                expedita. Nobis sequi voluptatibus nesciunt, quisquam aut
-                doloribus impedit reprehenderit omnis cupiditate enim quo nemo
-                dolor soluta culpa, deserunt ad. Voluptatibus, sequi animi
-                impedit sed incidunt excepturi minima architecto et perferendis!
-                Odit veniam, assumenda illo necessitatibus laudantium reiciendis
-                iste quam laborum tempore rem, explicabo laboriosam ullam fuga,
-                suscipit tempora veritatis et minus impedit totam voluptatibus
-                at consequuntur? Accusamus reprehenderit numquam facere? Debitis
-                earum vel ex ratione harum, quaerat sit magni accusantium at,
-                quisquam esse iste modi quo! Deleniti, enim. Dolor praesentium
-                voluptates voluptatum eaque laudantium nesciunt dolores aperiam
-                distinctio non libero? Quod veritatis, tempore temporibus eos
-                nostrum ex officia. Dolore ipsum blanditiis, sequi dolor tempora
-                commodi voluptate maiores. Saepe natus pariatur quam nesciunt,
-                et quaerat incidunt facere, cumque aperiam, aspernatur
-                recusandae! Id ullam deserunt, voluptas officiis eaque est atque
-                sunt provident perspiciatis magnam laboriosam rerum maxime.
-                Nulla suscipit nemo maxime facere distinctio praesentium,
-                repellat voluptate beatae iure, et a ducimus earum. In inventore
-                tempore architecto ut laboriosam accusamus incidunt deserunt
-                aliquam perferendis quas quia culpa, est velit. Aspernatur
-                deserunt autem laudantium? Delectus ut itaque iusto voluptatum
-                quis ab assumenda vitae aliquam? Molestias consequatur ullam
-                maiores ratione illo dolorem aliquam expedita, magnam repellat
-                molestiae sequi facilis accusantium totam voluptatem eum a et
-                similique cum, laboriosam eos. Itaque cum eum fugit aspernatur
-                nihil! Corporis vitae ullam quam odio necessitatibus laudantium,
-                itaque expedita quibusdam sint, doloribus iusto porro nulla
-                eligendi consequatur beatae a odit sequi quisquam provident nam
-                consequuntur deleniti commodi facilis. Quisquam, obcaecati!
-                Cupiditate nam numquam expedita nostrum nemo officiis quisquam
-                atque consequuntur, sed ex? Asperiores adipisci minus nam
-                aliquam quisquam enim perspiciatis reprehenderit distinctio?
-                Deleniti porro nam molestiae blanditiis sint! Architecto, fugit!
-                Similique distinctio nam laborum et explicabo corrupti nihil
-                nulla ex est quasi maiores architecto placeat, consequuntur
-                accusamus rerum sunt, adipisci delectus fugit cumque asperiores
-                atque minus quod neque commodi? Id? Impedit sit cupiditate
-                aliquid culpa doloremque expedita incidunt quas at tempora?
-                Aliquid commodi maxime libero distinctio ab voluptas recusandae,
-                repellat eius hic obcaecati eligendi nam tempora laudantium
-                saepe corrupti quae! Natus, ratione ab maiores mollitia labore
-                ea nemo aliquid numquam et soluta aspernatur, accusamus saepe
-                suscipit, amet doloribus perspiciatis tempora aliquam ducimus
-                vero! Totam officiis tenetur similique non temporibus nostrum?
-                Iure alias molestias doloribus earum odit, quasi modi aperiam
-                illo dolores reiciendis fugiat sunt blanditiis dolore architecto
-                dolorem accusantium neque facere? Natus quos similique labore
-                sapiente ad! Odit, quo fugiat? Quos beatae deleniti ducimus
-                minima dolore animi mollitia cupiditate eius voluptates
-                molestiae repellat minus labore, obcaecati, cum, veniam quasi
-                omnis laborum unde magni placeat exercitationem! Aliquid cum
-                natus maxime optio. Deleniti fugiat dolorum vitae in at fugit
-                laudantium optio voluptates nihil, atque labore laborum sit
-                doloribus tenetur suscipit autem iste perferendis amet
-                molestiae? Eos, hic accusamus. Animi, debitis iure? Asperiores.
-                Perferendis cupiditate autem consequatur similique. Corporis
-                odit voluptatem beatae quasi delectus, officia saepe, quae nobis
-                voluptatibus laborum, rem expedita laboriosam quibusdam pariatur
-                consequuntur quo tenetur qui suscipit tempore? Quae, quam!
-                Expedita fugiat velit beatae labore, nesciunt, tenetur debitis
-                maiores officiis adipisci quo quis. Aspernatur, vero autem
-                eveniet esse dolores illo earum atque modi nostrum ipsum eum at,
-                recusandae quod illum! Velit temporibus maiores eaque deleniti
-                incidunt. Accusamus minus officia illo eaque, explicabo quasi
-                amet in ad tenetur fugiat, earum est possimus praesentium labore
-                ex, quam unde iusto ipsa fuga rerum! At voluptatem laboriosam
-                vel laborum quaerat eum fugiat quisquam alias. Beatae recusandae
-                autem itaque perspiciatis vel magnam unde error? Neque eaque
-                voluptatibus aut enim est consequuntur ipsum, at recusandae
-                magnam! Adipisci, iure expedita. Aspernatur quis placeat atque
-                ullam consequatur maxime dicta. Eius tenetur unde repudiandae
-                nobis? Numquam ea cupiditate, voluptate, sequi quae iusto labore
-                asperiores vero repellat, rerum porro quaerat. Ipsam accusamus
-                rem aliquid dolorem esse. Ipsam est amet sapiente cumque
-                blanditiis accusantium eum aliquid at harum, pariatur aspernatur
-                tempore quisquam labore excepturi odit, repellendus, dolorem
-                quidem perferendis architecto quae? Aperiam minus, in similique
-                consectetur id maiores quo laborum nesciunt corporis est eius
-                atque accusamus rerum qui! Inventore totam quibusdam debitis
-                corporis exercitationem, vitae esse, sed aperiam ea tempore
-                doloremque. Corporis, accusantium officia maxime impedit amet
-                dicta molestiae optio ratione eveniet, modi nam commodi quis
-                accusamus. Fugiat adipisci ut, beatae minus architecto atque
-                dicta debitis, fuga excepturi alias libero cumque. Ipsa maxime
-                nostrum quam nisi reprehenderit maiores recusandae praesentium
-                aspernatur quo quaerat et repellat numquam aliquam atque
-                voluptate, labore at ad cum aut dignissimos odio. Asperiores
-                assumenda numquam vitae libero! Placeat nesciunt illum
-                voluptate! Natus molestias ipsam voluptatibus temporibus
-                deleniti ad voluptatum quaerat officiis animi, quas libero
-                cumque sunt quis pariatur accusantium tenetur alias inventore
-                aliquam iusto tempora enim assumenda. Numquam omnis porro
-                temporibus a praesentium ea, dignissimos suscipit esse neque
-                libero. Eum temporibus deleniti et perferendis cumque illum
-                error dolores id sunt facere. Est repudiandae autem alias
-                adipisci facere? Nisi expedita eaque eveniet tempore, fugiat
-                excepturi nesciunt voluptatem repellat doloribus deserunt ullam
-                nostrum accusamus repellendus provident maxime error hic!
-                Reiciendis asperiores veniam odio iusto et. Hic debitis deleniti
-                error! Sunt repudiandae deleniti quae laboriosam iste illo
-                debitis quam amet labore voluptatum fugiat molestias at
-                recusandae, quod similique minus deserunt. Minima nulla
-                laudantium exercitationem facere odio, consequuntur dolorem
-                tempora sequi. Ipsa doloribus ullam consequatur distinctio est
-                dolore, laudantium molestias odit velit adipisci impedit
-                similique culpa eum, ut necessitatibus doloremque ducimus
-                possimus tempore placeat dignissimos cumque. Nemo dicta ipsum
-                itaque similique. Architecto a veritatis sapiente laborum
-                asperiores rerum reprehenderit numquam quae ullam ipsum
-                repellendus, sit tenetur similique enim ex? Provident inventore
-                doloremque qui optio dolor ipsum quaerat porro voluptatibus illo
-                tempore? Recusandae nam tenetur voluptates distinctio harum
-                possimus illum, accusamus laboriosam iste eos, necessitatibus
-                adipisci corrupti sed! Reiciendis nulla voluptatibus repellendus
-                dolorum accusamus fugit, magni laborum? Adipisci voluptas vero
-                velit fugiat. Dolorum ipsa voluptatibus, libero id, iusto minima
-                vitae deserunt aliquid, ipsum facere consequatur eos consectetur
-                asperiores ipsam? Commodi sed quae corporis inventore ut tenetur
-                omnis ipsam, rem dolores placeat illum? Labore illo tempora
-                facere expedita odit suscipit voluptas sequi alias quidem
-                aperiam asperiores, sapiente soluta eveniet hic dignissimos,
-                esse non quisquam, recusandae exercitationem! A adipisci
-                obcaecati quaerat expedita doloribus nam! Quia quisquam neque
-                rem molestias. Doloribus corporis dolorum ullam illo veniam
-                quidem amet repellat nisi maiores ea excepturi, dignissimos
-                suscipit possimus nostrum harum nobis voluptas, perferendis id
-                enim, maxime sint? Obcaecati, deserunt rerum est nihil pariatur
-                ducimus blanditiis, culpa facilis sequi soluta eligendi non
-                consequatur enim. Autem, corporis explicabo eveniet, rerum
-                voluptate, voluptates quae fuga deleniti officiis temporibus
-                iste veritatis! Quos sapiente similique aspernatur consectetur
-                odio corrupti hic sint? Provident temporibus sint autem ipsum
-                harum dignissimos maxime consequuntur pariatur, eum quam ducimus
-                quo adipisci, maiores id impedit quia, ex cum! Sit eius
-                doloremque atque delectus, soluta est obcaecati illum quisquam
-                ipsam consectetur ex, voluptatum, incidunt harum reprehenderit
-                quae veritatis odit laboriosam voluptate! A labore quia, earum
-                qui harum laudantium animi. Harum obcaecati dolorem quo beatae,
-                inventore recusandae odit natus sunt doloremque vitae nulla,
-                fugiat hic quia magni ullam id iure totam tenetur ea molestiae
-                exercitationem itaque vero. Dicta, suscipit accusantium.
-                Excepturi modi atque ipsum doloribus quibusdam, neque distinctio
-                maxime deleniti alias accusamus maiores delectus accusantium
-                ullam cum harum, numquam nemo eius repellendus expedita illum
-                tempore! Repellendus excepturi deleniti inventore vel! Dolor
-                illo ea earum magnam, accusantium sit, dicta tenetur nulla
-                cupiditate, beatae quo! Nesciunt laudantium eaque iusto et, esse
-                itaque ea fugit suscipit beatae, molestiae ullam. Sunt laborum
-                eius reprehenderit. Laborum nostrum officiis cumque nulla
-                accusantium velit animi! Veniam saepe consequuntur accusamus,
-                nesciunt eaque quos provident, suscipit praesentium in rerum ea
-                facilis laudantium architecto, consequatur eos sint! Fugiat,
-                tempora labore. Fuga, dolore autem reiciendis quis ipsam natus
-                tenetur consectetur perferendis labore tempore, a nulla earum
-                harum sequi necessitatibus quisquam porro eos quos obcaecati
-                suscipit blanditiis vitae vero adipisci libero! Eum! Aperiam
-                possimus nam doloribus placeat! Eaque at laudantium consequatur
-                atque quia nihil laborum reprehenderit animi? Ut, sint
-                explicabo. Quis eos animi totam velit consectetur necessitatibus
-                libero, sunt incidunt eveniet. Pariatur! Molestias, sunt eum
-                accusamus maiores itaque exercitationem facere! Eligendi
-                recusandae illo libero et, ullam nobis corporis aspernatur!
-                Recusandae harum repudiandae suscipit impedit quisquam beatae
-                facere cupiditate laudantium delectus. Minima, est. At quasi,
-                sequi molestiae officia adipisci ipsam excepturi hic molestias
-                tenetur unde nihil quis, saepe quae dignissimos quia
-                reprehenderit eligendi. Fugiat nihil rerum tenetur esse aut
-                voluptates quas suscipit pariatur. Expedita quod soluta ipsum
-                dolorum, perspiciatis delectus vero cupiditate ex blanditiis
-                iure dolores ut, magnam numquam, architecto repellat! Quasi
-                saepe possimus accusantium odio. Laboriosam velit fuga excepturi
-                sint, quas dolore! Alias laboriosam veniam reprehenderit nihil
-                blanditiis necessitatibus deleniti? Ex in beatae quam aliquid,
-                harum eveniet placeat aut animi natus tempore repellat corrupti
-                ipsum libero officiis vero cupiditate! Officia, adipisci labore?
-                Neque quidem voluptas veritatis, blanditiis accusantium minus,
-                itaque nostrum inventore impedit nesciunt facilis harum placeat
-                nihil quaerat sapiente mollitia! Optio error, ut dolorum
-                voluptatem commodi deleniti nisi id consequatur laudantium!
-                Impedit praesentium dolore libero est explicabo delectus
-                accusamus exercitationem magnam animi harum, minima quaerat,
-                rerum voluptatum nihil error perspiciatis numquam vitae
-                laudantium quas quis ea porro labore ab. Fugiat, voluptas?
-                Dolorem, eum velit corrupti, suscipit vero illo nisi neque alias
-                nobis exercitationem mollitia explicabo sequi laudantium maxime
-                placeat nostrum, enim possimus aliquid! Tempora laboriosam rem
-                quas possimus eaque, cupiditate fugiat. Obcaecati voluptatum
-                sunt, cupiditate recusandae quia error at vero deserunt commodi
-                voluptate inventore aspernatur maxime beatae tempora, sapiente
-                voluptas! Illum, ad praesentium cumque laboriosam inventore
-                temporibus quasi sint laborum esse. Et quia dolor iure omnis
-                molestias facilis cumque cum deleniti repudiandae officia ipsa
-                temporibus vitae maiores, rerum quaerat mollitia asperiores unde
-                voluptate autem voluptatem aspernatur. Quibusdam corrupti
-                laboriosam nobis quaerat? Repudiandae maiores consequuntur ipsa
-                ipsum laborum impedit magnam tempora illo ut nemo blanditiis
-                nisi similique reiciendis recusandae, consectetur placeat in
-                adipisci eligendi. Nihil quia optio mollitia hic nam ab
-                repellendus. Reiciendis labore consectetur pariatur sint
-                adipisci! Excepturi nisi ullam atque. Dolor expedita a dolore
-                iste distinctio? Sequi nesciunt quidem voluptatum temporibus
-                cupiditate voluptatibus animi veniam amet, sapiente eaque
-                mollitia iusto. Corporis, natus adipisci rem quisquam est, fugit
-                optio dolor, praesentium libero hic nobis. Obcaecati dignissimos
-                ut adipisci! Facere dolore officia voluptas vel non qui dolorem
-                quia deleniti? Reiciendis, blanditiis obcaecati.
+                Terms & Conditions Updated at 2022-01-01 General Terms By
+                accessing and placing an order with , you confirm that you are
+                in agreement with and bound by the terms of service contained in
+                the Terms & Conditions outlined below. These terms apply to the
+                entire website and any email or other type of communication
+                between you and World Medical Card. Under no circumstances shall
+                team be liable for any direct, indirect, special, incidental or
+                consequential damages, including, but not limited to, loss of
+                data or profit, arising out of the use, or the inability to use,
+                the materials on this site, even if team or an authorized
+                representative has been advised of the possibility of such
+                damages. If your use of materials from this site results in the
+                need for servicing, repair or correction of equipment or data,
+                you assume any costs thereof. World Medical Card will not be
+                responsible for any outcome that may occur during the course of
+                usage of our resources. We reserve the rights to change prices
+                and revise the resources usage policy in any moment. License
+                World Medical Card grants you a revocable, non-exclusive, non-
+                transferable, limited license to download, install and use our
+                service strictly in accordance with the terms of this Agreement.
+                These Terms & Conditions are a contract between you and World
+                Medical Card (referred to in these Terms & Conditions as "World
+                Medical Card", "us", "we" or "our"), the provider of the World
+                Medical Card website and the services accessible from the World
+                Medical Card website (which are collectively referred to in
+                these Terms & Conditions as the "World Medical Card Service").
+                You are agreeing to be bound by these Terms & Conditions. If you
+                do not agree to these Terms & Conditions, please do not use the
+                Service. In these Terms & Conditions, "you" refers both to you
+                as an individual and to the entity you represent. If you violate
+                any of these Terms & Conditions, we reserve the right to cancel
+                your account or block access to your account without notice.
+                Definitions and key terms For this Terms & Conditions: • Cookie:
+                small amount of data generated by a website and saved by your
+                web browser. It is used to identify your browser, provide
+                analytics, remember information about you such as your language
+                preference or login information. • Company: when this policy
+                mentions “Company,” “we,” “us,” or “our,” it refers to World
+                Medical Card, Gamlehaugvegen 20, 5231 Paradis that is
+                responsible for your information under this Privacy Policy. •
+                Country: where World Medical Card or the owners/founders of
+                World Medical Card are based, in this case is Norway. •
+                Customer: refers to the company, organization or person that
+                signs up to use the World Medical Card Service to manage the
+                relationships with your consumers or service users. • Device:
+                any internet connected device such as a phone, tablet, computer
+                or any other device that can be used to visit World Medical Card
+                and use the services. • IP address: Every device connected to
+                the Internet is assigned a number known as an Internet protocol
+                (IP) address. These numbers are usually assigned in geographic
+                blocks. An IP address can often be used to identify the location
+                from which a device is connecting to the Internet. • Personnel:
+                refers to those individuals who are employed by World Medical
+                Card or are under contract to perform a service on behalf of one
+                of the parties. • Personal Data: any information that directly,
+                indirectly, or in connection with other information — including
+                a personal identification number — allows for the identification
+                or identifiability of a natural person. • Service: refers to the
+                service provided by World Medical Card as described in the
+                relative terms (if available) and on this platform. •
+                Third-party service: refers to advertisers, contest sponsors,
+                promotional and marketing partners, and others who provide our
+                content or whose products or services we think may interest you.
+                • Website: World Medical Card’s site, which can be accessed via
+                this URL: https://worldmedicalcard.org • You: a person or entity
+                that is registered with World Medical Card to use the Services.
+                Restrictions You agree not to, and you will not permit others
+                to: • License, sell, rent, lease, assign, distribute, transmit,
+                host, outsource, disclose or otherwise commercially exploit the
+                service or make the platform available to any third party. •
+                Modify, make derivative works of, disassemble, decrypt, reverse
+                compile or reverse engineer any part of the service. • Remove,
+                alter or obscure any proprietary notice (including any notice of
+                copyright or trademark) of or its affiliates, partners,
+                suppliers or the licensors of the service. Return and Refund
+                Policy Thanks for shopping with us. We appreciate the fact that
+                you like to buy the stuff we build. We also want to make sure
+                you have a rewarding experience while you’re exploring,
+                evaluating, and purchasing our products. As with any shopping
+                experience, there are terms and conditions that apply to
+                transactions at our company. We’ll be as brief as our attorneys
+                will allow. The main thing to remember is that by placing an
+                order or making a purchase from us, you agree to the terms along
+                with our Privacy Policy. If, for any reason, You are not
+                completely satisfied with any good or service that we provide,
+                don't hesitate to contact us and we will discuss any of the
+                issues you are going through with our product. Your Suggestions
+                Any feedback, comments, ideas, improvements or suggestions
+                (collectively, "Suggestions") provided by you to us with respect
+                to the service shall remain the sole and exclusive property of
+                us. We shall be free to use, copy, modify, publish, or
+                redistribute the Suggestions for any purpose and in any way
+                without any credit or any compensation to you. Your Consent
+                We've updated our Terms & Conditions to provide you with
+                complete transparency into what is being set when you visit our
+                site and how it's being used. By using our service, registering
+                an account, or making a purchase, you hereby consent to our
+                Terms & Conditions. Links to Other Websites Our service may
+                contain links to other websites that are not operated by Us. If
+                You click on a third party link, You will be directed to that
+                third party's site. We strongly advise You to review the Terms &
+                Conditions of every site You visit. We have no control over and
+                assume no responsibility for the content, Terms & Conditions or
+                practices of any third party sites or services. Cookies We use
+                "Cookies" to identify the areas of our website that you have
+                visited. A Cookie is a small piece of data stored on your
+                computer or mobile device by your web browser. We use Cookies to
+                enhance the performance and functionality of our service but are
+                non-essential to their use. However, without these cookies,
+                certain functionality like videos may become unavailable or you
+                would be required to enter your login details every time you
+                visit our platform as we would not be able to remember that you
+                had logged in previously. Most web browsers can be set to
+                disable the use of Cookies. However, if you disable Cookies, you
+                may not be able to access functionality on our website correctly
+                or at all. We never place Personally Identifiable Information in
+                Cookies. Changes To Our Terms & Conditions You acknowledge and
+                agree that we may stop (permanently or temporarily) providing
+                the Service (or any features within the Service) to you or to
+                users generally at our sole discretion, without prior notice to
+                you. You may stop using the Service at any time. You do not need
+                to specifically inform us when you stop using the Service. You
+                acknowledge and agree that if we disable access to your account,
+                you may be prevented from accessing the Service, your account
+                details or any files or other materials which is contained in
+                your account. If we decide to change our Terms & Conditions, we
+                will post those changes on this page, and/or update the Terms &
+                Conditions modification date below. Modifications to Our service
+                We reserve the right to modify, suspend or discontinue,
+                temporarily or permanently, the service or any service to which
+                it connects, with or without notice and without liability to
+                you. Updates to Our service We may from time to time provide
+                enhancements or improvements to the features/ functionality of
+                the service, which may include patches, bug fixes, updates,
+                upgrades and other modifications ("Updates"). Updates may modify
+                or delete certain features and/or functionalities of the
+                service. You agree that we have no obligation to (i) provide any
+                Updates, or (ii) continue to provide or enable any particular
+                features and/or functionalities of the service to you. You
+                further agree that all Updates will be (i) deemed to constitute
+                an integral part of the service, and (ii) subject to the terms
+                and conditions of this Agreement. Third-Party Services We may
+                display, include or make available third-party content
+                (including data, information, applications and other products
+                services) or provide links to third-party websites or services
+                ("Third- Party Services"). You acknowledge and agree that we
+                shall not be responsible for any Third-Party Services, including
+                their accuracy, completeness, timeliness, validity, copyright
+                compliance, legality, decency, quality or any other aspect
+                thereof. We do not assume and shall not have any liability or
+                responsibility to you or any other person or entity for any
+                Third-Party Services. Third-Party Services and links thereto are
+                provided solely as a convenience to you and you access and use
+                them entirely at your own risk and subject to such third
+                parties' terms and conditions. Term and Termination This
+                Agreement shall remain in effect until terminated by you or us.
+                We may, in its sole discretion, at any time and for any or no
+                reason, suspend or terminate this Agreement with or without
+                prior notice. This Agreement will terminate immediately, without
+                prior notice from us, in the event that you fail to comply with
+                any provision of this Agreement. You may also terminate this
+                Agreement by deleting the service and all copies thereof from
+                your computer. Upon termination of this Agreement, you shall
+                cease all use of the service and delete all copies of the
+                service from your computer. Termination of this Agreement will
+                not limit any of our rights or remedies at law or in equity in
+                case of breach by you (during the term of this Agreement) of any
+                of your obligations under the present Agreement. If you are a
+                copyright owner or such owner’s agent and believe any material
+                from us constitutes an infringement on your copyright, please
+                contact us setting forth the following information: (a) a
+                physical or electronic signature of the copyright owner or a
+                person authorized to act on his behalf; (b) identification of
+                the material that is claimed to be infringing; (c) your contact
+                information, including your address, telephone number, and an
+                email; (d) a statement by you that you have a good faith belief
+                that use of the material is not authorized by the copyright
+                owners; and (e) the a statement that the information in the
+                notification is accurate, and, under penalty of perjury you are
+                authorized to act on behalf of the owner. Indemnification You
+                agree to indemnify and hold us and our parents, subsidiaries,
+                affiliates, officers, employees, agents, partners and licensors
+                (if any) harmless from any claim or demand, including reasonable
+                attorneys' fees, due to or arising out of your: (a) use of the
+                service; (b) violation of this Agreement or any law or
+                regulation; or (c) violation of any right of a third party. No
+                Warranties The service is provided to you "AS IS" and "AS
+                AVAILABLE" and with all faults and defects without warranty of
+                any kind. To the maximum extent permitted under applicable law,
+                we, on our own behalf and on behalf of our affiliates and our
+                respective licensors and service providers, expressly disclaims
+                all warranties, whether express, implied, statutory or
+                otherwise, with respect to the service, including all implied
+                warranties of merchantability, fitness for a particular purpose,
+                title and non- infringement, and warranties that may arise out
+                of course of dealing, course of performance, usage or trade
+                practice. Without limitation to the foregoing, we provide no
+                warranty or undertaking, and makes no representation of any kind
+                that the service will meet your requirements, achieve any
+                intended results, be compatible or work with any other software,
+                websites, systems or services, operate without interruption,
+                meet any performance or reliability standards or be error free
+                or that any errors or defects can or will be corrected. Without
+                limiting the foregoing, neither us nor any provider makes any
+                representation or warranty of any kind, express or implied: (i)
+                as to the operation or availability of the service, or the
+                information, content, and materials or products included
+                thereon; (ii) that the service will be uninterrupted or
+                error-free; (iii) as to the accuracy, reliability, or currency
+                of any information or content provided through the service; or
+                (iv) that the service, its servers, the content, or e-mails sent
+                from or on behalf of us are free of viruses, scripts, trojan
+                horses, worms, malware, timebombs or other harmful components.
+                Some jurisdictions do not allow the exclusion of or limitations
+                on implied warranties or the limitations on the applicable
+                statutory rights of a consumer, so some or all of the above
+                exclusions and limitations may not apply to you. Limitation of
+                Liability Notwithstanding any damages that you might incur, the
+                entire liability of us and any of our suppliers under any
+                provision of this Agreement and your exclusive remedy for all of
+                the foregoing shall be limited to the amount actually paid by
+                you for the service. To the maximum extent permitted by
+                applicable law, in no event shall we or our suppliers be liable
+                for any special, incidental, indirect, or consequential damages
+                whatsoever (including, but not limited to, damages for loss of
+                profits, for loss of data or other information, for business
+                interruption, for personal injury, for loss of privacy arising
+                out of or in any way related to the use of or inability to use
+                the service, third-party software and/or third-party hardware
+                used with the service, or otherwise in connection with any
+                provision of this Agreement), even if we or any supplier has
+                been advised of the possibility of such damages and even if the
+                remedy fails of its essential purpose. Some states/jurisdictions
+                do not allow the exclusion or limitation of incidental or
+                consequential damages, so the above limitation or exclusion may
+                not apply to you. Severability If any provision of this
+                Agreement is held to be unenforceable or invalid, such provision
+                will be changed and interpreted to accomplish the objectives of
+                such provision to the greatest extent possible under applicable
+                law and the remaining provisions will continue in full force and
+                effect. This Agreement, together with the Privacy Policy and any
+                other legal notices published by us on the Services, shall
+                constitute the entire agreement between you and us concerning
+                the Services. If any provision of this Agreement is deemed
+                invalid by a court of competent jurisdiction, the invalidity of
+                such provision shall not affect the validity of the remaining
+                provisions of this Agreement, which shall remain in full force
+                and effect. No waiver of any term of this Agreement shall be
+                deemed a further or continuing waiver of such term or any other
+                term, and our failure to assert any right or provision under
+                this Agreement shall not constitute a waiver of such right or
+                provision. YOU AND US AGREE THAT ANY CAUSE OF ACTION ARISING OUT
+                OF OR RELATED TO THE SERVICES MUST COMMENCE WITHIN ONE (1) YEAR
+                AFTER THE CAUSE OF ACTION ACCRUES. OTHERWISE, SUCH CAUSE OF
+                ACTION IS PERMANENTLY BARRED. Waiver Except as provided herein,
+                the failure to exercise a right or to require performance of an
+                obligation under this Agreement shall not effect a party's
+                ability to exercise such right or require such performance at
+                any time thereafter nor shall be the waiver of a breach
+                constitute waiver of any subsequent breach. No failure to
+                exercise, and no delay in exercising, on the part of either
+                party, any right or any power under this Agreement shall operate
+                as a waiver of that right or power. Nor shall any single or
+                partial exercise of any right or power under this Agreement
+                preclude further exercise of that or any other right granted
+                herein. In the event of a conflict between this Agreement and
+                any applicable purchase or other terms, the terms of this
+                Agreement shall govern. Amendments to this Agreement We reserve
+                the right, at its sole discretion, to modify or replace this
+                Agreement at any time. If a revision is material we will provide
+                at least 30 days' notice prior to any new terms taking effect.
+                What constitutes a material change will be determined at our
+                sole discretion. By continuing to access or use our service
+                after any revisions become effective, you agree to be bound by
+                the revised terms. If you do not agree to the new terms, you are
+                no longer authorized to use our service. Entire Agreement The
+                Agreement constitutes the entire agreement between you and us
+                regarding your use of the service and supersedes all prior and
+                contemporaneous written or oral agreements between you and us.
+                You may be subject to additional terms and conditions that apply
+                when you use or purchase other services from us, which we will
+                provide to you at the time of such use or purchase. Updates to
+                Our Terms We may change our Service and policies, and we may
+                need to make changes to these Terms so that they accurately
+                reflect our Service and policies. Unless otherwise required by
+                law, we will notify you (for example, through our Service)
+                before we make changes to these Terms and give you an
+                opportunity to review them before they go into effect. Then, if
+                you continue to use the Service, you will be bound by the
+                updated Terms. If you do not want to agree to these or any
+                updated Terms, you can delete your account. Intellectual
+                Property Our platform and its entire contents, features and
+                functionality (including but not limited to all information,
+                software, text, displays, images, video and audio, and the
+                design, selection and arrangement thereof), are owned by us, its
+                licensors or other providers of such material and are protected
+                by and international copyright, trademark, patent, trade secret
+                and other intellectual property or proprietary rights laws. The
+                material may not be copied, modified, reproduced, downloaded or
+                distributed in any way, in whole or in part, without the express
+                prior written permission of us, unless and except as is
+                expressly provided in these Terms & Conditions. Any unauthorized
+                use of the material is prohibited. Agreement to Arbitrate This
+                section applies to any dispute EXCEPT IT DOESN’T INCLUDE A
+                DISPUTE RELATING TO CLAIMS FOR INJUNCTIVE OR EQUITABLE RELIEF
+                REGARDING THE ENFORCEMENT OR VALIDITY OF YOUR OR World Medical
+                Card’s INTELLECTUAL PROPERTY RIGHTS. The term “dispute” means
+                any dispute, action, or other controversy between you and us
+                concerning the Services or this agreement, whether in contract,
+                warranty, tort, statute, regulation, ordinance, or any other
+                legal or equitable basis. “Dispute” will be given the broadest
+                possible meaning allowable under law. Notice of Dispute In the
+                event of a dispute, you or us must give the other a Notice of
+                Dispute, which is a written statement that sets forth the name,
+                address, and contact information of the party giving it, the
+                facts giving rise to the dispute, and the relief requested. You
+                must send any Notice of Dispute via email to: . We will send any
+                Notice of Dispute to you by mail to your address if we have it,
+                or otherwise to your email address. You and us will attempt to
+                resolve any dispute through informal negotiation within sixty
+                (60) days from the date the Notice of Dispute is sent. After
+                sixty (60) days, you or us may commence arbitration. Binding
+                Arbitration If you and us don’t resolve any dispute by informal
+                negotiation, any other effort to resolve the dispute will be
+                conducted exclusively by binding arbitration as described in
+                this section. You are giving up the right to litigate (or
+                participate in as a party or class member) all disputes in court
+                before a judge or jury. The dispute shall be settled by binding
+                arbitration in accordance with the commercial arbitration rules
+                of the American Arbitration Association. Either party may seek
+                any interim or preliminary injunctive relief from any court of
+                competent jurisdiction, as necessary to protect the party’s
+                rights or property pending the completion of arbitration. Any
+                and all legal, accounting, and other costs, fees, and expenses
+                incurred by the prevailing party shall be borne by the
+                non-prevailing party. Submissions and Privacy In the event that
+                you submit or post any ideas, creative suggestions, designs,
+                photographs, information, advertisements, data or proposals,
+                including ideas for new or improved products, services,
+                features, technologies or promotions, you expressly agree that
+                such submissions will automatically be treated as non-
+                confidential and non-proprietary and will become the sole
+                property of us without any compensation or credit to you
+                whatsoever. We and our affiliates shall have no obligations with
+                respect to such submissions or posts and may use the ideas
+                contained in such submissions or posts for any purposes in any
+                medium in perpetuity, including, but not limited to, developing,
+                manufacturing, and marketing products and services using such
+                ideas. Promotions We may, from time to time, include contests,
+                promotions, sweepstakes, or other activities (“Promotions”) that
+                require you to submit material or information concerning
+                yourself. Please note that all Promotions may be governed by
+                separate rules that may contain certain eligibility
+                requirements, such as restrictions as to age and geographic
+                location. You are responsible to read all Promotions rules to
+                determine whether or not you are eligible to participate. If you
+                enter any Promotion, you agree to abide by and to comply with
+                all Promotions Rules. Additional terms and conditions may apply
+                to purchases of goods or services on or through the Services,
+                which terms and conditions are made a part of this Agreement by
+                this reference. Typographical Errors In the event a product
+                and/or service is listed at an incorrect price or with incorrect
+                information due to typographical error, we shall have the right
+                to refuse or cancel any orders placed for the product and/ or
+                service listed at the incorrect price. We shall have the right
+                to refuse or cancel any such order whether or not the order has
+                been confirmed and your credit card charged. If your credit card
+                has already been charged for the purchase and your order is
+                canceled, we shall immediately issue a credit to your credit
+                card account or other payment account in the amount of the
+                charge. Miscellaneous If for any reason a court of competent
+                jurisdiction finds any provision or portion of these Terms &
+                Conditions to be unenforceable, the remainder of these Terms &
+                Conditions will continue in full force and effect. Any waiver of
+                any provision of these Terms & Conditions will be effective only
+                if in writing and signed by an authorized representative of us.
+                We will be entitled to injunctive or other equitable relief
+                (without the obligations of posting any bond or surety) in the
+                event of any breach or anticipatory breach by you. We operate
+                and control our Service from our offices in . The Service is not
+                intended for distribution to or use by any person or entity in
+                any jurisdiction or country where such distribution or use would
+                be contrary to law or regulation. Accordingly, those persons who
+                choose to access our Service from other locations do so on their
+                own initiative and are solely responsible for compliance with
+                local laws, if and to the extent local laws are applicable.
+                These Terms & Conditions (which include and incorporate our
+                Privacy Policy) contains the entire understanding, and
+                supersedes all prior understandings, between you and us
+                concerning its subject matter, and cannot be changed or modified
+                by you. The section headings used in this Agreement are for
+                convenience only and will not be given any legal import.
+                Disclaimer We are not responsible for any content, code or any
+                other imprecision. We do not provide warranties or guarantees.
+                In no event shall we be liable for any special, direct,
+                indirect, consequential, or incidental damages or any damages
+                whatsoever, whether in an action of contract, negligence or
+                other tort, arising out of or in connection with the use of the
+                Service or the contents of the Service. We reserve the right to
+                make additions, deletions, or modifications to the contents on
+                the Service at any time without prior notice. Our Service and
+                its contents are provided "as is" and "as available" without any
+                warranty or representations of any kind, whether express or
+                implied. We are a distributor and not a publisher of the content
+                supplied by third parties; as such, our exercises no editorial
+                control over such content and makes no warranty or
+                representation as to the accuracy, reliability or currency of
+                any information, content, service or merchandise provided
+                through or accessible via our Service. Without limiting the
+                foregoing, We specifically disclaim all warranties and
+                representations in any content transmitted on or in connection
+                with our Service or on sites that may appear as links on our
+                Service, or in the products provided as a part of, or otherwise
+                in connection with, our Service, including without limitation
+                any warranties of merchantability, fitness for a particular
+                purpose or non-infringement of third party rights. No oral
+                advice or written information given by us or any of its
+                affiliates, employees, officers, directors, agents, or the like
+                will create a warranty. Price and availability information is
+                subject to change without notice. Without limiting the
+                foregoing, we do not warrant that our Service will be
+                uninterrupted, uncorrupted, timely, or error-free. Contact Us
+                Don't hesitate to contact us if you have any questions. • Via
+                Email: post@wmc-card.no • Via Phone Number: +47 55 33 75 75
               </div>
             </div>
             {!bottomReached && (
