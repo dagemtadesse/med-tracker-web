@@ -1,5 +1,6 @@
 import CoverImage from "../assets/start-cover.png";
 import Logo from "../assets/logo.png";
+import { Link } from "react-router-dom";
 
 const Start = () => {
   return (
@@ -18,7 +19,7 @@ const Start = () => {
           </p>
           <div className="flex justify-center">
             <button className="bg-solidBlue rounded-full text-white px-4 py-3 w-full max-w-[370px] shadow-md hover:shadow-lg">
-              <a href="">LOG IN</a>
+              <Link to="/login">LOG IN</Link>
             </button>
           </div>
         </div>

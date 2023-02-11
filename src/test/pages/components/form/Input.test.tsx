@@ -9,6 +9,15 @@ it("should render using textarea for large input", () => {
   expect(screen.getByTestId("Input-textarea")).toBeInTheDocument();
 });
 
+it("should show label while there is input", () => {
+  render(<Input lg={false} label={"Test input"} />);
+  const input: HTMLInputElement = screen.getByTestId("Input-input");
+  expect(screen.getByTestId("Input-input")).toBeInTheDocument();
+  fireEvent.change(input, { target: { value: "test value" } });
+  expect(input.value).toBe("test value");
+  expect(screen.getByRole("label").parentNode).toHaveClass("items-start");
+});
+
 it("should render using input element", () => {
   render(<Input label="test input" lg={false} />);
 

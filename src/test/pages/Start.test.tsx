@@ -1,9 +1,10 @@
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
 import { describe, it } from "vitest";
 import Start from "../../pages/Start";
 
 describe("home page component", () => {
   it("renders", () => {
-    render(<Start />);
+    render(<MemoryRouter><Start /></MemoryRouter>);
   });
 });

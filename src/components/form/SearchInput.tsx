@@ -1,16 +1,24 @@
-import classNames from 'classnames'
-import { useRef, useState } from 'react'
-import { Search } from 'react-bootstrap-icons'
-import Option from '../list/Option'
+import classNames from "classnames";
+import { ChangeEvent, useContext, useRef, useState } from "react";
+import { Search } from "react-bootstrap-icons";
+import { Info, InformationContext } from "../../contexts/InformationContext";
+import Option from "../list/Option";
 
-const SearchInput = () => {
-  const inputRef = useRef<HTMLInputElement>(null)
-  const [isActive, setIsActive] = useState(false)
+const SearchInput = ({ type, close }: { type: string; close: () => void }) => {
+  const informationCtx = useContext(InformationContext);
 
-  const style = classNames('rounded-md flex items-center', {
-    'border border-gray-300 ': !isActive,
-    'border-2 border-solidBlue': isActive,
-  })
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [options, setOptions] = useState<Info[]>([]);
+  const [isActive, setIsActive] = useState(false);
+
+  const style = classNames("rounded-md flex items-center", {
+    "border border-gray-300 ": !isActive,
+    "border-2 border-solidBlue": isActive,
+  });
+
+  const changeHandler = async (e: ChangeEvent<HTMLInputElement>) => {
+    setOptions(await informationCtx.searchInformation(type, e.target.value));
+  };
 
   return (
     <>
@@ -19,25 +27,34 @@ const SearchInput = () => {
           <Search />
         </div>
         <input
-          placeholder='Search'
+          placeholder="Search"
           className="py-2 w-full rounded-md outline-0 focus:outline-0 focus:border-0"
           ref={inputRef}
           data-testid="Search-input"
+          onChange={changeHandler}
           onFocus={() => setIsActive(true)}
-          onBlur={() => setIsActive(false)}
+          onBlur={() => setTimeout(() => setIsActive(false), 100)}
         />
       </div>
 
       {isActive && (
-        <div className="bg-white drop-shadow-md mt-1 rounded-sm py-1">
-          <Option label="Paracetamol" code="WMCXL307" />
-          <Option label="Paracetamol" code="WMCXL307" />
-          <Option label="Paracetamol" code="WMCXL307" />
-          <Option label="No Options" />
+        <div className="bg-white drop-shadow-md mt-1 rounded-sm py-1" role="list">
+          {options.map((option: Info) => (
+            <Option
+              label={option.title}
+              code={option.id}
+              key={option.id}
+              onClick={() =>
+                informationCtx.addInformation(option).then(() => close())
+              }
+            />
+          ))}
+
+          {!options.length && <Option label="No Options" />}
         </div>
       )}
     </>
-  )
-}
+  );
+};
 
-export default SearchInput
+export default SearchInput;

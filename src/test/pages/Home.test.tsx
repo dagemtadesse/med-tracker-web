@@ -1,10 +1,11 @@
 import { render, screen } from '@testing-library/react'
+import { MemoryRouter } from 'react-router-dom'
 import { describe, it } from 'vitest'
 import Home from '../../pages/Home'
 
 describe('home page component', () => {
   it('renders', () => {
-    render(<Home />)
+    render(<MemoryRouter><Home /></MemoryRouter>)
 
     expect(screen.getByText(/home/i)).toBeInTheDocument()
   })

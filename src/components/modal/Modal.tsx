@@ -1,9 +1,11 @@
 import classNames from "classnames";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { TrashFill } from "react-bootstrap-icons";
+import ConfirmationContext from "../../contexts/ConfirmationContext";
 
-const ModalPopup = ({close}: {close: () => void}) => {
+const ModalPopup = () => {
   const [isExiting, setIsExiting] = useState(false);
+  const confirmCtx = useContext(ConfirmationContext);
 
   const popupStyle = classNames(
     "bg-black bg-opacity-60 top-0 left-0 right-0 bottom-0 fixed z-[1000] grid place-items-center",
@@ -14,10 +16,17 @@ const ModalPopup = ({close}: {close: () => void}) => {
   );
 
   const handleClose = () => {
-    if(isExiting){
-        close()
+    if (isExiting) {
+      confirmCtx.setConfirm(null);
     }
-  }
+  };
+
+  const handleConfirm = async () => {
+    if (confirmCtx.confirm) {
+      await confirmCtx.confirm();
+    }
+    setIsExiting(true);
+  };
 
   return (
     <div className={popupStyle} onAnimationEnd={handleClose}>
@@ -36,7 +45,10 @@ const ModalPopup = ({close}: {close: () => void}) => {
           >
             Cancel
           </button>
-          <button className="bg-solidBlue rounded-full text-white box-shadow px-20 py-2 shadow hover:shadow-lg">
+          <button
+            className="bg-solidBlue rounded-full text-white box-shadow px-20 py-2 shadow hover:shadow-lg"
+            onClick={handleConfirm}
+          >
             Delete
           </button>
         </div>

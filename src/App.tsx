@@ -1,11 +1,15 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import EditProfile from "./pages/EditProfile";
+import { ConfirmationProvider } from "./contexts/ConfirmationContext";
+import { DocumentContextProvider } from "./contexts/DocumentContext";
 
 import Home from "./pages/Home";
 import Login from "./pages/login";
 import ResetPassword from "./pages/ResetPassword";
 import Start from "./pages/Start";
 import TermsAndConditions from "./pages/TermsAndConditions";
+import EditProfile from "./pages/EditProfile";
+import InformationProvider from "./contexts/InformationContext";
+import { UserProvider } from "./contexts/UserContext";
 
 export const routes = [
   { path: "/", element: <Start /> },
@@ -17,7 +21,17 @@ export const routes = [
 ];
 
 function App() {
-  return <RouterProvider router={createBrowserRouter(routes)} />;
+  return (
+    <UserProvider>
+      <InformationProvider>
+        <DocumentContextProvider>
+          <ConfirmationProvider>
+            <RouterProvider router={createBrowserRouter(routes)} />Í
+          </ConfirmationProvider>
+        </DocumentContextProvider>
+      </InformationProvider>
+    </UserProvider>
+  );
 }
 
 export default App;

@@ -10,10 +10,12 @@ const TermsAndConditions = () => {
   const scrollToBottom = () => {
     if (contianerRef.current) {
       const div = contianerRef.current;
-      div.scrollBy({
-        top: div.scrollHeight - div.clientHeight,
-        behavior: "smooth",
-      });
+      div.scrollBy
+        ? div.scrollBy({
+            top: div.scrollHeight - div.clientHeight,
+            behavior: "smooth",
+          })
+        : (div.scrollTop = div.scrollHeight - div.clientHeight);
     }
   };
 
@@ -48,6 +50,7 @@ const TermsAndConditions = () => {
               className="h-full overflow-auto smooth-scroll"
               ref={contianerRef}
               onScroll={handleScroll}
+              data-testid="conditions-text-wrapper"
             >
               <div className="px-10 text-textGrey">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime
@@ -338,7 +341,7 @@ const TermsAndConditions = () => {
             </div>
             {!bottomReached && (
               <div className="absolute bottom-0  w-full py-3 flex justify-center text-textGrey bg-gradient-to-b from-transparent to-white">
-                <button onClick={scrollToBottom}>
+                <button onClick={scrollToBottom} data-testid="scroll-to-bottom">
                   <ChevronDoubleDown size="32" className="drop-shadow-md" />
                 </button>
               </div>

@@ -1,12 +1,18 @@
-import SearchInput from '../form/SearchInput'
-import SidePopup from './SidePopup'
+import SearchInput from "../form/SearchInput";
+import SidePopup from "./SidePopup";
 
-const AddPopup = ({ handleClose }: { handleClose: () => void }) => {
+const AddPopup = ({
+  type,
+  handleClose,
+}: {
+  type: string;
+  handleClose: () => void;
+}) => {
   return (
     <SidePopup handleClose={handleClose} title="Add">
-      <SearchInput />
+      <SearchInput type={type} close={handleClose}/>
     </SidePopup>
-  )
-}
+  );
+};
 
-export default AddPopup
+export default AddPopup;
