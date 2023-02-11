@@ -13,11 +13,10 @@ const setup = () =>
   );
 
 it("Should render correctly", () => {
-  render(<DocumentWrapper />);
+  setup();
 });
 
 it("should delete an item", () => {
-  setup()
+  setup();
   // fireEvent.click(screen.getByTestId('delete-document'))
-  
 });
