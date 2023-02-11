@@ -26,7 +26,7 @@ const Select = ({
   const [isActive, setIsActive] = useState(false);
   const [value, setValue] = useState<string | undefined>(undefined);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const boudning = divRef.current?.getBoundingClientRect();
     let y: number;
 
