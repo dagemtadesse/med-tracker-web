@@ -81,22 +81,31 @@ const EditProfile = () => {
                   label="First Name"
                   lg={false}
                   onChange={formik.handleChange}
+                  blurHandler={formik.handleBlur}
                   name="firstName"
-                  error={formik.errors.firstName}
+                  error={
+                    formik.touched.firstName
+                      ? formik.errors.firstName
+                      : undefined
+                  }
                 />
                 <Input
                   label="Last Name"
                   lg={false}
                   name="lastName"
                   onChange={formik.handleChange}
-                  error={formik.errors.lastName}
+                  blurHandler={formik.handleBlur}
+                  error={
+                    formik.touched.lastName ? formik.errors.lastName : undefined
+                  }
                 />
                 <Input
                   label="Phone number"
                   lg={false}
                   name="phone"
                   onChange={formik.handleChange}
-                  error={formik.errors.phone}
+                  blurHandler={formik.handleBlur}
+                  error={formik.touched.phone ? formik.errors.phone : undefined}
                 />
                 <div className="flex gap-2">
                   <div className="basis-[60%]">
@@ -105,7 +114,12 @@ const EditProfile = () => {
                       lg={false}
                       name="dateOfBirth"
                       onChange={formik.handleChange}
-                      error={formik.errors.dateOfBirth}
+                      blurHandler={formik.handleBlur}
+                      error={
+                        formik.touched.dateOfBirth
+                          ? formik.errors.dateOfBirth
+                          : undefined
+                      }
                       type="date"
                     />
                   </div>
@@ -113,10 +127,11 @@ const EditProfile = () => {
                     <Select
                       placeholder="Gender"
                       options={["male", "female"]}
+                      onBlur={() => formik.setFieldTouched("gender")}
                       onChange={(value) =>
                         formik.setFieldValue("gender", value)
                       }
-                      error={formik.errors.gender}
+                      error={formik.touched.gender ? formik.errors.gender : undefined}
                     />
                   </div>
                 </div>
@@ -125,15 +140,17 @@ const EditProfile = () => {
                   lg={false}
                   name="CPRNumber"
                   onChange={formik.handleChange}
-                  error={formik.errors.CPRNumber}
+                  blurHandler={formik.handleBlur}
+                  error={formik.touched.CPRNumber ? formik.errors.CPRNumber : undefined}
                 />
                 <Select
                   options={[]}
                   placeholder="select nationality"
+                  onBlur={() => formik.setFieldTouched("nationality")}
                   onChange={(value) =>
                     formik.setFieldValue("nationality", value)
                   }
-                  error={formik.errors.nationality}
+                  error={formik.touched.nationality ? formik.errors.nationality : undefined}
                 />
                 <div>
                   <p className="text-base mb-1">
@@ -142,10 +159,11 @@ const EditProfile = () => {
                   <Select
                     options={["Yes", "No"]}
                     placeholder="Answer"
+                    onBlur={() => formik.setFieldTouched("organDonor")}
                     onChange={(value) =>
                       formik.setFieldValue("organDonor", value)
                     }
-                    error={formik.errors.organDonor}
+                    error={formik.touched.organDonor ? formik.errors.organDonor : undefined}
                   />
                   <p className="text-sm text-lightGrey mt-2">
                     Healthcare professionals will be required to ask family to
@@ -169,14 +187,15 @@ const EditProfile = () => {
                     lg={false}
                     name="postalFirstName"
                     onChange={formik.handleChange}
-                    error={formik.errors.zip}
+                    blurHandler={formik.handleBlur}
+                    error={formik.touched.zip ? formik.errors.zip : undefined}
                   />
                   <Input
                     label="City"
                     lg={false}
                     name="postalLastName"
                     onChange={formik.handleChange}
-                    error={formik.errors.city}
+                    error={formik.touched.city ? formik.errors.city : undefined}
                   />
                 </div>
                 <Input
@@ -184,14 +203,16 @@ const EditProfile = () => {
                   lg={false}
                   name="country"
                   onChange={formik.handleChange}
-                  error={formik.errors.country}
+                  blurHandler={formik.handleBlur}
+                  error={formik.touched.country ? formik.errors.country : undefined}
                 />
                 <Input
                   label="Street Adress"
                   lg={false}
                   name="streetAdress"
                   onChange={formik.handleChange}
-                  error={formik.errors.streetAdress}
+                  blurHandler={formik.handleBlur}
+                  error={formik.touched.streetAdress ? formik.errors.streetAdress : undefined}
                 />
               </div>
 
@@ -208,28 +229,32 @@ const EditProfile = () => {
                   lg={false}
                   name="insuranceType"
                   onChange={formik.handleChange}
-                  error={formik.errors.insuranceType}
+                  blurHandler={formik.handleBlur}
+                  error={formik.touched.insuranceType ? formik.errors.insuranceType : undefined}
                 />
                 <Input
                   label="Insurance company"
                   lg={false}
                   name="insuranceCompany"
                   onChange={formik.handleChange}
-                  error={formik.errors.insuranceCompany}
+                  blurHandler={formik.handleBlur}
+                  error={formik.touched.insuranceCompany ? formik.errors.insuranceCompany : undefined}
                 />
                 <Input
                   label="Policy number (optional)"
                   lg={false}
                   name="policyNumber"
                   onChange={formik.handleChange}
-                  error={formik.errors.policyNumber}
+                  error={formik.touched.policyNumber ? formik.errors.policyNumber : undefined}
+                  blurHandler={formik.handleBlur}
                 />
                 <Input
                   label="Emergency telephone (optional)"
                   lg={false}
                   name="emergencyPhone"
                   onChange={formik.handleChange}
-                  error={formik.errors.emergencyPhone}
+                  error={formik.touched.emergencyPhone ? formik.errors.emergencyPhone: undefined}
+                  blurHandler={formik.handleBlur}
                 />
               </div>
             </div>
@@ -248,7 +273,8 @@ const EditProfile = () => {
                   lg={false}
                   name="contactPerson1Name"
                   onChange={formik.handleChange}
-                  error={formik.errors.contactPerson1Name}
+                  error={formik.touched.contactPerson1Name ?  formik.errors.contactPerson1Name: undefined}
+                  blurHandler={formik.handleBlur}
                 />
                 <div className="flex gap-2">
                   <Input
@@ -256,14 +282,16 @@ const EditProfile = () => {
                     lg={false}
                     name="constactPerson1Phone"
                     onChange={formik.handleChange}
-                    error={formik.errors.constactPerson1Phone}
+                    blurHandler={formik.handleBlur}
+                    error={formik.touched.constactPerson1Phone ?  formik.errors.constactPerson1Phone: undefined}
                   />
                   <Input
                     label="Relationship"
                     lg={false}
-                    name="constactPerson1Phone"
+                    name="contactPerson1Relationship"
                     onChange={formik.handleChange}
-                    error={formik.errors.contactPerson1Relationship}
+                    blurHandler={formik.handleBlur}
+                    error={formik.touched.contactPerson1Relationship ? formik.errors.contactPerson1Relationship: undefined}
                   />
                 </div>
                 <div className="mt-1"></div>
@@ -272,7 +300,8 @@ const EditProfile = () => {
                   lg={false}
                   name="contactPerson1Name"
                   onChange={formik.handleChange}
-                  error={formik.errors.contactPerson2Name}
+                  blurHandler={formik.handleBlur}
+                  error={formik.touched.insuranceCompany ? formik.errors.contactPerson2Name: undefined}
                 />
                 <div className="flex gap-2">
                   <Input
@@ -280,14 +309,16 @@ const EditProfile = () => {
                     lg={false}
                     name="contactPerson1Phone"
                     onChange={formik.handleChange}
-                    error={formik.errors.contactPerson2Phone}
+                    blurHandler={formik.handleBlur}
+                    error={formik.touched.contactPerson2Phone ? formik.errors.contactPerson2Phone: undefined}
                   />
                   <Input
                     label="Relationship"
                     lg={false}
                     name="contactPerson1Relationship"
                     onChange={formik.handleChange}
-                    error={formik.errors.contactPerson2Relationship}
+                    blurHandler={formik.handleBlur}
+                    error={formik.touched.contactPerson2Relationship ? formik.errors.contactPerson2Relationship: undefined}
                   />
                 </div>
               </div>
@@ -301,6 +332,7 @@ const EditProfile = () => {
                 lg={true}
                 name="other"
                 onChange={formik.handleChange}
+                blurHandler={formik.handleBlur}
                 error={undefined}
               />
             </div>

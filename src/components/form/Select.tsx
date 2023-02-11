@@ -9,9 +9,11 @@ const Select = ({
   placeholder,
   error,
   onChange,
+  onBlur,
 }: {
   options: string[];
   placeholder: string;
+  onBlur: () => void;
   error?: string;
   onChange?: (value?: string) => void;
 }) => {
@@ -43,17 +45,20 @@ const Select = ({
   return (
     <>
       <div
-        className={`border ${
+        className={`border relative ${
           !error ? "border-gray-400" : "border-red-500"
-        } py-4 px-4 rounded-lg flex justify-between items-center bg-white`}
+        }  rounded-lg flex justify-between items-center bg-white`}
         onClick={() => setIsActive(true)}
         data-testid="Select-wrapper"
         ref={divRef}
       >
-        <p className="text-lightGrey" data-testid="Select-label">
-          {value || placeholder}
-        </p>
-        <CaretDownFill size={12} />
+        <input
+          className="text-lightGre bg-transparent py-4 px-4 w-full"
+          data-testid="Select-label"
+          onBlur={onBlur}
+          value={value || placeholder}
+        />
+        <CaretDownFill size={12} className="absolute right-4 top-[50%] translate-y-[-50%]"/>
       </div>
       <ErrorMessage msg={error} />
 
