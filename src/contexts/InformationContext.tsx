@@ -7,7 +7,7 @@ export type Info = {
   type: "allergies" | "medicines" | "diagnoses" | "vaccines";
 };
 
-type MedicalInformation = {
+export type MedicalInformation = {
   informations: Info[];
   removeItem: (item: Info) => Promise<any>;
   searchInformation: (type: string, query: string) => Promise<Info[]>;

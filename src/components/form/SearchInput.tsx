@@ -38,7 +38,7 @@ const SearchInput = ({ type, close }: { type: string; close: () => void }) => {
       </div>
 
       {isActive && (
-        <div className="bg-white drop-shadow-md mt-1 rounded-sm py-1">
+        <div className="bg-white drop-shadow-md mt-1 rounded-sm py-1" role="list">
           {options.map((option: Info) => (
             <Option
               label={option.title}

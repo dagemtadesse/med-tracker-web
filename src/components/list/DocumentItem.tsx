@@ -22,7 +22,7 @@ const DocumentItem = ({
   deleteHandler,
   viewHandler,
   downloadHandler,
-  editHandler
+  editHandler,
 }: DocumentItemProps) => {
   return (
     <div className="flex justify-between items-center hover:bg-black hover:bg-opacity-5 hover:cursor-pointer rounded-md p-3">
@@ -36,10 +36,26 @@ const DocumentItem = ({
         </div>
       </div>
       <div className="justify-self-end flex gap-2">
-        <IconButton Icon={EyeFill} onClick={viewHandler} />
-        <IconButton Icon={Pencil} onClick={editHandler}/>
-        <IconButton Icon={CloudDownloadFill} onClick={downloadHandler}/>
-        <IconButton Icon={Trash} onClick={deleteHandler} />
+        <IconButton
+          Icon={EyeFill}
+          onClick={viewHandler}
+          data-testid="view-document"
+        />
+        <IconButton
+          Icon={Pencil}
+          onClick={editHandler}
+          data-testid="edit-document"
+        />
+        <IconButton
+          Icon={CloudDownloadFill}
+          onClick={downloadHandler}
+          data-testid="download-document"
+        />
+        <IconButton
+          Icon={Trash}
+          onClick={deleteHandler}
+          data-testid="delete-document"
+        />
       </div>
     </div>
   );
