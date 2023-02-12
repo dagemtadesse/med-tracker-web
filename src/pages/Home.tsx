@@ -29,7 +29,7 @@ type Action = {
   type: "allergies" | "medicines" | "diagnoses" | "vaccines";
 };
 
-const Home = () => {
+const Home = ({ logoutHandler }: { logoutHandler: () => void }) => {
   const [isProfileShown, setIsProfileShown] = useState(false);
 
   const [action, setAction] = useState<Action | null>(null);
@@ -46,7 +46,7 @@ const Home = () => {
           <ul className="flex gap-8">
             <NavItem label={"Home"} to={"/home"} active />
             <NavItem label={"Terms & conditions"} to="/terms-and-conditions" />
-            <NavItem label={"Logout"} to="/" />
+            <NavItem label={"Logout"} to="/" onClick={logoutHandler} />
           </ul>
         </nav>
       </header>
@@ -195,15 +195,16 @@ type NavItemProps = {
   active?: boolean;
   label: string;
   to: string;
+  onClick?: () => void;
 };
 
-const NavItem = ({ active, label, to }: NavItemProps) => {
+const NavItem = ({ active, label, to, onClick }: NavItemProps) => {
   const style = classnames("py-3 relative text-sm capitalize", {
     "text-solidBlue": !!active,
   });
 
   return (
-    <li className={style}>
+    <li className={style} onClick={onClick}>
       <Link to={to}>{label}</Link>
       {active && (
         <span className="w-full h-[2px] bg-solidBlue block absolute bottom-0"></span>

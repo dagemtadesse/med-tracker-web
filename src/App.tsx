@@ -1,6 +1,12 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate,
+} from "react-router-dom";
+
 import { ConfirmationProvider } from "./contexts/ConfirmationContext";
 import { DocumentContextProvider } from "./contexts/DocumentContext";
+import { UserProvider } from "./contexts/UserContext";
 
 import Home from "./pages/Home";
 import Login from "./pages/login";
@@ -9,15 +15,22 @@ import Start from "./pages/Start";
 import TermsAndConditions from "./pages/TermsAndConditions";
 import EditProfile from "./pages/EditProfile";
 import InformationProvider from "./contexts/InformationContext";
-import { UserProvider } from "./contexts/UserContext";
+
+const GuardRoute = ({ Page }: { Page: JSX.Element }) => {
+  const loggedIn = !!localStorage.getItem("token");
+  return loggedIn ? Page : <Navigate to="/" />;
+};
+
+const logout = () => localStorage.removeItem('token');
 
 export const routes = [
   { path: "/", element: <Start /> },
-  { path: "/home", element: <Home /> },
-  { path: "/reset-password", element: <ResetPassword /> },
-  { path: "/login", element: <Login /> },
-  { path: "/edit-profile", element: <EditProfile /> },
   { path: "/terms-and-conditions", element: <TermsAndConditions /> },
+  { path: "/login", element: <Login /> },
+  { path: "/reset-password", element: <ResetPassword /> },
+  { path: "/home", element: <GuardRoute Page={<Home logoutHandler={logout}/>} /> },
+  { path: "/edit-profile", element: <GuardRoute Page={<EditProfile />} /> },
+  { path: "*", element: <Start /> },
 ];
 
 function App() {
@@ -26,7 +39,7 @@ function App() {
       <InformationProvider>
         <DocumentContextProvider>
           <ConfirmationProvider>
-            <RouterProvider router={createBrowserRouter(routes)} />Í
+            <RouterProvider router={createBrowserRouter(routes)} />
           </ConfirmationProvider>
         </DocumentContextProvider>
       </InformationProvider>
