@@ -12,11 +12,13 @@ const Select = ({
   error,
   onChange,
   onBlur,
+  value
 }: {
   options: string[];
   placeholder: string;
   onBlur: () => void;
   error?: string;
+  value?: any
   onChange?: (value?: string) => void;
 }) => {
   const divRef = useRef<HTMLDivElement>(null);
@@ -24,7 +26,7 @@ const Select = ({
 
   const [style, setStyle] = useState({ width: 0, left: 0, top: 0 });
   const [isActive, setIsActive] = useState(false);
-  const [value, setValue] = useState<string | undefined>(undefined);
+  const [val, setValue] = useState<string | undefined>(value);
 
   useEffect(() => {
     const boudning = divRef.current?.getBoundingClientRect();
@@ -79,7 +81,7 @@ const Select = ({
           className="text-lightGre bg-transparent py-4 px-4 w-full"
           data-testid="Select-label"
           onBlur={onBlur}
-          value={value || placeholder}
+          value={val || placeholder}
         />
         <CaretDownFill
           size={12}

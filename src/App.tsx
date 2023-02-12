@@ -21,14 +21,17 @@ const GuardRoute = ({ Page }: { Page: JSX.Element }) => {
   return loggedIn ? Page : <Navigate to="/" />;
 };
 
-const logout = () => localStorage.removeItem('token');
+const logout = () => localStorage.removeItem("token");
 
 export const routes = [
   { path: "/", element: <Start /> },
   { path: "/terms-and-conditions", element: <TermsAndConditions /> },
   { path: "/login", element: <Login /> },
   { path: "/reset-password", element: <ResetPassword /> },
-  { path: "/home", element: <GuardRoute Page={<Home logoutHandler={logout}/>} /> },
+  {
+    path: "/home",
+    element: <GuardRoute Page={<Home logoutHandler={logout} />} />,
+  },
   { path: "/edit-profile", element: <GuardRoute Page={<EditProfile />} /> },
   { path: "*", element: <Start /> },
 ];

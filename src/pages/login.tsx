@@ -2,10 +2,13 @@ import { object, string } from "yup";
 import { useFormik } from "formik";
 import { Apple, Google } from "react-bootstrap-icons";
 import classnames from "classnames";
-import { Link } from "react-router-dom";
+
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 import Logo from "../assets/logo.png";
 import ErrorMessage from "../components/form/ErrorMessage";
+import UserRequests from "../http/user";
 
 const loginSchema = object({
   email: string().email().required(),
@@ -13,12 +16,29 @@ const loginSchema = object({
 });
 
 const Login = () => {
+  const [loginError, setLoginError] = useState<string | undefined>(undefined);
+  const navigate = useNavigate();
+
   const formik = useFormik({
     initialValues: { email: "", password: "" },
     validationSchema: loginSchema,
-    onSubmit: () => {
+    onSubmit: async (value: any) => {
       // API call here
-      console.log("value");
+      try {
+        const resp = await UserRequests.login(value);
+        if (String(resp.status).startsWith("4")) {
+          setLoginError("Password and email dont match.");
+        } else {
+          setLoginError(undefined);
+          const body = await resp.json();
+          // console.log(body)
+          localStorage.setItem("token", body.tokenId);
+          localStorage.setItem("userId", body.localId);
+          navigate("/home");
+        }
+      } catch (error) {
+        setLoginError("Unable to login.");
+      }
     },
   });
 
@@ -68,7 +88,7 @@ const Login = () => {
                     onChange={formik.handleChange}
                     value={formik.values.password}
                   />
-                  <ErrorMessage msg={formik.errors.password} />
+                  <ErrorMessage msg={formik.errors.password || loginError} />
                 </div>
                 <button
                   className="bg-solidBlue text-white rounded-xl px-4 shadow-md hover:shadow-lg py-4 w-full"
