@@ -33,20 +33,24 @@ const SearchInput = ({ type, close }: { type: string; close: () => void }) => {
           data-testid="Search-input"
           onChange={changeHandler}
           onFocus={() => setIsActive(true)}
-          onBlur={() => setTimeout(() => setIsActive(false), 100)}
+          onBlur={() => setTimeout(() => setIsActive(false), 500)}
         />
       </div>
 
       {isActive && (
-        <div className="bg-white drop-shadow-md mt-1 rounded-sm py-1" role="list">
+        <div
+          className="bg-white drop-shadow-md mt-1 rounded-sm py-1"
+          role="list"
+        >
           {options.map((option: Info) => (
             <Option
               label={option.title}
               code={option.id}
               key={option.id}
-              onClick={() =>
-                informationCtx.addInformation(option).then(() => close())
-              }
+              onClick={(e) => {
+                e.stopPropagation();
+                informationCtx.addInformation(option);
+              }}
             />
           ))}
 

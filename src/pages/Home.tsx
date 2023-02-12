@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import {
   BandaidFill,
   Capsule,
@@ -23,6 +23,7 @@ import { InformationContext } from "../contexts/InformationContext";
 import { Link } from "react-router-dom";
 import UserContext from "../contexts/UserContext";
 import { user } from "../contexts/dummy-data";
+import { fetchUseritems, updateUserItems } from "../http/repository";
 
 type Action = {
   action: "translate" | "add" | "share";
@@ -31,6 +32,7 @@ type Action = {
 
 const Home = ({ logoutHandler }: { logoutHandler: () => void }) => {
   const [isProfileShown, setIsProfileShown] = useState(false);
+  const [loaded, setloaded] = useState(false)
 
   const [action, setAction] = useState<Action | null>(null);
 
@@ -38,6 +40,35 @@ const Home = ({ logoutHandler }: { logoutHandler: () => void }) => {
   const infoCtx = useContext(InformationContext);
   const documentCtx = useContext(DocumentContext);
   const userCtx = useContext(UserContext);
+
+  useEffect(() => {
+    (async function () {
+      const userId = localStorage.getItem("userId")!;
+      try {
+        const userItems = await fetchUseritems(userId);
+        console.log(userItems)
+        infoCtx.setInfos(userItems as any);
+        setloaded(true)
+      } catch (error) {
+        console.log(error)
+      }
+    })();
+  }, []);
+
+  useEffect(() => {
+    const save = async () => {
+      if(loaded)
+        try {
+          const userId = localStorage.getItem("userId")!;
+          updateUserItems(userId, infoCtx.informations);
+        } catch (error) {
+          console.log(error)
+        }
+      
+    };
+
+    setTimeout(save, 500);
+  }, [infoCtx.informations]);
 
   return (
     <>
@@ -168,10 +199,7 @@ const Home = ({ logoutHandler }: { logoutHandler: () => void }) => {
         )}
 
         {isProfileShown && (
-          <ViewProfile
-            close={() => setIsProfileShown(false)}
-            user={userCtx.user!}
-          />
+          <ViewProfile close={() => setIsProfileShown(false)} />
         )}
 
         {documentCtx.currentDocument && <NewDocumentPopup />}
