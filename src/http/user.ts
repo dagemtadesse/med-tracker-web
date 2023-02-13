@@ -14,6 +14,16 @@ const UserRequests = {
     });
   },
 
+  signup: (data: { email: string; password: string }) => {
+    const endpoint = new URL("https://identitytoolkit.googleapis.com/v1/accounts:signUp");
+    endpoint.searchParams.set("key", KEY)
+
+    return fetch(endpoint, {
+      method: "post",
+      body: JSON.stringify(data),
+    });
+  },
+
   // update: (data: any) => {
   //   const endpoint = new URL("/api/login", BASE_URL);
   //   return fetch(endpoint, {

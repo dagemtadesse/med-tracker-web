@@ -15,6 +15,7 @@ import Start from "./pages/Start";
 import TermsAndConditions from "./pages/TermsAndConditions";
 import EditProfile from "./pages/EditProfile";
 import InformationProvider from "./contexts/InformationContext";
+import SignUp from "./pages/signup";
 
 const GuardRoute = ({ Page }: { Page: JSX.Element }) => {
   const loggedIn = !!localStorage.getItem("token");
@@ -27,6 +28,7 @@ export const routes = [
   { path: "/", element: <Start /> },
   { path: "/terms-and-conditions", element: <TermsAndConditions /> },
   { path: "/login", element: <Login /> },
+  { path: "/signup", element: <SignUp /> },
   { path: "/reset-password", element: <ResetPassword /> },
   {
     path: "/home",
