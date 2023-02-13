@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import UserContext, { User } from "../../contexts/UserContext";
 import { useState, useContext, useEffect } from "react";
 import SidePopup from "../popup/SidePopup";
-import { getUserInfo } from "../../http/repository";
 
 const ViewProfile = ({ close }: { close: () => void }) => {
   const [user, setCurrentUser] = useState<User | undefined>();
