@@ -19,6 +19,7 @@ type DocumentContextState = {
   downloadDocument: (doc: Document) => void;
   setAViewDocument: (doc: Document | undefined) => void;
   setCurrentDocument: (doc: Document | undefined) => void;
+  setDocuments: React.Dispatch<React.SetStateAction<Document[]>>
 };
 
 const DocumentContext = createContext<DocumentContextState>({
@@ -42,6 +43,9 @@ const DocumentContext = createContext<DocumentContextState>({
   setCurrentDocument(doc) {
     // empty func
   },
+  setDocuments: () => {
+    /** emtpy func */
+  }
 });
 
 export const DocumentContextProvider = ({
@@ -49,7 +53,7 @@ export const DocumentContextProvider = ({
 }: {
   children: ReactNode;
 }) => {
-  const [documents, setDocuments] = useState<Document[]>(dummyDocuments);
+  const [documents, setDocuments] = useState<Document[]>([]);
   const [viewDocument, setViewDocument] = useState<Document | undefined>();
   const [currentDocument, setCurrentDocument] = useState<
     Document | undefined
@@ -82,6 +86,7 @@ export const DocumentContextProvider = ({
         setAViewDocument: (doc: Document | undefined) => setViewDocument(doc),
         setCurrentDocument: (doc: Document | undefined) =>
           setCurrentDocument(doc),
+        setDocuments
       }}
     >
       {children}

@@ -59,6 +59,7 @@ const DocumentWrapper = () => {
                 editHandler={() => edit(item)}
                 title={item.title}
                 description={item.description}
+                fileURL={item.fileURL!}
               />
             ))}
           </Fragment>

@@ -23,7 +23,13 @@ import { InformationContext } from "../contexts/InformationContext";
 import { Link } from "react-router-dom";
 import UserContext from "../contexts/UserContext";
 import { user } from "../contexts/dummy-data";
-import { fetchUseritems, updateUserItems } from "../http/repository";
+import {
+  fetchUserDocs,
+  fetchUseritems,
+  getUserInfo,
+  updateUserDocs,
+  updateUserItems,
+} from "../http/repository";
 
 type Action = {
   action: "translate" | "add" | "share";
@@ -32,7 +38,7 @@ type Action = {
 
 const Home = ({ logoutHandler }: { logoutHandler: () => void }) => {
   const [isProfileShown, setIsProfileShown] = useState(false);
-  const [loaded, setloaded] = useState(false)
+  const [loaded, setloaded] = useState(false);
 
   const [action, setAction] = useState<Action | null>(null);
 
@@ -46,29 +52,67 @@ const Home = ({ logoutHandler }: { logoutHandler: () => void }) => {
       const userId = localStorage.getItem("userId")!;
       try {
         const userItems = await fetchUseritems(userId);
-        console.log(userItems)
         infoCtx.setInfos(userItems as any);
-        setloaded(true)
+        setloaded(true);
       } catch (error) {
-        console.log(error)
+        console.log(error);
+      }
+    })();
+
+    (async function () {
+      const userId = localStorage.getItem("userId")!;
+      if (!userCtx.user) {
+        try {
+          const user = await getUserInfo(userId);
+          userCtx.setUser(user as any);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    })();
+
+    (async function () {
+      const userId = localStorage.getItem("userId")!;
+      if (!userCtx.user) {
+        try {
+          const docs = await fetchUserDocs(userId);
+          documentCtx.setDocuments(docs as any);
+        } catch (error) {
+          console.log(error);
+        }
       }
     })();
   }, []);
 
   useEffect(() => {
     const save = async () => {
-      if(loaded)
+      if (loaded)
         try {
           const userId = localStorage.getItem("userId")!;
           updateUserItems(userId, infoCtx.informations);
         } catch (error) {
-          console.log(error)
+          console.log(error);
         }
-      
     };
 
     setTimeout(save, 500);
   }, [infoCtx.informations]);
+
+  useEffect(() => {
+    const save = async () => {
+      if (loaded)
+        try {
+          const userId = localStorage.getItem("userId")!;
+          updateUserDocs(userId, documentCtx.documents);
+        } catch (error) {
+          console.log(error);
+        }
+    };
+
+    setTimeout(save, 500);
+  }, [documentCtx.documents]);
+
+
 
   return (
     <>
@@ -207,6 +251,7 @@ const Home = ({ logoutHandler }: { logoutHandler: () => void }) => {
         {documentCtx.viewDocument && (
           <ViewPopup
             title="View Document(s)"
+            document={documentCtx.viewDocument}
             close={() => documentCtx.setAViewDocument(undefined)}
           />
         )}

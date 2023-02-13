@@ -1,7 +1,6 @@
 import classNames from "classnames";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CaretDownFill } from "react-bootstrap-icons";
-import { Info } from "../../contexts/InformationContext";
 import ErrorMessage from "./ErrorMessage";
 
 const zerofy = (n: number | undefined) => n || 0;
@@ -57,8 +56,9 @@ const Select = ({
   }, [divRef.current, isActive]);
 
   useEffect(() => {
-    onChange?.(value);
-  }, [value]);
+    onChange?.(val);
+    // console.log(val)
+  }, [val]);
 
   const selectItemStyle = (num: string) =>
     classNames("px-3 py-2", {

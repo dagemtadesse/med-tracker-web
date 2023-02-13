@@ -113,7 +113,7 @@ const EditProfile = () => {
       try {
         await updateUserInfo(userId, user);
         userCtx.setUser(user);
-        // nvaigate("/home")
+        nvaigate("/home")
       } catch (error) {
         console.log(error);
       }

@@ -10,6 +10,7 @@ import IconButton from "../widgets/IconButton";
 type DocumentItemProps = {
   title: string;
   description: string;
+  fileURL: string;
   deleteHandler: () => void;
   viewHandler: () => void;
   downloadHandler: () => void;
@@ -20,6 +21,7 @@ const DocumentItem = ({
   title,
   description,
   deleteHandler,
+  fileURL,
   viewHandler,
   downloadHandler,
   editHandler,
@@ -46,11 +48,13 @@ const DocumentItem = ({
           onClick={editHandler}
           data-testid="edit-document"
         />
-        <IconButton
-          Icon={CloudDownloadFill}
-          onClick={downloadHandler}
-          data-testid="download-document"
-        />
+        <a href={fileURL} download="Medical document" target="_blank">
+          <IconButton
+            Icon={CloudDownloadFill}
+            onClick={downloadHandler}
+            data-testid="download-document"
+          />
+        </a>
         <IconButton
           Icon={Trash}
           onClick={deleteHandler}

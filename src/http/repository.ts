@@ -9,6 +9,7 @@ import {
   collection,
   where,
 } from "firebase/firestore";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { User } from "../contexts/UserContext";
 
 // TODO: Replace the following with your app's Firebase project configuration
@@ -16,6 +17,7 @@ import { User } from "../contexts/UserContext";
 const firebaseConfig = {
   apiKey: "AIzaSyDmx2dhZrUXHVWLZh2bQOXZpdwMlE2fZ4g",
   projectId: "medtracker-5da4f",
+  storageBucket: "gs://medtracker-5da4f.appspot.com",
 };
 
 // Initialize Firebase
@@ -46,18 +48,36 @@ export const fetchUseritems = async (userId: string) => {
   const docRef = doc(db, "user_items", userId);
   const docSnap = await getDoc(docRef);
 
-  console.log(docSnap.data())
-  return  (docSnap.data() as any).items || [];
+  console.log(docSnap.data());
+  return (docSnap.data() as any).items || [];
 };
 
 export const updateUserItems = (userId: string, data: any) => {
-  return setDoc(doc(db, "user_items", userId), {items: data});
+  return setDoc(doc(db, "user_items", userId), { items: data });
 };
 
 export const fetchUserDocs = async (userId: string) => {
+  const docRef = doc(db, "user_documents", userId);
+  const docSnap = await getDoc(docRef);
 
-}
+  console.log(docSnap.data());
+  return (docSnap.data() as any).items || [];
+};
 
-export const updateUserDocs = async (userId: string) => {
+export const updateUserDocs = async (userId: string, data: any) => {
+  return setDoc(doc(db, "user_documents", userId), { items: data });
+};
 
-}
+export const uploadImage = async (
+  userId: string,
+  file: File
+): Promise<string> => {
+  console.log("Hello");
+  const storage = getStorage();
+  const storageRef = ref(storage, userId + file.name);
+
+  // 'file' comes from the Blob or File API
+  const resp = await uploadBytes(storageRef, file);
+  const url = await getDownloadURL(resp.ref);
+  return url;
+};

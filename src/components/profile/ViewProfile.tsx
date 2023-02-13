@@ -10,20 +10,8 @@ const ViewProfile = ({ close }: { close: () => void }) => {
   const userCtx = useContext(UserContext);
 
   useEffect(() => {
-    (async function () {
-      const userId = localStorage.getItem("userId")!;
-      if (!userCtx.user) {
-        try {
-          const user = await getUserInfo(userId);
-          userCtx.setUser(user as any);
-          setCurrentUser(user as any);
-          console.log(user);
-        } catch (error) {}
-      } else {
-        setCurrentUser(userCtx.user);
-      }
-    })();
-  }, []);
+    setCurrentUser(userCtx.user);
+  }, [userCtx.user]);
 
   return (
     <SidePopup title="My Profile" handleClose={close}>
