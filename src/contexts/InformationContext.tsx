@@ -73,7 +73,7 @@ const InformationProvider = ({ children }: { children: ReactNode }) => {
   ): Promise<Info[]> => {
     return new Promise((resolve) => {
       setTimeout(
-        () => resolve(dummyInfo.filter((info) => info.type === type)),
+        () => resolve(informations.filter((info) => info.type == type)),
         500
       );
     });

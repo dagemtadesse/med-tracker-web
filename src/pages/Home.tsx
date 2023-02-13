@@ -112,8 +112,6 @@ const Home = ({ logoutHandler }: { logoutHandler: () => void }) => {
     setTimeout(save, 500);
   }, [documentCtx.documents]);
 
-
-
   return (
     <>
       <header className="bg-white">
