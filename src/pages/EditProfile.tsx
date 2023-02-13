@@ -126,7 +126,7 @@ const EditProfile = () => {
     <div className=" py-8 px-12 w-full">
       <div className="bg-white rounded-3xl w-full min-h-full shadow-sm text-textDark p-6 overflow-auto">
         <div>
-          <h1 className="text-2xl font-medium ">Edit: My Profile</h1>
+          <h1 className="text-2xl font-medium" data-testid="profile-header">Edit: My Profile</h1>
         </div>
         <form onSubmit={formik.handleSubmit}>
           <div className="flex min-h-full gap-16 mt-4">
