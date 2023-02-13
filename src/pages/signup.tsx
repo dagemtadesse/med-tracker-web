@@ -105,21 +105,7 @@ const SignUp = () => {
               </div>
             </form>
 
-            <div className="flex items-center gap-4 my-3">
-              <div className="border-t h-[1px] border-gray-300 grow"></div>
-              <div>OR</div>
-              <div className="border-t h-[1px] border-gray-300 grow"></div>
-            </div>
-
-            <div className="flex flex-col gap-6 text-sm">
-              <button className="w-full border border-solidBlue rounded-lg py-3 text-solidBlue flex justify-center gap-4 items-center hover:bg-solidBlue hover:bg-opacity-5">
-                <Apple size="24" />
-                <span> Sign in with Apple</span>
-              </button>
-              <button className="w-full border border-solidBlue rounded-lg py-3 text-solidBlue flex justify-center gap-4 items-center hover:bg-solidBlue hover:bg-opacity-5">
-                <Google size="24" /> <span>Sign in with Google</span>
-              </button>
-            </div>
+          
           </div>
         </div>
       </main>
