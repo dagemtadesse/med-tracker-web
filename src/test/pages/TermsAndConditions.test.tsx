@@ -21,7 +21,7 @@ it("Should click the scroll to bottom button", () => {
   );
 
   const funcs = { scrollHandler: () => {} };
-  const handler = vi.spyOn(funcs, "scrollHandler");
+  // const handler = vi.spyOn(funcs, "scrollHandler");
 
   const wrapper = screen.getByTestId("conditions-text-wrapper");
   wrapper.addEventListener("scroll", funcs.scrollHandler);
