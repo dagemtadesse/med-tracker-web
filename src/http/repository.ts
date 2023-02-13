@@ -12,17 +12,22 @@ import {
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { User } from "../contexts/UserContext";
 
-// TODO: Replace the following with your app's Firebase project configuration
-// See: https://support.google.com/firebase/answer/7015592
-const firebaseConfig = {
-  apiKey: "AIzaSyDmx2dhZrUXHVWLZh2bQOXZpdwMlE2fZ4g",
-  projectId: "medtracker-5da4f",
-  storageBucket: "gs://medtracker-5da4f.appspot.com",
-};
+let app: any;
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+export function initFirebase() {
+  const firebaseConfig = {
+    apiKey: "AIzaSyDmx2dhZrUXHVWLZh2bQOXZpdwMlE2fZ4g",
+    projectId: "medtracker-5da4f",
+    authDomain: "medtracker-5da4f.firebaseapp.com",
+    storageBucket: "gs://medtracker-5da4f.appspot.com",
+  };
 
+  if (!app) app = initializeApp(firebaseConfig);
+
+  return app;
+}
+
+initFirebase();
 // Initialize Cloud Firestore and get a reference to the service
 const db = getFirestore(app);
 

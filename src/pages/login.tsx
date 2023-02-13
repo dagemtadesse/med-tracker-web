@@ -1,6 +1,7 @@
 import { object, string } from "yup";
 import { useFormik } from "formik";
 import { Apple, Google } from "react-bootstrap-icons";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import classnames from "classnames";
 
 import { Link, useNavigate } from "react-router-dom";
@@ -9,6 +10,12 @@ import { useState } from "react";
 import Logo from "../assets/logo.png";
 import ErrorMessage from "../components/form/ErrorMessage";
 import UserRequests from "../http/user";
+import { initFirebase } from "../http/repository";
+
+initFirebase();
+const auth = getAuth();
+const provider = new GoogleAuthProvider();
+provider.setCustomParameters({ prompt: "select_account" });
 
 const loginSchema = object({
   email: string().email().required(),
@@ -41,6 +48,24 @@ const Login = () => {
       }
     },
   });
+
+  const logingWithGoogle = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+
+      const token = credential?.accessToken!;
+      const user = result.user as any;
+      // IdP data available using getAdditionalUserInfo(result)
+      console.log(user.reloadUserInfo.localId);
+      localStorage.setItem("token", token);
+      localStorage.setItem("userId", user.reloadUserInfo.localId);
+      navigate("/home");
+    } catch (error: any) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -116,7 +141,10 @@ const Login = () => {
                 <Apple size="24" />
                 <span> Sign in with Apple</span>
               </button>
-              <button className="w-full border border-solidBlue rounded-lg py-3 text-solidBlue flex justify-center gap-4 items-center hover:bg-solidBlue hover:bg-opacity-5">
+              <button
+                className="w-full border border-solidBlue rounded-lg py-3 text-solidBlue flex justify-center gap-4 items-center hover:bg-solidBlue hover:bg-opacity-5"
+                onClick={logingWithGoogle}
+              >
                 <Google size="24" /> <span>Sign in with Google</span>
               </button>
             </div>
