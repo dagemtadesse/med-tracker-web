@@ -60,7 +60,7 @@ const InformationProvider = ({ children }: { children: ReactNode }) => {
     }
 
     const data = await searchItem(type);
-    // console.log(data);
+    console.log(data);
 
     return data.filter((info) =>
       info.title.toLowerCase().includes(searchTerm.toLowerCase())
