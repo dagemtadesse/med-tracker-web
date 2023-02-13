@@ -1,4 +1,5 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useState, useEffect } from "react";
+import { searchItem, updateUserItems } from "../http/repository";
 import { dummyInfo } from "./dummy-data";
 
 export type Info = {
@@ -14,6 +15,7 @@ export type MedicalInformation = {
   translateInformation: (type: string, langauge: string) => Promise<Info[]>;
   addInformation: (item: Info) => Promise<any>;
   shareInformation: (type: string) => Promise<any>;
+  setInfos: React.Dispatch<React.SetStateAction<Info[]>>;
 };
 
 // type MedicalInformationMethods
@@ -37,10 +39,13 @@ export const InformationContext = createContext<MedicalInformation>({
   shareInformation: async (type: string) => {
     /** empty func */
   },
+  setInfos: () => {
+    /** emtpy func */
+  },
 });
 
 const InformationProvider = ({ children }: { children: ReactNode }) => {
-  const [informations, setInformations] = useState<Info[]>(dummyInfo);
+  const [informations, setInformations] = useState<Info[]>([]);
 
   const addInformation = async (info: Info) => {
     if (!informations.find((information) => information.id == info.id)) {
@@ -54,10 +59,11 @@ const InformationProvider = ({ children }: { children: ReactNode }) => {
       return [];
     }
 
-    return dummyInfo.filter(
-      (info) =>
-        info.type == type &&
-        info.title.toLowerCase().includes(searchTerm.toLowerCase())
+    const data = await searchItem(type);
+    console.log(data);
+
+    return data.filter((info) =>
+      info.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
   };
 
@@ -67,7 +73,7 @@ const InformationProvider = ({ children }: { children: ReactNode }) => {
   ): Promise<Info[]> => {
     return new Promise((resolve) => {
       setTimeout(
-        () => resolve(dummyInfo.filter((info) => info.type === type)),
+        () => resolve(informations.filter((info) => info.type == type)),
         500
       );
     });
@@ -92,6 +98,7 @@ const InformationProvider = ({ children }: { children: ReactNode }) => {
         translateInformation,
         shareInformation,
         addInformation,
+        setInfos: setInformations,
       }}
     >
       {children}

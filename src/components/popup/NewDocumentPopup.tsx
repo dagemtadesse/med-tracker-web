@@ -8,6 +8,7 @@ import FileInput from "../form/FileInput";
 import Input from "../form/Input";
 import Select from "../form/Select";
 import SidePopup from "./SidePopup";
+import { uploadImage } from "../../http/repository";
 
 const options = [
   "Certificate",
@@ -22,7 +23,7 @@ const options = [
 ];
 
 const documentSchema = object({
-  title: string().email().required(),
+  title: string().required(),
   type: string().required(),
   description: string(),
 });
@@ -40,8 +41,34 @@ const NewDocumentPopup = () => {
   };
 
   const formik = useFormik({
-    initialValues: { title: "", description: "", type: "" },
-    onSubmit: () => {},
+    initialValues: {
+      title: currentDocument.title || "",
+      description: currentDocument.description || "",
+      type: currentDocument.type || "",
+    },
+    onSubmit: async (data) => {
+      let url: string;
+      if (currentDocument.fileURL) {
+        url = currentDocument.fileURL!;
+      } else {
+        url = await uploadImage(localStorage.getItem("userId")!, file!);
+      }
+
+      const newDoc = {
+        id: url,
+        fileURL: url,
+        type: data.type,
+        description: data.description,
+        title: data.title,
+      }
+
+      if(currentDocument.fileURL){
+        documentCtx.editDocument(newDoc)
+        return
+      }
+
+      documentCtx.addAnewDocument(newDoc);
+    },
     validationSchema: documentSchema,
   });
 
@@ -52,7 +79,7 @@ const NewDocumentPopup = () => {
       )}
 
       {(file || currentDocument?.fileURL) && (
-        <form>
+        <form onSubmit={formik.handleSubmit}>
           <div className="my-4 flex gap-6 flex-col relative bottom-0 h-full pb-6">
             <div className="border border-gray-600 rounded-md w-full py-3 px-3 flex gap-2 items-center text-lightGrey">
               <FileEarmarkText size={18} /> portrait.png
@@ -62,6 +89,7 @@ const NewDocumentPopup = () => {
               lg={false}
               name={"title"}
               onChange={formik.handleChange}
+              value={formik.values.title}
               blurHandler={formik.handleBlur}
               error={formik.touched.title ? formik.errors.title : undefined}
             />
@@ -71,14 +99,18 @@ const NewDocumentPopup = () => {
               placeholder="Document Type"
               onBlur={() => formik.setFieldTouched("type")}
               onChange={(value) => formik.setFieldValue("type", value)}
+              value={formik.values.type}
               error={formik.touched.type ? formik.errors.type : undefined}
             />
 
+            {formik.values.type || "no type"}
+
             <Input
               label="Document description (optional)"
-              name={"title"}
+              name={"description"}
               onChange={formik.handleChange}
               blurHandler={formik.handleBlur}
+              value={formik.values.description}
               error={
                 formik.touched.description
                   ? formik.errors.description
@@ -87,7 +119,10 @@ const NewDocumentPopup = () => {
               lg
             />
 
-            <button className="uppercase bg-solidBlue text-white w-full py-3 shadow-md hover:shadow-lg rounded-full self-end mt-auto text-sm">
+            <button
+              className="uppercase bg-solidBlue text-white w-full py-3 shadow-md hover:shadow-lg rounded-full self-end mt-auto text-sm"
+              type="submit"
+            >
               Upload new document
             </button>
           </div>

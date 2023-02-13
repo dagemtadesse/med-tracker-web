@@ -1,9 +1,12 @@
 import Input from "../components/form/Input";
 import Select from "../components/form/Select";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { object, string } from "yup";
 import { useFormik } from "formik";
 import nationality from "../nationality";
+import { updateUserInfo } from "../http/repository";
+import UserContext, { User } from "../contexts/UserContext";
+import { useContext } from "react";
 
 const userSchema = object({
   firstName: string().label("First name").required().min(2),
@@ -31,33 +34,91 @@ const userSchema = object({
 });
 
 const EditProfile = () => {
+  const userCtx = useContext(UserContext);
+
+  const nvaigate = useNavigate();
+
   const formik = useFormik({
     initialValues: {
-      firstName: "",
-      lastName: "",
-      phone: "",
-      dateOfBirth: "",
-      gender: "",
-      CPRNumber: "",
-      nationality: "",
-      organDonor: "",
-      insuranceType: "",
-      insuranceCompany: "",
-      policyNumber: "",
-      emergencyPhone: "",
-      zip: "",
-      city: "",
-      country: "",
-      streetAdress: "",
-      contactPerson1Name: "",
-      constactPerson1Phone: "",
-      contactPerson1Relationship: "",
-      contactPerson2Name: "",
-      contactPerson2Phone: "",
-      contactPerson2Relationship: "",
-      other: "",
+      firstName: userCtx.user?.firstName || "",
+      lastName: userCtx.user?.lastName || "",
+      phone: userCtx.user?.phoneNumber || "",
+      dateOfBirth: userCtx.user?.dateOfBirth || "",
+      gender: userCtx.user?.gender || "",
+      CPRNumber: userCtx.user?.CPRNumber || "",
+      nationality: userCtx.user?.nationality || "",
+      organDonor: userCtx.user?.isOrganDonor ? "yes" : "no",
+      insuranceType: userCtx.user?.insurance.polcyNumber || "",
+      insuranceCompany: userCtx.user?.insurance.company || "",
+      policyNumber: userCtx.user?.insurance.polcyNumber || "",
+      emergencyPhone: userCtx.user?.insurance.emergencyNumber || "",
+      zip: userCtx.user?.address.zip || "",
+      city: userCtx.user?.address.city || "",
+      country: userCtx.user?.address.country || "",
+      streetAdress: userCtx.user?.address.streetAddress || "",
+      contactPerson1Name: userCtx.user?.emergencyContactPerson[0]?.name || "",
+      constactPerson1Phone:
+        userCtx.user?.emergencyContactPerson[0]?.phoneNumber || "",
+      contactPerson1Relationship:
+        userCtx.user?.emergencyContactPerson[0]?.relationship || "",
+      contactPerson2Name: userCtx.user?.emergencyContactPerson[1]?.name || "",
+      contactPerson2Phone:
+        userCtx.user?.emergencyContactPerson[1]?.phoneNumber || "",
+      contactPerson2Relationship:
+        userCtx.user?.emergencyContactPerson[1]?.relationship || "",
+      other: userCtx.user?.other || "",
     },
-    onSubmit: () => {},
+
+    onSubmit: async (data) => {
+      const userId = localStorage.getItem("userId") ?? "";
+      const user: User = {
+        firstName: data.firstName,
+        lastName: data.lastName,
+        phoneNumber: data.phone,
+        dateOfBirth: data.dateOfBirth,
+        gender: data.gender,
+        CPRNumber: data.CPRNumber,
+        nationality: data.nationality,
+        isOrganDonor: data.organDonor == "yes",
+        createdAt: new Date(),
+        address: {
+          zip: data.zip,
+          city: data.city,
+          streetAddress: data.streetAdress,
+          country: data.country,
+        },
+        insurance: {
+          type: data.insuranceType,
+          company: data.insuranceCompany,
+          polcyNumber: data.policyNumber,
+          emergencyNumber: data.emergencyPhone,
+        },
+        emergencyContactPerson: [
+          {
+            name: data.contactPerson1Name,
+            phoneNumber: data.constactPerson1Phone,
+            relationship: data.contactPerson1Relationship,
+          },
+          {
+            name: data.contactPerson2Name,
+            phoneNumber: data.contactPerson2Phone,
+            relationship: data.contactPerson2Relationship,
+          },
+        ],
+        other: data.other,
+      };
+
+      console.log(user);
+
+      try {
+        await updateUserInfo(userId, user);
+        userCtx.setUser(user);
+        nvaigate("/home")
+      } catch (error) {
+        console.log(error);
+      }
+    },
+
     validationSchema: userSchema,
   });
 
@@ -65,7 +126,7 @@ const EditProfile = () => {
     <div className=" py-8 px-12 w-full">
       <div className="bg-white rounded-3xl w-full min-h-full shadow-sm text-textDark p-6 overflow-auto">
         <div>
-          <h1 className="text-2xl font-medium ">Edit: My Profile</h1>
+          <h1 className="text-2xl font-medium" data-testid="profile-header">Edit: My Profile</h1>
         </div>
         <form onSubmit={formik.handleSubmit}>
           <div className="flex min-h-full gap-16 mt-4">
@@ -84,6 +145,7 @@ const EditProfile = () => {
                   onChange={formik.handleChange}
                   blurHandler={formik.handleBlur}
                   name="firstName"
+                  value={formik.values.firstName}
                   error={
                     formik.touched.firstName
                       ? formik.errors.firstName
@@ -95,6 +157,7 @@ const EditProfile = () => {
                   lg={false}
                   name="lastName"
                   onChange={formik.handleChange}
+                  value={formik.values.lastName}
                   blurHandler={formik.handleBlur}
                   error={
                     formik.touched.lastName ? formik.errors.lastName : undefined
@@ -105,6 +168,7 @@ const EditProfile = () => {
                   lg={false}
                   name="phone"
                   onChange={formik.handleChange}
+                  value={formik.values.phone}
                   blurHandler={formik.handleBlur}
                   error={formik.touched.phone ? formik.errors.phone : undefined}
                 />
@@ -116,6 +180,7 @@ const EditProfile = () => {
                       name="dateOfBirth"
                       onChange={formik.handleChange}
                       blurHandler={formik.handleBlur}
+                      value={formik.values.dateOfBirth}
                       error={
                         formik.touched.dateOfBirth
                           ? formik.errors.dateOfBirth
@@ -128,11 +193,14 @@ const EditProfile = () => {
                     <Select
                       placeholder="Gender"
                       options={["male", "female"]}
+                      value={formik.values.gender}
                       onBlur={() => formik.setFieldTouched("gender")}
                       onChange={(value) =>
                         formik.setFieldValue("gender", value)
                       }
-                      error={formik.touched.gender ? formik.errors.gender : undefined}
+                      error={
+                        formik.touched.gender ? formik.errors.gender : undefined
+                      }
                     />
                   </div>
                 </div>
@@ -142,16 +210,26 @@ const EditProfile = () => {
                   name="CPRNumber"
                   onChange={formik.handleChange}
                   blurHandler={formik.handleBlur}
-                  error={formik.touched.CPRNumber ? formik.errors.CPRNumber : undefined}
+                  value={formik.values.CPRNumber}
+                  error={
+                    formik.touched.CPRNumber
+                      ? formik.errors.CPRNumber
+                      : undefined
+                  }
                 />
                 <Select
-                  options={nationality.map(n => n.nationality)}
+                  options={nationality.map((n) => n.nationality)}
                   placeholder="select nationality"
+                  value={formik.values.nationality}
                   onBlur={() => formik.setFieldTouched("nationality")}
                   onChange={(value) =>
                     formik.setFieldValue("nationality", value)
                   }
-                  error={formik.touched.nationality ? formik.errors.nationality : undefined}
+                  error={
+                    formik.touched.nationality
+                      ? formik.errors.nationality
+                      : undefined
+                  }
                 />
                 <div>
                   <p className="text-base mb-1">
@@ -161,10 +239,15 @@ const EditProfile = () => {
                     options={["Yes", "No"]}
                     placeholder="Answer"
                     onBlur={() => formik.setFieldTouched("organDonor")}
+                    value={formik.values.organDonor}
                     onChange={(value) =>
                       formik.setFieldValue("organDonor", value)
                     }
-                    error={formik.touched.organDonor ? formik.errors.organDonor : undefined}
+                    error={
+                      formik.touched.organDonor
+                        ? formik.errors.organDonor
+                        : undefined
+                    }
                   />
                   <p className="text-sm text-lightGrey mt-2">
                     Healthcare professionals will be required to ask family to
@@ -186,16 +269,18 @@ const EditProfile = () => {
                   <Input
                     label="Zip/city"
                     lg={false}
-                    name="postalFirstName"
+                    name="zip"
                     onChange={formik.handleChange}
+                    value={formik.values.zip}
                     blurHandler={formik.handleBlur}
                     error={formik.touched.zip ? formik.errors.zip : undefined}
                   />
                   <Input
                     label="City"
                     lg={false}
-                    name="postalLastName"
+                    name="city"
                     onChange={formik.handleChange}
+                    value={formik.values.city}
                     error={formik.touched.city ? formik.errors.city : undefined}
                   />
                 </div>
@@ -205,7 +290,10 @@ const EditProfile = () => {
                   name="country"
                   onChange={formik.handleChange}
                   blurHandler={formik.handleBlur}
-                  error={formik.touched.country ? formik.errors.country : undefined}
+                  value={formik.values.country}
+                  error={
+                    formik.touched.country ? formik.errors.country : undefined
+                  }
                 />
                 <Input
                   label="Street Adress"
@@ -213,7 +301,12 @@ const EditProfile = () => {
                   name="streetAdress"
                   onChange={formik.handleChange}
                   blurHandler={formik.handleBlur}
-                  error={formik.touched.streetAdress ? formik.errors.streetAdress : undefined}
+                  value={formik.values.streetAdress}
+                  error={
+                    formik.touched.streetAdress
+                      ? formik.errors.streetAdress
+                      : undefined
+                  }
                 />
               </div>
 
@@ -231,7 +324,12 @@ const EditProfile = () => {
                   name="insuranceType"
                   onChange={formik.handleChange}
                   blurHandler={formik.handleBlur}
-                  error={formik.touched.insuranceType ? formik.errors.insuranceType : undefined}
+                  value={formik.values.insuranceType}
+                  error={
+                    formik.touched.insuranceType
+                      ? formik.errors.insuranceType
+                      : undefined
+                  }
                 />
                 <Input
                   label="Insurance company"
@@ -239,14 +337,24 @@ const EditProfile = () => {
                   name="insuranceCompany"
                   onChange={formik.handleChange}
                   blurHandler={formik.handleBlur}
-                  error={formik.touched.insuranceCompany ? formik.errors.insuranceCompany : undefined}
+                  value={formik.values.insuranceCompany}
+                  error={
+                    formik.touched.insuranceCompany
+                      ? formik.errors.insuranceCompany
+                      : undefined
+                  }
                 />
                 <Input
                   label="Policy number (optional)"
                   lg={false}
                   name="policyNumber"
                   onChange={formik.handleChange}
-                  error={formik.touched.policyNumber ? formik.errors.policyNumber : undefined}
+                  value={formik.values.policyNumber}
+                  error={
+                    formik.touched.policyNumber
+                      ? formik.errors.policyNumber
+                      : undefined
+                  }
                   blurHandler={formik.handleBlur}
                 />
                 <Input
@@ -254,7 +362,12 @@ const EditProfile = () => {
                   lg={false}
                   name="emergencyPhone"
                   onChange={formik.handleChange}
-                  error={formik.touched.emergencyPhone ? formik.errors.emergencyPhone: undefined}
+                  value={formik.values.emergencyPhone}
+                  error={
+                    formik.touched.emergencyPhone
+                      ? formik.errors.emergencyPhone
+                      : undefined
+                  }
                   blurHandler={formik.handleBlur}
                 />
               </div>
@@ -274,7 +387,12 @@ const EditProfile = () => {
                   lg={false}
                   name="contactPerson1Name"
                   onChange={formik.handleChange}
-                  error={formik.touched.contactPerson1Name ?  formik.errors.contactPerson1Name: undefined}
+                  value={formik.values.contactPerson1Name}
+                  error={
+                    formik.touched.contactPerson1Name
+                      ? formik.errors.contactPerson1Name
+                      : undefined
+                  }
                   blurHandler={formik.handleBlur}
                 />
                 <div className="flex gap-2">
@@ -284,42 +402,67 @@ const EditProfile = () => {
                     name="constactPerson1Phone"
                     onChange={formik.handleChange}
                     blurHandler={formik.handleBlur}
-                    error={formik.touched.constactPerson1Phone ?  formik.errors.constactPerson1Phone: undefined}
+                    value={formik.values.constactPerson1Phone}
+                    error={
+                      formik.touched.constactPerson1Phone
+                        ? formik.errors.constactPerson1Phone
+                        : undefined
+                    }
                   />
                   <Input
                     label="Relationship"
                     lg={false}
                     name="contactPerson1Relationship"
+                    value={formik.values.contactPerson1Relationship}
                     onChange={formik.handleChange}
                     blurHandler={formik.handleBlur}
-                    error={formik.touched.contactPerson1Relationship ? formik.errors.contactPerson1Relationship: undefined}
+                    error={
+                      formik.touched.contactPerson1Relationship
+                        ? formik.errors.contactPerson1Relationship
+                        : undefined
+                    }
                   />
                 </div>
                 <div className="mt-1"></div>
                 <Input
                   label="Name"
                   lg={false}
-                  name="contactPerson1Name"
+                  name="contactPerson2Name"
                   onChange={formik.handleChange}
                   blurHandler={formik.handleBlur}
-                  error={formik.touched.insuranceCompany ? formik.errors.contactPerson2Name: undefined}
+                  value={formik.values.contactPerson2Name}
+                  error={
+                    formik.touched.insuranceCompany
+                      ? formik.errors.contactPerson2Name
+                      : undefined
+                  }
                 />
                 <div className="flex gap-2">
                   <Input
                     label="Phone number"
                     lg={false}
-                    name="contactPerson1Phone"
+                    name="contactPerson2Phone"
                     onChange={formik.handleChange}
+                    value={formik.values.contactPerson2Phone}
                     blurHandler={formik.handleBlur}
-                    error={formik.touched.contactPerson2Phone ? formik.errors.contactPerson2Phone: undefined}
+                    error={
+                      formik.touched.contactPerson2Phone
+                        ? formik.errors.contactPerson2Phone
+                        : undefined
+                    }
                   />
                   <Input
                     label="Relationship"
                     lg={false}
-                    name="contactPerson1Relationship"
+                    name="contactPerson2Relationship"
                     onChange={formik.handleChange}
                     blurHandler={formik.handleBlur}
-                    error={formik.touched.contactPerson2Relationship ? formik.errors.contactPerson2Relationship: undefined}
+                    value={formik.values.contactPerson2Relationship}
+                    error={
+                      formik.touched.contactPerson2Relationship
+                        ? formik.errors.contactPerson2Relationship
+                        : undefined
+                    }
                   />
                 </div>
               </div>
@@ -332,6 +475,7 @@ const EditProfile = () => {
                 label="Other"
                 lg={true}
                 name="other"
+                value={formik.values.other}
                 onChange={formik.handleChange}
                 blurHandler={formik.handleBlur}
                 error={undefined}
@@ -342,14 +486,14 @@ const EditProfile = () => {
             <Link to="/home">
               <button
                 className="rounded-full text-center border border-solidBlue hover:bg-solidBlue hover:bg-opacity-10 px-10 py-2 text-solidBlue w-[200px]"
-                type="submit"
+                type="reset"
               >
                 Cancel
               </button>
             </Link>
             <button
               className="rounded-full text-center shadow-md hover:shadow-lg px-10 py-1 text-white bg-solidBlue w-[200px]"
-              type="reset"
+              type="submit"
             >
               Save
             </button>

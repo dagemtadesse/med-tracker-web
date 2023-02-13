@@ -16,19 +16,20 @@ const Input = ({
   type,
   blurHandler,
   onChange,
+  value
 }: {
   lg: boolean;
   name: string;
   label: string;
   error: string | undefined;
   type?: "date";
+  value?: any
   blurHandler?: React.FocusEventHandler;
   onChange?: ChangeEventHandler;
 }) => {
   const inputRef = useRef<HTMLInputElement & HTMLTextAreaElement>(null);
 
   const [isActive, setIsActive] = useState(false);
-  const [value, setValue] = useState("");
 
   const labelStyle = classNames(
     "absolute top-0 left-0 right-0 bottom-0 px-3 inline-flex transition-all duration-[255ms] ease-acclerate text-lightGrey",
@@ -47,7 +48,6 @@ const Input = ({
   const changeHandler = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setValue(event.target.value);
     onChange?.(event);
   };
 
@@ -67,6 +67,7 @@ const Input = ({
             data-testid="Input-input"
             type={type || "text"}
             onChange={changeHandler}
+            value={value}
             onBlur={(e) => {
               setIsActive(false);
               blurHandler?.(e);
@@ -78,8 +79,10 @@ const Input = ({
           <textarea
             className="w-full h-full absolute top-0 left-0 right-0 bottom-0 rounded-lg bg-transparent px-3 py-4"
             ref={inputRef}
+            name={name}
             data-testid="Input-textarea"
             onChange={changeHandler}
+            value={value}
             onBlur={(e) => {
               setIsActive(false);
               blurHandler?.(e);

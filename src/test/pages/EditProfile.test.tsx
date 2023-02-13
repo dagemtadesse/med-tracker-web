@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import EditProfile from "../../pages/EditProfile";
 
@@ -8,4 +8,6 @@ it("should render successfully", () => {
       <EditProfile />
     </MemoryRouter>
   );
+
+  expect(screen.getByTestId("profile-header")).toBeInTheDocument();
 });

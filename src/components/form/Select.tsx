@@ -1,7 +1,6 @@
 import classNames from "classnames";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CaretDownFill } from "react-bootstrap-icons";
-import { Info } from "../../contexts/InformationContext";
 import ErrorMessage from "./ErrorMessage";
 
 const zerofy = (n: number | undefined) => n || 0;
@@ -12,11 +11,13 @@ const Select = ({
   error,
   onChange,
   onBlur,
+  value
 }: {
   options: string[];
   placeholder: string;
   onBlur: () => void;
   error?: string;
+  value?: any
   onChange?: (value?: string) => void;
 }) => {
   const divRef = useRef<HTMLDivElement>(null);
@@ -24,7 +25,7 @@ const Select = ({
 
   const [style, setStyle] = useState({ width: 0, left: 0, top: 0 });
   const [isActive, setIsActive] = useState(false);
-  const [value, setValue] = useState<string | undefined>(undefined);
+  const [val, setValue] = useState<string | undefined>(value);
 
   useEffect(() => {
     const boudning = divRef.current?.getBoundingClientRect();
@@ -55,8 +56,9 @@ const Select = ({
   }, [divRef.current, isActive]);
 
   useEffect(() => {
-    onChange?.(value);
-  }, [value]);
+    onChange?.(val);
+    // console.log(val)
+  }, [val]);
 
   const selectItemStyle = (num: string) =>
     classNames("px-3 py-2", {
@@ -79,7 +81,7 @@ const Select = ({
           className="text-lightGre bg-transparent py-4 px-4 w-full"
           data-testid="Select-label"
           onBlur={onBlur}
-          value={value || placeholder}
+          value={val || placeholder}
         />
         <CaretDownFill
           size={12}

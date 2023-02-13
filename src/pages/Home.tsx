@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import {
   BandaidFill,
   Capsule,
@@ -23,14 +23,22 @@ import { InformationContext } from "../contexts/InformationContext";
 import { Link } from "react-router-dom";
 import UserContext from "../contexts/UserContext";
 import { user } from "../contexts/dummy-data";
+import {
+  fetchUserDocs,
+  fetchUseritems,
+  getUserInfo,
+  updateUserDocs,
+  updateUserItems,
+} from "../http/repository";
 
 type Action = {
   action: "translate" | "add" | "share";
   type: "allergies" | "medicines" | "diagnoses" | "vaccines";
 };
 
-const Home = () => {
+const Home = ({ logoutHandler }: { logoutHandler: () => void }) => {
   const [isProfileShown, setIsProfileShown] = useState(false);
+  const [loaded, setloaded] = useState(false);
 
   const [action, setAction] = useState<Action | null>(null);
 
@@ -39,6 +47,71 @@ const Home = () => {
   const documentCtx = useContext(DocumentContext);
   const userCtx = useContext(UserContext);
 
+  useEffect(() => {
+    (async function () {
+      const userId = localStorage.getItem("userId")!;
+      try {
+        const userItems = await fetchUseritems(userId);
+        infoCtx.setInfos(userItems as any);
+        setloaded(true);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+
+    (async function () {
+      const userId = localStorage.getItem("userId")!;
+      if (!userCtx.user) {
+        try {
+          const user = await getUserInfo(userId);
+          userCtx.setUser(user as any);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    })();
+
+    (async function () {
+      const userId = localStorage.getItem("userId")!;
+      if (!userCtx.user) {
+        try {
+          const docs = await fetchUserDocs(userId);
+          documentCtx.setDocuments(docs as any);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    })();
+  }, []);
+
+  useEffect(() => {
+    const save = async () => {
+      if (loaded)
+        try {
+          const userId = localStorage.getItem("userId")!;
+          updateUserItems(userId, infoCtx.informations);
+        } catch (error) {
+          console.log(error);
+        }
+    };
+
+    setTimeout(save, 500);
+  }, [infoCtx.informations]);
+
+  useEffect(() => {
+    const save = async () => {
+      if (loaded)
+        try {
+          const userId = localStorage.getItem("userId")!;
+          updateUserDocs(userId, documentCtx.documents);
+        } catch (error) {
+          console.log(error);
+        }
+    };
+
+    setTimeout(save, 500);
+  }, [documentCtx.documents]);
+
   return (
     <>
       <header className="bg-white">
@@ -46,7 +119,7 @@ const Home = () => {
           <ul className="flex gap-8">
             <NavItem label={"Home"} to={"/home"} active />
             <NavItem label={"Terms & conditions"} to="/terms-and-conditions" />
-            <NavItem label={"Logout"} to="/" />
+            <NavItem label={"Logout"} to="/" onClick={logoutHandler} />
           </ul>
         </nav>
       </header>
@@ -168,10 +241,7 @@ const Home = () => {
         )}
 
         {isProfileShown && (
-          <ViewProfile
-            close={() => setIsProfileShown(false)}
-            user={userCtx.user!}
-          />
+          <ViewProfile close={() => setIsProfileShown(false)} />
         )}
 
         {documentCtx.currentDocument && <NewDocumentPopup />}
@@ -179,6 +249,7 @@ const Home = () => {
         {documentCtx.viewDocument && (
           <ViewPopup
             title="View Document(s)"
+            document={documentCtx.viewDocument}
             close={() => documentCtx.setAViewDocument(undefined)}
           />
         )}
@@ -195,15 +266,16 @@ type NavItemProps = {
   active?: boolean;
   label: string;
   to: string;
+  onClick?: () => void;
 };
 
-const NavItem = ({ active, label, to }: NavItemProps) => {
+const NavItem = ({ active, label, to, onClick }: NavItemProps) => {
   const style = classnames("py-3 relative text-sm capitalize", {
     "text-solidBlue": !!active,
   });
 
   return (
-    <li className={style}>
+    <li className={style} onClick={onClick}>
       <Link to={to}>{label}</Link>
       {active && (
         <span className="w-full h-[2px] bg-solidBlue block absolute bottom-0"></span>
