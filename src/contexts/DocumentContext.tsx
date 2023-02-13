@@ -1,5 +1,4 @@
 import { createContext, ReactNode, useState } from "react";
-import { dummyDocuments } from "./dummy-data";
 
 export type Document = {
   id?: string;

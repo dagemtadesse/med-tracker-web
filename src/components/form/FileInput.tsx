@@ -1,5 +1,5 @@
 import { ChangeEvent, useRef } from "react";
-import { ArrowUpCircle, UpcScan } from "react-bootstrap-icons";
+import { ArrowUpCircle } from "react-bootstrap-icons";
 
 const FileInput = ({
   handleChange,
