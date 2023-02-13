@@ -22,38 +22,59 @@ const Wrapper = () => {
     <div></div>
   );
 };
+describe("ViewProfile", () => {
+  it("should render correctly", () => {
+    render(
+      <MemoryRouter>
+        <ViewProfile close={() => {}} />
+      </MemoryRouter>
+    );
+  });
 
-it("should render correctly", () => {
-  render(
-    <MemoryRouter>
-      <ViewProfile close={() => {}} />
-    </MemoryRouter>
-  );
-});
+  it("should render correctly", () => {
+    render(
+      <MemoryRouter>
+        <Wrapper />
+      </MemoryRouter>
+    );
 
-it("should render correctly", () => {
-  render(
-    <MemoryRouter>
-      <Wrapper />
-    </MemoryRouter>
-  );
+    setTimeout(
+      () => expect(screen.getByText("Dagem")).toBeInTheDocument(),
+      500
+    );
+  });
 
-  setTimeout(() => expect(screen.getByText("Dagem")).toBeInTheDocument(), 500);
-});
+  it("should close", () => {
+    const handler = {
+      closeHandler: () => {
+        /** empty func */
+      },
+    };
+    const handlerSpy = vi.spyOn(handler, "closeHandler");
+    const { container } = render(
+      <MemoryRouter>
+        <ViewProfile close={handler.closeHandler} />
+      </MemoryRouter>
+    );
 
-it("should close", () => {
-  const handler = {
-    closeHandler: () => {
-      /** empty func */
-    },
-  };
-  const handlerSpy = vi.spyOn(handler, "closeHandler");
-  const { container } = render(
-    <MemoryRouter>
-      <ViewProfile close={handler.closeHandler} />
-    </MemoryRouter>
-  );
+    fireEvent.click(container);
+    expect(handlerSpy).not.toHaveBeenCalled();
+  });
 
-  fireEvent.click(container);
-  expect(handlerSpy).not.toHaveBeenCalled();
+  it("should close", () => {
+    const handler = {
+      closeHandler: () => {
+        /** empty func */
+      },
+    };
+    const handlerSpy = vi.spyOn(handler, "closeHandler");
+    const { container } = render(
+      <MemoryRouter>
+        <ViewProfile close={handler.closeHandler} />
+      </MemoryRouter>
+    );
+
+    fireEvent.click(container);
+    expect(handlerSpy).not.toHaveBeenCalled();
+  });
 });
