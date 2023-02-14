@@ -1,3 +1,5 @@
+import { MouseEventHandler } from "react";
+
 const Option = ({
   label,
   code,
@@ -5,7 +7,7 @@ const Option = ({
 }: {
   label: string;
   code?: string;
-  onClick?: () => void;
+  onClick?: MouseEventHandler<HTMLDivElement>;
 }) => {
   return (
     <div
