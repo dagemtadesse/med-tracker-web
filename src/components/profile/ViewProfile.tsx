@@ -14,14 +14,12 @@ const ViewProfile = ({ close }: { close: () => void }) => {
 
   return (
     <SidePopup title="My Profile" handleClose={close}>
-      {!user ? (
-        <div></div>
-      ) : (
+      
         <div>
           <div className="flex justify-between mt-4">
             <div>
               <div className="text-xl font-medium">
-                {user.firstName} {user.lastName}
+                {user?.firstName} {user?.lastName}
               </div>
               <p className="text-sm text-lightGrey mt-0.5">
                 <>Member since {( new Date()).getFullYear()}</>
@@ -49,13 +47,13 @@ const ViewProfile = ({ close }: { close: () => void }) => {
             <div>
               <p className="font-medium">Gender</p>
               <p className="text-sm text-lightGrey capitalize mt-1">
-                {user.gender}
+                {user?.gender}
               </p>
             </div>
             <div>
               <p className="font-medium">Organ donor</p>
               <p className="text-sm text-lightGrey capitalize mt-1">
-                {user.isOrganDonor ? "Yes" : "No"}
+                {user?.isOrganDonor ? "Yes" : "No"}
               </p>
             </div>
           </div>
@@ -63,37 +61,37 @@ const ViewProfile = ({ close }: { close: () => void }) => {
           <div className="mt-4">
             <p className="font-medium">Social Security Number</p>
             <p className="text-sm text-lightGrey capitalize mt-1">
-              {user.CPRNumber}
+              {user?.CPRNumber}
             </p>
           </div>
 
           <div className="mt-4">
             <p className="font-medium">Nationality</p>
             <p className="text-sm text-lightGrey capitalize mt-1">
-              {user.nationality}
+              {user?.nationality}
             </p>
           </div>
 
           <div className="mt-4">
             <p className="font-medium">Telephone</p>
             <p className="text-sm text-lightGrey capitalize mt-1">
-              {user.phoneNumber}
+              {user?.phoneNumber}
             </p>
           </div>
 
           <div className="mt-4">
             <p className="font-medium">Postal Address</p>
             <p className="text-sm text-lightGrey capitalize mt-1">
-              {user.address.streetAddress}
+              {user?.address.streetAddress}
             </p>
             <p className="text-sm text-lightGrey capitalize mt-1">
-              {user.address.city}
+              {user?.address.city}
             </p>
             <p className="text-sm text-lightGrey capitalize mt-1">
-              {user.address.zip}
+              {user?.address.zip}
             </p>
             <p className="text-sm text-lightGrey capitalize mt-1">
-              {user.address.country}
+              {user?.address.country}
             </p>
           </div>
 
@@ -103,13 +101,13 @@ const ViewProfile = ({ close }: { close: () => void }) => {
             <div className="basis-[50%]">
               <div className=" font-medium">Insurance type</div>
               <p className="text-sm text-lightGrey capitalize mt-1">
-                {user.insurance.type}
+                {user?.insurance.type}
               </p>
             </div>
             <div className="basis-[50%]">
               <div className="font-medium">Policy Number</div>
               <p className="text-sm text-lightGrey capitalize mt-1">
-                {user.insurance.polcyNumber}
+                {user?.insurance.polcyNumber}
               </p>
             </div>
           </div>
@@ -117,7 +115,7 @@ const ViewProfile = ({ close }: { close: () => void }) => {
             <div className="basis-[50%]">
               <div className="font-medium">Emergency phone</div>
               <p className="text-sm text-lightGrey capitalize mt-1">
-                {user.insurance.emergencyNumber}
+                {user?.insurance.emergencyNumber}
               </p>
             </div>
           </div>
@@ -126,7 +124,7 @@ const ViewProfile = ({ close }: { close: () => void }) => {
 
           <div className="mt-4">
             <p className="font-medium">Contact person incase of emergency</p>
-            {user.emergencyContactPerson.map((person, index) => (
+            {user?.emergencyContactPerson?.map((person, index) => (
               <div className="mb-3" key={index}>
                 <p className="text-sm text-lightGrey capitalize mt-1">
                   {person.name}
@@ -146,11 +144,11 @@ const ViewProfile = ({ close }: { close: () => void }) => {
           <div className="mt-4">
             <p className="font-medium">Other information</p>
             <p className="text-sm text-lightGrey capitalize mt-1">
-              {user.other}
+              {user?.other}
             </p>
           </div>
         </div>
-      )}
+      
     </SidePopup>
   );
 };
