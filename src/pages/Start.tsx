@@ -12,7 +12,7 @@ const Start = () => {
         <div className="bg-white max-w-2xl p-8 rounded-3xl mx-auto shadow-md">
           <img src={CoverImage} className="w-[384px] mx-auto" />
           <p className="text-center text-2xl font-medium text-textDark">
-            World Medical Card®
+            World Medical Card® New
           </p>
           <p className="text-center max-w-[330px] mx-auto mt-1 mb-16 text-textGrey font-medium">
             YOUR PERSONAL MEDICAL RECORD ALWAYS AVAILABLE
