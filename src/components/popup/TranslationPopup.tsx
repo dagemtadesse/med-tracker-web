@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { Loader } from "react-feather";
-import { Info, InformationContext } from "../../contexts/InformationContext";
+import { countries, Info, InformationContext } from "../../contexts/InformationContext";
 import Select from "../form/Select";
 import SidePopup from "./SidePopup";
 
@@ -31,7 +31,7 @@ const TranslationPopup = ({
     <SidePopup handleClose={handleClose} title="Translation">
       <div className="mb-5">
         <Select
-          options={["Norwegian", "English", "Polish", "Russians"]}
+          options={Object.values(countries)}
           placeholder="Select a language"
           onChange={(val) => setLangauge(val)}
           onBlur={function (): void {}}
