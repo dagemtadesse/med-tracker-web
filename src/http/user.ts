@@ -1,37 +1,60 @@
 import RequestHelper from ".";
+import { Info } from "../contexts/InformationContext";
 
 export const BASE_URL = "http://localhost:5050";
 export const KEY = "AIzaSyDmx2dhZrUXHVWLZh2bQOXZpdwMlE2fZ4g";
 
 const UserRequests = {
-  login: (data: { email: string; password: string }) => {
-    const endpoint = new URL("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword");
-    endpoint.searchParams.set("key", KEY)
+  login: async (data: { email: string; password: string }) => {
+    const endpoint = new URL("https://localhost:7296/api/auth/login");
 
-    return fetch(endpoint, {
+    const response = await fetch(endpoint, {
       method: "post",
+      headers: {'Content-type': 'application/json'},
       body: JSON.stringify(data),
     });
+
+    const json = await response.json();
+
+    json.localID = json.token;
+
+    return json
   },
 
-  signup: (data: { email: string; password: string }) => {
-    const endpoint = new URL("https://identitytoolkit.googleapis.com/v1/accounts:signUp");
-    endpoint.searchParams.set("key", KEY)
+  signup: async (data: { email: string; password: string }) => {
+    const endpoint = new URL("https://localhost:7296/api/auth/signup");
 
-    return fetch(endpoint, {
+    const response = await fetch(endpoint, {
       method: "post",
+      headers: {'Content-type': 'application/json'},
       body: JSON.stringify(data),
     });
+
+    return response
   },
 
-  // update: (data: any) => {
-  //   const endpoint = new URL("/api/login", BASE_URL);
-  //   return fetch(endpoint, {
-  //     method: "post",
-  //     body: JSON.stringify(data),
-  //     headers: RequestHelper.headers,
-  //   });
-  // },
+  search: async (type: string, query: string) : Promise<Info[]> => {
+    const endpoint = new URL(`https://localhost:7296/api/search/${type}`);
+    endpoint.searchParams.set("query", query);
+
+    const response = await fetch(endpoint, {
+      headers: {
+        'Authorization': localStorage.getItem("token")!
+      }
+    })
+
+    const json = await response.json()
+
+    const apiMap = {"allergy": "allergies",  "medicine" : "medicines", "diagnosis" : "diagnoses", "vaccine" : "vaccines"}
+
+    return json.map((item : any)=> {
+      return {
+        type: String(apiMap[type]) || "" ,
+        title: item.name,
+        id: item.code
+      }
+    })
+  }
 };
 
 export default UserRequests;

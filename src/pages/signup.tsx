@@ -30,14 +30,10 @@ const SignUp = () => {
           setLoginError("Password and email dont match.");
         } else {
           setLoginError(undefined);
-          const body = await resp.json();
-          // console.log(body)
-          localStorage.setItem("token", body.tokenId);
-          localStorage.setItem("userId", body.localId);
-          navigate("/home");
+          navigate("/login");
         }
       } catch (error) {
-        setLoginError("Unable to login.");
+        setLoginError("Unable to signup.");
       }
     },
   });
