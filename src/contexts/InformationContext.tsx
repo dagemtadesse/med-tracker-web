@@ -1,5 +1,6 @@
 import { createContext, ReactNode, useState } from "react";
 import { searchItem } from "../http/repository";
+import * as htmlToImage from "html-to-image";
 
 export type Info = {
   title: string;
@@ -104,18 +105,32 @@ const InformationProvider = ({ children }: { children: ReactNode }) => {
       return data;
     } catch (error) {
       console.log(error);
+      return [];
     }
-
-    return new Promise((resolve) => {
-      setTimeout(
-        () => resolve(informations.filter((info) => info.type == type)),
-        500
-      );
-    });
   };
 
   const shareInformation = async (type: string) => {
-    console.log(`sharing ${type} information`);
+    const data = informations.filter((info) => info.type == type);
+    const wrapper = document.createElement("ul");
+    wrapper.setAttribute("id", "image");
+    wrapper.style.backgroundColor = "#fff";
+    wrapper.style.padding = "10px"
+    wrapper.style.maxWidth = "300px"
+
+    for (let item of data) {
+      let listItem = document.createElement("li");
+      listItem.textContent = item.title;
+      wrapper.appendChild(listItem);
+    }
+
+    document.body.appendChild(wrapper);
+
+    htmlToImage.toPng(wrapper).then((url) => {
+      var link = document.createElement("a");
+      link.download = "my-image-name.jpeg";
+      link.href = url;
+      link.click();
+    });
   };
 
   const removeItem = async (item: Info) => {

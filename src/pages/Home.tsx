@@ -23,6 +23,7 @@ import { InformationContext } from "../contexts/InformationContext";
 import { Link } from "react-router-dom";
 import UserContext from "../contexts/UserContext";
 import { user } from "../contexts/dummy-data";
+
 import {
   fetchUserDocs,
   fetchUseritems,
@@ -35,6 +36,7 @@ type Action = {
   action: "translate" | "add" | "share";
   type: "allergies" | "medicines" | "diagnoses" | "vaccines";
 };
+
 
 const Home = ({ logoutHandler }: { logoutHandler: () => void }) => {
   const [isProfileShown, setIsProfileShown] = useState(false);
