@@ -1,5 +1,6 @@
 import { createContext, ReactNode, useState } from "react";
-import { searchItem } from "../http/repository";
+import * as htmlToImage from "html-to-image";
+import UserRequests from "../http/user";
 
 export type Info = {
   title: string;
@@ -50,6 +51,7 @@ const InformationProvider = ({ children }: { children: ReactNode }) => {
   const [informations, setInformations] = useState<Info[]>([]);
 
   const addInformation = async (info: Info) => {
+    console.log(info)
     if (!informations.find((information) => information.id == info.id)) {
       setInformations((oldVal) => [...oldVal, info]);
     }
@@ -61,12 +63,13 @@ const InformationProvider = ({ children }: { children: ReactNode }) => {
       return [];
     }
 
-    const data = await searchItem(type);
-    console.log(data);
+    const apiMap = {"allergies": "allergy", "medicines": "medicine", "diagnoses": "diagnosis", "vaccines": "vaccine"}
+    const data = await UserRequests.search(apiMap[type], query);
+    // console.log(data);
 
-    return data.filter((info) =>
-      info.title.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    console.log(data)
+
+    return data;
   };
 
   const translateInformation = async (
@@ -104,18 +107,34 @@ const InformationProvider = ({ children }: { children: ReactNode }) => {
       return data;
     } catch (error) {
       console.log(error);
+      return [];
     }
-
-    return new Promise((resolve) => {
-      setTimeout(
-        () => resolve(informations.filter((info) => info.type == type)),
-        500
-      );
-    });
   };
 
   const shareInformation = async (type: string) => {
-    console.log(`sharing ${type} information`);
+    const data = informations.filter((info) => info.type == type);
+    const wrapper = document.createElement("ul");
+    wrapper.setAttribute("id", "image");
+    wrapper.style.backgroundColor = "#fff";
+    wrapper.style.padding = "10px"
+    wrapper.style.maxWidth = "300px"
+
+    for (let item of data) {
+      let listItem = document.createElement("li");
+      listItem.textContent = item.title;
+      wrapper.appendChild(listItem);
+    }
+
+    document.body.appendChild(wrapper);
+
+    htmlToImage.toPng(wrapper).then((url) => {
+      var link = document.createElement("a");
+      link.download = "my-image-name.jpeg";
+      link.href = url;
+      link.click();
+    });
+
+    document.body.removeChild(wrapper)
   };
 
   const removeItem = async (item: Info) => {
