@@ -11,6 +11,7 @@ import Logo from "../assets/logo.png";
 import ErrorMessage from "../components/form/ErrorMessage";
 import UserRequests from "../http/user";
 import { initFirebase } from "../http/repository";
+import React from "react";
 
 initFirebase();
 const auth = getAuth();
@@ -21,6 +22,18 @@ const loginSchema = object({
   email: string().email().required(),
   password: string().required().min(8),
 });
+
+const validateInput = (values: { email: string; }) => {
+  const errors = {email:""}
+
+  if (!values.email) {
+    errors.email = 'Required'
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = 'Invalid email address'
+  }
+
+  return errors
+}
 
 const Login = () => {
   const [loginError, setLoginError] = useState<string | undefined>(undefined);
@@ -67,6 +80,7 @@ const Login = () => {
     }
   };
 
+
   return (
     <>
       <header className="w-[956px] mx-auto py-12 px-8 text-textDark">
@@ -95,6 +109,7 @@ const Login = () => {
                     name="email"
                     onChange={formik.handleChange}
                     value={formik.values.email}
+                    data-testid="auth-email"
                   />
                   <ErrorMessage msg={formik.errors.email} />
                 </div>
@@ -112,12 +127,15 @@ const Login = () => {
                     name="password"
                     onChange={formik.handleChange}
                     value={formik.values.password}
+                    data-testid="auth-password"
                   />
                   <ErrorMessage msg={formik.errors.password || loginError} />
                 </div>
                 <button
                   className="bg-solidBlue text-white rounded-xl px-4 shadow-md hover:shadow-lg py-4 w-full"
+                  name="Login"
                   type="submit"
+                  data-testid="auth-button"
                 >
                   Continue
                 </button>
@@ -155,4 +173,5 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Login; 
+

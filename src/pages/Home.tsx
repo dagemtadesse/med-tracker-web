@@ -118,7 +118,7 @@ const Home = ({ logoutHandler }: { logoutHandler: () => void }) => {
         <nav className="flex flex-row-reverse px-[64px]">
           <ul className="flex gap-8">
             <NavItem label={"Home"} to={"/home"} active />
-            <NavItem label={"Terms & conditions"} to="/terms-and-conditions" />
+            <NavItem label={"Terms & conditions"} data-testid = "terms-and-conditions" to="/terms-and-conditions" />
             <NavItem label={"Logout"} to="/" onClick={logoutHandler} />
           </ul>
         </nav>
@@ -127,7 +127,10 @@ const Home = ({ logoutHandler }: { logoutHandler: () => void }) => {
       <main className="p-8">
         <div className="max-w-3xl mx-auto my-5 text-2xl font-medium">
           <span className="mr-4">👋🏻</span>Good morning{" "}
-          {`${userCtx.user?.firstName} ${userCtx.user?.lastName}`}
+          <span data-testid = "userinfo">
+            {`${userCtx.user?.firstName} ${userCtx.user?.lastName}`}
+          </span>
+          
         </div>
         {/* profile */}
         <div className="bg-white max-w-3xl mx-auto rounded-2xl drop-shadow-md mb-6 p-5">
