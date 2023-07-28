@@ -18,8 +18,8 @@ const Start = () => {
             YOUR PERSONAL MEDICAL RECORD ALWAYS AVAILABLE
           </p>
           <div className="flex justify-center">
-            <button className="bg-solidBlue rounded-full text-white px-4 py-3 w-full max-w-[370px] shadow-md hover:shadow-lg">
-              <Link to="/login">LOG IN</Link>
+            <button className="bg-solidBlue rounded-full text-white px-4 py-3 w-full max-w-[370px] shadow-md hover:shadow-lg" >
+              <Link to="/login" data-testid = "start-login">LOG IN</Link>
             </button>
           </div>
         </div>

@@ -38,13 +38,13 @@ export const routes = [
   { path: "*", element: <Start /> },
 ];
 
-function App() {
+function App({router}: {router?: any}) {
   return (
     <UserProvider>
       <InformationProvider>
         <DocumentContextProvider>
           <ConfirmationProvider>
-            <RouterProvider router={createBrowserRouter(routes)} />
+            <RouterProvider router={router ?? createBrowserRouter(routes)} />
           </ConfirmationProvider>
         </DocumentContextProvider>
       </InformationProvider>
