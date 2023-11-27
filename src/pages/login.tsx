@@ -46,18 +46,18 @@ const Login = () => {
       // API call here
       try {
         const resp = await UserRequests.login(value);
-        if (String(resp.status).startsWith("4")) {
+        if (!resp) {
           setLoginError("Password and email dont match.");
         } else {
-          setLoginError(undefined);
-          const body = await resp.json();
+          
           // console.log(body)
-          localStorage.setItem("token", body.tokenId);
-          localStorage.setItem("userId", body.localId);
+          localStorage.setItem("token", resp.token);
+          localStorage.setItem("userId", resp.localId);
           navigate("/home");
         }
       } catch (error) {
         setLoginError("Unable to login.");
+        console.log(error)
       }
     },
   });
